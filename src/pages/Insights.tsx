@@ -5,6 +5,7 @@ import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import { Card, CardContent } from "@/components/ui/card";
 import { ArrowRight, Calendar, User } from "lucide-react";
+import ArticleCover, { cleanBrand } from "@/components/ArticleCover";
 
 interface Article {
   id: string;
@@ -42,7 +43,7 @@ const Insights = () => {
       {/* Hero Section */}
       <section className="pt-32 pb-16 bg-gradient-to-b from-muted/50 to-background">
         <div className="container mx-auto px-4 text-center">
-          <h1 className="text-4xl md:text-5xl font-bold mb-4">Insights & Thought Leadership</h1>
+          <h1 className="text-4xl md:text-5xl font-bold mb-4">Insights & thought leadership</h1>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
             Expert perspectives on blockchain investigations, cryptocurrency fraud, and digital asset recovery.
           </p>
@@ -68,23 +69,13 @@ const Insights = () => {
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
               {articles.map((article) => (
                 <Link key={article.id} to={`/insights/${article.slug}`}>
-                  <Card className="h-full hover:shadow-lg transition-shadow overflow-hidden group">
-                    {article.cover_image_url ? (
-                      <div className="h-48 overflow-hidden">
-                        <img
-                          src={article.cover_image_url}
-                          alt={article.title}
-                          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                        />
-                      </div>
-                    ) : (
-                      <div className="h-48 bg-gradient-to-br from-primary/20 to-primary/5 flex items-center justify-center">
-                        <span className="text-4xl font-bold text-primary/30">CL</span>
-                      </div>
-                    )}
+                  <Card className="h-full hover:border-primary transition-colors overflow-hidden group">
+                    <div className="h-48 overflow-hidden border-b border-border">
+                      <ArticleCover title={article.title} compact />
+                    </div>
                     <CardContent className="p-6">
                       <h2 className="text-xl font-semibold mb-2 group-hover:text-primary transition-colors">
-                        {article.title}
+                        {cleanBrand(article.title)}
                       </h2>
                       {article.excerpt && (
                         <p className="text-muted-foreground mb-4 line-clamp-2">{article.excerpt}</p>
@@ -93,7 +84,7 @@ const Insights = () => {
                         <div className="flex items-center gap-4">
                           <span className="flex items-center gap-1">
                             <User className="h-3 w-3" />
-                            {article.author_name}
+                            {cleanBrand(article.author_name)}
                           </span>
                           {article.published_at && (
                             <span className="flex items-center gap-1">

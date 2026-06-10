@@ -1,6 +1,6 @@
 import Navigation from "@/components/Navigation";
 import HeroSection from "@/components/HeroSection";
-import ThreeOfferings from "@/components/ThreeOfferings";
+import Offerings from "@/components/Offerings";
 import WhoWeServe from "@/components/WhoWeServe";
 import CaseStudies from "@/components/CaseStudies";
 import WhyChooseBlockquery from "@/components/WhyChooseBlockquery";
@@ -13,7 +13,7 @@ const Index = () => {
     <div className="min-h-screen">
       <Navigation />
       <HeroSection />
-      <ThreeOfferings />
+      <Offerings />
       <WhoWeServe />
       <CaseStudies />
       <WhyChooseBlockquery />

@@ -24,6 +24,12 @@ export const PRODUCTS = {
     href: "/wallet-checker",
     tagline: "Paste an address. Get a verdict. Self-serve KYT.",
   },
+  lawFirms: {
+    name: "Investigations for law firms",
+    short: "Law firm investigations",
+    href: "/law-firms",
+    tagline: "White-label blockchain investigation behind your practice.",
+  },
 } as const;
 
 /** Site-wide positioning line. */

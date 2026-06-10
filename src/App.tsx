@@ -8,6 +8,7 @@ import Index from "./pages/Index";
 import Intelligence from "./pages/Intelligence";
 import Embedded from "./pages/Embedded";
 import WalletChecker from "./pages/WalletChecker";
+import LawFirms from "./pages/LawFirms";
 import CaseStudiesPage from "./pages/CaseStudiesPage";
 import AboutUs from "./pages/AboutUs";
 import Contact from "./pages/Contact";
@@ -41,10 +42,11 @@ const App = () => (
         <Routes>
           <Route path="/" element={<Index />} />
 
-          {/* Three offerings */}
+          {/* Offerings */}
           <Route path="/intelligence" element={<Intelligence />} />
           <Route path="/embedded" element={<Embedded />} />
           <Route path="/wallet-checker" element={<WalletChecker />} />
+          <Route path="/law-firms" element={<LawFirms />} />
 
           {/* Standard pages */}
           <Route path="/about" element={<AboutUs />} />

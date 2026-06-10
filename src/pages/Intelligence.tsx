@@ -388,6 +388,11 @@ const Intelligence = () => {
                       Download a sample report →
                     </Link>
                   )}
+                  {uc.id === "law-firms" && (
+                    <Link to="/law-firms" className="text-sm text-primary font-medium hover:underline">
+                      Investigations for law firms →
+                    </Link>
+                  )}
                 </div>
               </div>
             </div>

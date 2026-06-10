@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { LayoutDashboard, Users, ScanLine, CheckCircle, ArrowRight, LucideIcon } from "lucide-react";
+import { LayoutDashboard, Users, Scale, ScanLine, CheckCircle, ArrowRight, LucideIcon } from "lucide-react";
 import { PRODUCTS } from "@/config/site";
 
 interface Offering {
@@ -37,6 +37,18 @@ const offerings: Offering[] = [
     ],
   },
   {
+    icon: Scale,
+    name: PRODUCTS.lawFirms.name,
+    tagline: PRODUCTS.lawFirms.tagline,
+    href: PRODUCTS.lawFirms.href,
+    cta: "Explore investigations",
+    points: [
+      "White-label cases under your firm's brand",
+      "Referral commission where regulation permits",
+      "Court-ready evidence and expert-witness testimony",
+    ],
+  },
+  {
     icon: ScanLine,
     name: PRODUCTS.walletChecker.short,
     tagline: PRODUCTS.walletChecker.tagline,
@@ -50,22 +62,23 @@ const offerings: Offering[] = [
   },
 ];
 
-const ThreeOfferings = () => {
+const Offerings = () => {
   return (
     <section id="offerings" className="py-20 sm:py-28 md:py-36 px-4 sm:px-6 bg-card border-t border-border">
       <div className="container mx-auto max-w-6xl">
         <p className="text-sm font-semibold uppercase tracking-widest text-primary text-center mb-4">
-          Three ways to work with us
+          Four ways to work with us
         </p>
         <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-center mb-4">
-          One intelligence stack. Three ways to use it.
+          One intelligence stack. Four ways to use it.
         </h2>
         <p className="text-lg text-muted-foreground text-center mb-14 max-w-2xl mx-auto">
-          Buy the platform, embed a specialist, or self-serve a verdict in seconds.
-          The same on-chain intelligence, shaped to how you work.
+          Buy the platform, embed a specialist, put us behind your law firm, or
+          self-serve a verdict in seconds. The same on-chain intelligence, shaped
+          to how you work.
         </p>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
           {offerings.map((o) => (
             <Link
               key={o.name}
@@ -96,4 +109,4 @@ const ThreeOfferings = () => {
   );
 };
 
-export default ThreeOfferings;
+export default Offerings;

@@ -6,6 +6,7 @@ import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import { ArrowLeft, Calendar, User } from "lucide-react";
 import { transformRichTextHtml } from "@/lib/richtext";
+import ArticleCover, { cleanBrand } from "@/components/ArticleCover";
 import DOMPurify from "dompurify";
 
 interface Article {
@@ -82,14 +83,14 @@ const ArticleDetail = () => {
       <div className="min-h-screen bg-background">
         <Navigation />
         <div className="container mx-auto px-4 pt-32 pb-16 text-center">
-          <h1 className="text-3xl font-bold mb-4">Article Not Found</h1>
+          <h1 className="text-3xl font-bold mb-4">Article not found</h1>
           <p className="text-muted-foreground mb-8">
             The article you're looking for doesn't exist or has been removed.
           </p>
           <Link to="/insights">
             <Button>
               <ArrowLeft className="h-4 w-4 mr-2" />
-              Back to Insights
+              Back to insights
             </Button>
           </Link>
         </div>
@@ -107,15 +108,15 @@ const ArticleDetail = () => {
           <div className="max-w-3xl mx-auto">
             <Link to="/insights" className="inline-flex items-center text-muted-foreground hover:text-foreground mb-6">
               <ArrowLeft className="h-4 w-4 mr-2" />
-              Back to Insights
+              Back to insights
             </Link>
 
-            <h1 className="text-3xl md:text-4xl font-bold mb-4">{article?.title}</h1>
+            <h1 className="text-3xl md:text-4xl font-bold mb-4">{cleanBrand(article?.title || "")}</h1>
             
             <div className="flex items-center gap-4 text-muted-foreground mb-8">
               <span className="flex items-center gap-1">
                 <User className="h-4 w-4" />
-                {article?.author_name}
+                {cleanBrand(article?.author_name || "")}
               </span>
               {article?.published_at && (
                 <span className="flex items-center gap-1">
@@ -129,12 +130,10 @@ const ArticleDetail = () => {
               )}
             </div>
 
-            {article?.cover_image_url && (
-              <img
-                src={article.cover_image_url}
-                alt={article.title}
-                className="w-full rounded-lg mb-8 max-h-96 object-cover"
-              />
+            {article && (
+              <div className="w-full rounded-lg overflow-hidden border border-border mb-8 aspect-[16/6] min-h-[180px]">
+                <ArticleCover title={article.title} />
+              </div>
             )}
 
             <div 

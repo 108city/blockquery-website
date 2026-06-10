@@ -6,6 +6,7 @@ const Footer = () => {
   const productLinks = [
     { name: PRODUCTS.intelligence.name, href: PRODUCTS.intelligence.href },
     { name: PRODUCTS.embedded.name, href: PRODUCTS.embedded.href },
+    { name: PRODUCTS.lawFirms.name, href: PRODUCTS.lawFirms.href },
     { name: PRODUCTS.walletChecker.name, href: PRODUCTS.walletChecker.href },
   ];
 

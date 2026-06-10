@@ -6,7 +6,7 @@ const audiences = [
     icon: Scale,
     title: "Law firms",
     blurb: "Equip your blockchain practice with a working investigation capability and a referral pipeline.",
-    href: "/intelligence#law-firms",
+    href: "/law-firms",
   },
   {
     icon: Gamepad2,
