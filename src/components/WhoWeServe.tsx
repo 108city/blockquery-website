@@ -4,39 +4,39 @@ import { Link } from "react-router-dom";
 const audiences = [
   {
     icon: Scale,
-    title: "Law Firms",
+    title: "Law firms",
     blurb: "Equip your blockchain practice with a working investigation capability and a referral pipeline.",
-    href: "/solutions/law-firms",
+    href: "/law-firms",
   },
   {
     icon: Gamepad2,
-    title: "iGaming Operators",
+    title: "iGaming operators",
     blurb: "Real-time fraud monitoring, payout-threshold investigations, and bonus-abuse detection.",
-    href: "/solutions/igaming-operators",
+    href: "/intelligence#igaming",
   },
   {
     icon: ShieldCheck,
-    title: "Gaming Regulators",
+    title: "Gaming regulators",
     blurb: "Regulator-grade oversight dashboards for licensed operators across your jurisdiction.",
-    href: "/solutions/gaming-regulators",
+    href: "/intelligence#regulators",
   },
   {
     icon: Landmark,
-    title: "Law Enforcement & Government",
+    title: "Law enforcement & government",
     blurb: "National-level blockchain intelligence platforms, without a six-figure annual licence.",
-    href: "/solutions/law-enforcement",
+    href: "/intelligence#government",
   },
   {
     icon: FileCheck,
-    title: "Crypto Insurance",
+    title: "Crypto insurance",
     blurb: "Automate claim verification and recoverability scoring before settlement.",
-    href: "/solutions/crypto-insurance",
+    href: "/intelligence#insurance",
   },
   {
     icon: Search,
-    title: "Forensic Services",
+    title: "Forensic reports",
     blurb: "Court-ready expert investigations and witness testimony for the most complex cases.",
-    href: "/solutions/forensic-services",
+    href: "/intelligence#forensic-reports",
   },
 ];
 

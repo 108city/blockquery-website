@@ -1,7 +1,7 @@
 import { cn } from "@/lib/utils";
 
 /**
- * Blockquery teal node-trace mark — "trace the money, surface the risk".
+ * BlockQuery teal node-trace mark — "trace the money, surface the risk".
  * Sized in `em` so it scales with the wordmark's font-size.
  */
 export const LogoMark = ({ className }: { className?: string }) => (
@@ -38,15 +38,15 @@ interface LogoProps {
 }
 
 /**
- * Blockquery wordmark: `block` in primary text colour, `query` in brand teal.
- * Always lowercase, medium weight, slight negative tracking.
+ * BlockQuery wordmark: `Block` in primary text colour, `Query` in brand teal.
+ * Medium weight, slight negative tracking.
  */
 const Logo = ({ className, size = "text-2xl", withMark = true }: LogoProps) => (
   <span className={cn("inline-flex items-center gap-2 leading-none", size, className)}>
     {withMark && <LogoMark className="h-[1.05em] w-[1.05em] shrink-0" />}
     <span className="font-medium tracking-[-0.5px]">
-      <span className="text-foreground">block</span>
-      <span className="text-brand">query</span>
+      <span className="text-foreground">Block</span>
+      <span className="text-brand">Query</span>
     </span>
   </span>
 );

@@ -15,9 +15,9 @@ const AboutUs = () => {
       {/* Hero Section */}
       <section className="py-[200px] px-6">
         <div className="container mx-auto max-w-4xl">
-          <h1 className="text-5xl md:text-7xl font-bold text-center mb-8">About Us</h1>
+          <h1 className="text-5xl md:text-7xl font-bold text-center mb-8">About us</h1>
           <p className="text-lg md:text-xl text-muted-foreground leading-relaxed">
-            We are a crypto investigations agency built by the team behind Blockquery, a leader in blockchain data and
+            We are a crypto investigations agency built by the team behind BlockQuery, a leader in blockchain data and
             analytics. With expertise in transaction tracing, wallet clustering, and forensic analysis, we track stolen
             assets and uncover illicit activity using internally developed tools and a comprehensive illicit crypto
             database.
@@ -33,7 +33,7 @@ const AboutUs = () => {
 
           {/* Strategic Partners */}
           <div className="mt-16">
-            <h3 className="text-xl md:text-2xl text-center mb-8 text-muted-foreground">Strategic Partners</h3>
+            <h3 className="text-xl md:text-2xl text-center mb-8 text-muted-foreground">Strategic partners</h3>
             <div className="relative overflow-hidden">
               <div className="flex animate-slide-left">
                 {[
@@ -67,25 +67,25 @@ const AboutUs = () => {
       <section className="py-[200px] px-6 bg-secondary/20">
         <div className="container mx-auto max-w-5xl">
           <div className="text-center mb-12">
-            <h2 className="text-4xl md:text-5xl font-bold">Success Metrics & Compliance</h2>
+            <h2 className="text-4xl md:text-5xl font-bold">Success metrics & compliance</h2>
           </div>
 
           <div className="grid md:grid-cols-3 gap-8">
             <div className="bg-card rounded-lg p-8 border border-border text-center">
               <Award className="h-12 w-12 text-primary mx-auto mb-4" strokeWidth={1} />
-              <h3 className="text-xl font-semibold mb-3">10+ Years</h3>
+              <h3 className="text-xl font-semibold mb-3">10+ years</h3>
               <p className="text-muted-foreground">Combined blockchain investigation experience</p>
             </div>
 
             <div className="bg-card rounded-lg p-8 border border-border text-center">
               <Shield className="h-12 w-12 text-primary mx-auto mb-4" strokeWidth={1} />
-              <h3 className="text-xl font-semibold mb-3">Full Compliance</h3>
-              <p className="text-muted-foreground">Adherence to AML/CFT regulations and Data Protection Laws</p>
+              <h3 className="text-xl font-semibold mb-3">Full compliance</h3>
+              <p className="text-muted-foreground">Adherence to AML/CFT regulations and data protection laws</p>
             </div>
 
             <div className="bg-card rounded-lg p-8 border border-border text-center">
               <Users className="h-12 w-12 text-primary mx-auto mb-4" strokeWidth={1} />
-              <h3 className="text-xl font-semibold mb-3">Strategic Partners</h3>
+              <h3 className="text-xl font-semibold mb-3">Strategic partners</h3>
               <p className="text-muted-foreground">Partnerships with top forensic tool providers</p>
             </div>
           </div>

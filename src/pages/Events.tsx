@@ -14,7 +14,7 @@ const Events = () => {
       date: "20 November 2025",
       time: "14:00–15:00 CET",
       format: "Live, Invite-Only Webinar",
-      speakers: "Nick Smart (Crystal Intelligence) & Blockquery",
+      speakers: "Nick Smart (Crystal Intelligence) & BlockQuery",
       description: "Learn practical, step-by-step frameworks for what law firms should do in the critical first 24 hours after a client falls victim to crypto fraud.",
       highlights: [
         "Quickly assess recovery possibilities",

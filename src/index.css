@@ -2,7 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system — Blockquery.io "Forensic Deep" palette.
+/* Definition of the design system — BlockQuery.io "Forensic Deep" palette.
    Dark-mode-first, built for on-chain intelligence and forensics.
    All colors MUST be HSL. Hex equivalents are noted for reference.
    Rule: --brand (teal) is identity. --risk / --danger / --safe are MEANING.

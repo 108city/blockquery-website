@@ -17,7 +17,7 @@ const TermsAndConditions = () => {
             <section>
               <h2 className="text-2xl font-semibold text-foreground mb-4">1. Introduction</h2>
               <p>
-                These Terms and Conditions ("Terms") govern your access to and use of the Blockquery website and services provided by Blockquery Pte. Ltd. ("Blockquery", "we", "us", or "our"), a company registered in Singapore at 160 Robinson Road, 14-04 SBF Center, 068914, Singapore.
+                These Terms and Conditions ("Terms") govern your access to and use of the BlockQuery website and services provided by BlockQuery Pte. Ltd. ("BlockQuery", "we", "us", or "our"), a company registered in Singapore at 160 Robinson Road, 14-04 SBF Center, 068914, Singapore.
               </p>
               <p>
                 By accessing or using our services, you agree to be bound by these Terms. If you disagree with any part of these Terms, you may not access our services.
@@ -26,7 +26,7 @@ const TermsAndConditions = () => {
 
             <section>
               <h2 className="text-2xl font-semibold text-foreground mb-4">2. Services Description</h2>
-              <p>Blockquery provides blockchain intelligence and wallet labeling services, including:</p>
+              <p>BlockQuery provides blockchain intelligence and wallet labeling services, including:</p>
               <ul className="list-disc pl-6 space-y-2">
                 <li>Comprehensive wallet label datasets covering multiple blockchain networks</li>
                 <li>Real-time blockchain entity identification and risk assessment</li>
@@ -65,7 +65,7 @@ const TermsAndConditions = () => {
 
             <section>
               <h2 className="text-2xl font-semibold text-foreground mb-4">5. Intellectual Property Rights</h2>
-              <p>All content, data, trademarks, and other intellectual property on our website and in our services are owned by or licensed to Blockquery. This includes but is not limited to:</p>
+              <p>All content, data, trademarks, and other intellectual property on our website and in our services are owned by or licensed to BlockQuery. This includes but is not limited to:</p>
               <ul className="list-disc pl-6 space-y-2">
                 <li>Wallet label datasets and classifications</li>
                 <li>Analysis methodologies and algorithms</li>
@@ -101,7 +101,7 @@ const TermsAndConditions = () => {
 
             <section>
               <h2 className="text-2xl font-semibold text-foreground mb-4">8. Payment Terms</h2>
-              <p>If you purchase services from Blockquery:</p>
+              <p>If you purchase services from BlockQuery:</p>
               <ul className="list-disc pl-6 space-y-2">
                 <li>Payment terms will be specified in your service agreement</li>
                 <li>All fees are non-refundable unless otherwise stated</li>
@@ -124,7 +124,7 @@ const TermsAndConditions = () => {
 
             <section>
               <h2 className="text-2xl font-semibold text-foreground mb-4">10. Indemnification</h2>
-              <p>You agree to indemnify and hold Blockquery harmless from any claims, damages, losses, liabilities, and expenses arising from:</p>
+              <p>You agree to indemnify and hold BlockQuery harmless from any claims, damages, losses, liabilities, and expenses arising from:</p>
               <ul className="list-disc pl-6 space-y-2">
                 <li>Your violation of these Terms</li>
                 <li>Your use of our services</li>
@@ -160,14 +160,14 @@ const TermsAndConditions = () => {
               <h2 className="text-2xl font-semibold text-foreground mb-4">14. Miscellaneous</h2>
               <p><strong>Severability:</strong> If any provision of these Terms is found to be unenforceable, the remaining provisions will continue in full force and effect.</p>
               <p><strong>Waiver:</strong> No waiver of any term shall be deemed a further or continuing waiver of such term or any other term.</p>
-              <p><strong>Entire Agreement:</strong> These Terms constitute the entire agreement between you and Blockquery regarding the use of our services.</p>
+              <p><strong>Entire Agreement:</strong> These Terms constitute the entire agreement between you and BlockQuery regarding the use of our services.</p>
             </section>
 
             <section>
               <h2 className="text-2xl font-semibold text-foreground mb-4">15. Contact Information</h2>
               <p>If you have any questions about these Terms, please contact us:</p>
               <div className="mt-4">
-                <p><strong>Blockquery Pte. Ltd.</strong></p>
+                <p><strong>BlockQuery Pte. Ltd.</strong></p>
                 <p>160 Robinson Road</p>
                 <p>14-04 SBF Center</p>
                 <p>068914, Singapore</p>

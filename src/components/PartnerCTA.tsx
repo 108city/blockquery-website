@@ -30,11 +30,11 @@ const PartnerCTA = () => {
         </ul>
 
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
-          <Button size="lg" className="font-semibold" asChild>
-            <Link to="/contact">Book a Platform Demo</Link>
+          <Button size="lg" className="font-medium" asChild>
+            <Link to="/contact">Book a demo</Link>
           </Button>
-          <Button size="lg" variant="outline-white" className="font-semibold" asChild>
-            <Link to="/platform">Explore the Platform</Link>
+          <Button size="lg" variant="outline-white" className="font-medium" asChild>
+            <a href="#offerings">Explore the products</a>
           </Button>
         </div>
       </div>

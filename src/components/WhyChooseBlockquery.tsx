@@ -9,8 +9,8 @@ const WhyChooseBlockquery = () => {
       body: "Existing forensic vendors give you raw data. We build the automation, AI agents and dashboards that turn that data into decisions.",
     },
     {
-      title: "Speed is the strategy.",
-      body: "Weekly vibe-code sprints. Functional MVPs in 48 hours. Pilots live in weeks, not quarters.",
+      title: "Fast, for what you're getting.",
+      body: "A working capability in weeks, not the quarters legacy platforms take to deploy. Fast for the scope, with a clear path from first pilot to live operation.",
     },
     {
       title: "Hybrid economics that actually scale.",
@@ -26,7 +26,7 @@ const WhyChooseBlockquery = () => {
     <section className="py-20 sm:py-28 md:py-36 px-4 sm:px-6 bg-card">
       <div className="container mx-auto max-w-5xl">
         <p className="text-sm font-semibold uppercase tracking-widest text-primary text-center mb-4">
-          Why Blockquery
+          Why BlockQuery
         </p>
         <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-center mb-14">
           A new kind of investigation infrastructure.
@@ -45,8 +45,8 @@ const WhyChooseBlockquery = () => {
         </div>
 
         <div className="text-center">
-          <Button size="lg" className="font-semibold" asChild>
-            <Link to="/contact">Book a Platform Demo</Link>
+          <Button size="lg" className="font-medium" asChild>
+            <Link to="/contact">Book a demo</Link>
           </Button>
         </div>
       </div>

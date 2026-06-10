@@ -1,11 +1,9 @@
 import Navigation from "@/components/Navigation";
 import HeroSection from "@/components/HeroSection";
-import PlatformBuildingBlocks from "@/components/WhatWeDo";
+import Offerings from "@/components/Offerings";
 import WhoWeServe from "@/components/WhoWeServe";
-import AISkills from "@/components/AISkills";
 import CaseStudies from "@/components/CaseStudies";
 import WhyChooseBlockquery from "@/components/WhyChooseBlockquery";
-import Testimonials from "@/components/Testimonials";
 import PartnerCTA from "@/components/PartnerCTA";
 import Footer from "@/components/Footer";
 
@@ -14,12 +12,10 @@ const Index = () => {
     <div className="min-h-screen">
       <Navigation />
       <HeroSection />
-      <PlatformBuildingBlocks />
+      <Offerings />
       <WhoWeServe />
-      <AISkills />
       <CaseStudies />
       <WhyChooseBlockquery />
-      <Testimonials />
       <PartnerCTA />
       <Footer />
     </div>

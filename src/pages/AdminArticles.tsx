@@ -40,7 +40,7 @@ const AdminArticles = () => {
     excerpt: "",
     content: "",
     cover_image_url: "",
-    author_name: "Blockquery",
+    author_name: "BlockQuery",
     published: false,
   });
 
@@ -145,7 +145,7 @@ const AdminArticles = () => {
       excerpt: "",
       content: "",
       cover_image_url: "",
-      author_name: "Blockquery",
+      author_name: "BlockQuery",
       published: false,
     });
     setEditingArticle(null);
