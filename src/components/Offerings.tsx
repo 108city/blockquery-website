@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { LayoutDashboard, Users, Scale, ScanLine, CheckCircle, ArrowRight, LucideIcon } from "lucide-react";
+import { Users, Scale, ScanLine, CheckCircle, ArrowRight, LucideIcon } from "lucide-react";
 import { PRODUCTS } from "@/config/site";
 
 interface Offering {
@@ -12,18 +12,6 @@ interface Offering {
 }
 
 const offerings: Offering[] = [
-  {
-    icon: LayoutDashboard,
-    name: PRODUCTS.intelligence.name,
-    tagline: PRODUCTS.intelligence.tagline,
-    href: PRODUCTS.intelligence.href,
-    cta: "Explore Intelligence",
-    points: [
-      "Industry dashboards and monthly intelligence reporting",
-      "Wallet and transaction screening, cross-chain fund-flow reconstruction",
-      "On-demand investigators and court-ready forensic reports",
-    ],
-  },
   {
     icon: Users,
     name: PRODUCTS.embedded.name,
@@ -67,18 +55,17 @@ const Offerings = () => {
     <section id="offerings" className="py-20 sm:py-28 md:py-36 px-4 sm:px-6 bg-card border-t border-border">
       <div className="container mx-auto max-w-6xl">
         <p className="text-sm font-semibold uppercase tracking-widest text-primary text-center mb-4">
-          Four ways to work with us
+          Three ways to work with us
         </p>
         <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-center mb-4">
-          One intelligence stack. Four ways to use it.
+          One intelligence stack. Three ways to use it.
         </h2>
         <p className="text-lg text-muted-foreground text-center mb-14 max-w-2xl mx-auto">
-          Buy the platform, embed a specialist, put us behind your law firm, or
-          self-serve a verdict in seconds. The same on-chain intelligence, shaped
-          to how you work.
+          Embed a specialist, put us behind your law firm, or self-serve a verdict
+          in seconds. The same on-chain intelligence, shaped to how you work.
         </p>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
           {offerings.map((o) => (
             <Link
               key={o.name}

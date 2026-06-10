@@ -4,19 +4,18 @@ import { PRODUCTS } from "@/config/site";
 
 const Footer = () => {
   const productLinks = [
-    { name: PRODUCTS.intelligence.name, href: PRODUCTS.intelligence.href },
     { name: PRODUCTS.embedded.name, href: PRODUCTS.embedded.href },
     { name: PRODUCTS.lawFirms.name, href: PRODUCTS.lawFirms.href },
     { name: PRODUCTS.walletChecker.name, href: PRODUCTS.walletChecker.href },
   ];
 
   const useCaseLinks = [
-    { name: "Law firms", href: "/intelligence#law-firms" },
-    { name: "iGaming operators", href: "/intelligence#igaming" },
-    { name: "Gaming regulators", href: "/intelligence#regulators" },
-    { name: "Law enforcement & government", href: "/intelligence#government" },
-    { name: "Crypto insurance", href: "/intelligence#insurance" },
-    { name: "Forensic reports", href: "/intelligence#forensic-reports" },
+    { name: "Law firms", href: "/law-firms" },
+    { name: "iGaming operators", href: "/contact" },
+    { name: "Gaming regulators", href: "/contact" },
+    { name: "Law enforcement & government", href: "/contact" },
+    { name: "Crypto insurance", href: "/contact" },
+    { name: "Forensic reports", href: "/contact" },
   ];
 
   const companyLinks = [

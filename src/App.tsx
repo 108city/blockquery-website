@@ -2,10 +2,9 @@ import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import ScrollToTop from "@/components/ScrollToTop";
 import Index from "./pages/Index";
-import Intelligence from "./pages/Intelligence";
 import Embedded from "./pages/Embedded";
 import WalletChecker from "./pages/WalletChecker";
 import LawFirms from "./pages/LawFirms";
@@ -43,7 +42,9 @@ const App = () => (
           <Route path="/" element={<Index />} />
 
           {/* Offerings */}
-          <Route path="/intelligence" element={<Intelligence />} />
+          {/* Intelligence offering hidden for now — redirect to home.
+              To restore: import Intelligence and use element={<Intelligence />}. */}
+          <Route path="/intelligence" element={<Navigate to="/" replace />} />
           <Route path="/embedded" element={<Embedded />} />
           <Route path="/wallet-checker" element={<WalletChecker />} />
           <Route path="/law-firms" element={<LawFirms />} />

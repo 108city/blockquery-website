@@ -12,31 +12,31 @@ const audiences = [
     icon: Gamepad2,
     title: "iGaming operators",
     blurb: "Real-time fraud monitoring, payout-threshold investigations, and bonus-abuse detection.",
-    href: "/intelligence#igaming",
+    href: "/contact",
   },
   {
     icon: ShieldCheck,
     title: "Gaming regulators",
     blurb: "Regulator-grade oversight dashboards for licensed operators across your jurisdiction.",
-    href: "/intelligence#regulators",
+    href: "/contact",
   },
   {
     icon: Landmark,
     title: "Law enforcement & government",
     blurb: "National-level blockchain intelligence platforms, without a six-figure annual licence.",
-    href: "/intelligence#government",
+    href: "/contact",
   },
   {
     icon: FileCheck,
     title: "Crypto insurance",
     blurb: "Automate claim verification and recoverability scoring before settlement.",
-    href: "/intelligence#insurance",
+    href: "/contact",
   },
   {
     icon: Search,
     title: "Forensic reports",
     blurb: "Court-ready expert investigations and witness testimony for the most complex cases.",
-    href: "/intelligence#forensic-reports",
+    href: "/contact",
   },
 ];
 

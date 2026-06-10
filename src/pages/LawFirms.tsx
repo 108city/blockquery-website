@@ -66,7 +66,7 @@ const LawFirms = () => {
               <Link to={BOOK_DEMO_HREF}>Start a conversation</Link>
             </Button>
             <Button size="lg" variant="outline-white" className="font-medium" asChild>
-              <Link to="/intelligence">See the platform</Link>
+              <Link to="/case-studies">See case studies</Link>
             </Button>
           </div>
         </div>

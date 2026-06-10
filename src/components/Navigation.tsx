@@ -6,7 +6,6 @@ import { Button } from "@/components/ui/button";
 import { PRODUCTS, BOOK_DEMO_HREF } from "@/config/site";
 
 const productLinks = [
-  { name: PRODUCTS.intelligence.short, href: PRODUCTS.intelligence.href, desc: PRODUCTS.intelligence.tagline },
   { name: PRODUCTS.lawFirms.short, href: PRODUCTS.lawFirms.href, desc: PRODUCTS.lawFirms.tagline },
   { name: PRODUCTS.walletChecker.short, href: PRODUCTS.walletChecker.href, desc: PRODUCTS.walletChecker.tagline },
 ];
