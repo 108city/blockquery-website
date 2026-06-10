@@ -33,7 +33,7 @@ export const PRODUCTS = {
 } as const;
 
 /** Site-wide positioning line. */
-export const POSITIONING_LINE = "Trace the money. Surface the risk.";
+export const POSITIONING_LINE = "Intel. Insights. Investigations.";
 
 /**
  * The live Wallet Checker app. Hand-off target for "Open Wallet Checker".
