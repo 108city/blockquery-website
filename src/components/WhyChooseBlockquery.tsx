@@ -46,7 +46,7 @@ const WhyChooseBlockquery = () => {
 
         <div className="text-center">
           <Button size="lg" className="font-medium" asChild>
-            <Link to="/contact">Book a demo</Link>
+            <Link to="/contact">Book a free consultation</Link>
           </Button>
         </div>
       </div>

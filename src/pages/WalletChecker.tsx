@@ -64,7 +64,10 @@ const audienceCards = [
 const tiers = [
   {
     name: "Starter",
-    description: "For a single desk testing self-serve screening on day-to-day flows.",
+    price: "$300",
+    period: "/ month",
+    quota: "600 queries / month",
+    description: "For a single desk running self-serve screening on day-to-day flows.",
     features: [
       "Address and transaction checks",
       "Green, Amber, Red verdicts",
@@ -73,20 +76,26 @@ const tiers = [
   },
   {
     name: "Scaling",
+    price: "$550",
+    period: "/ month",
+    quota: "1,100 queries / month",
     description: "For growing exchangers running steady volume across multiple operators.",
     features: [
       "Everything in Starter",
-      "Higher monthly check volume",
+      "Nearly 2× the monthly query volume",
       "Multiple operator seats",
     ],
     featured: true,
   },
   {
     name: "Enterprise",
+    price: "$900",
+    period: "/ month",
+    quota: "1,800 queries / month",
     description: "For multi-branch desks and networks that need volume and support commitments.",
     features: [
       "Everything in Scaling",
-      "Custom volume and seats",
+      "Highest monthly query volume",
       "Priority support",
     ],
   },
@@ -262,24 +271,24 @@ const WalletChecker = () => {
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-14 leading-tight">
             Plans that scale with your volume.
           </h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8 items-stretch">
             {tiers.map((tier) => (
               <div
                 key={tier.name}
-                className={`border rounded-lg p-6 sm:p-8 bg-background flex flex-col ${
+                className={`border rounded-xl p-6 sm:p-8 bg-background flex flex-col ${
                   tier.featured ? "border-primary" : "border-border"
                 }`}
               >
-                <h3 className="text-lg font-bold mb-2">{tier.name}</h3>
-                {/* TODO: pull exact price from live app config */}
-                <p className="text-2xl font-bold text-muted-foreground mb-1">—</p>
-                <p className="text-xs text-muted-foreground mb-5">
-                  Contact for pricing
+                <h3 className="text-lg font-medium mb-2">{tier.name}</h3>
+                <p className="mb-1">
+                  <span className="text-3xl font-bold text-foreground">{tier.price}</span>
+                  <span className="text-sm text-muted-foreground"> {tier.period}</span>
                 </p>
+                <p className="text-sm font-medium text-foreground mb-5">{tier.quota}</p>
                 <p className="text-sm text-muted-foreground leading-relaxed mb-6">
                   {tier.description}
                 </p>
-                <ul className="space-y-3">
+                <ul className="space-y-3 mb-8 flex-1">
                   {tier.features.map((feature) => (
                     <li key={feature} className="flex items-start gap-2.5">
                       <CheckCircle
@@ -290,28 +299,22 @@ const WalletChecker = () => {
                     </li>
                   ))}
                 </ul>
+                <Button
+                  className="w-full font-medium"
+                  variant={tier.featured ? "default" : "outline-white"}
+                  asChild
+                >
+                  <a href={WALLET_CHECKER_APP_URL} target="_blank" rel="noopener noreferrer">
+                    Start with this plan
+                  </a>
+                </Button>
               </div>
             ))}
           </div>
 
-          {/* Add-on packs note */}
           <p className="text-sm text-muted-foreground mt-8">
-            {/* TODO: pull exact price from live app config */}
-            Add-on packs extend any plan with extra checks when you run a busier
-            month. Contact for pricing.
+            Need more volume? Add-on query packs are available on request.
           </p>
-
-          <div className="mt-12">
-            <Button size="lg" className="font-medium" asChild>
-              <a
-                href={WALLET_CHECKER_APP_URL}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Open Wallet Checker
-              </a>
-            </Button>
-          </div>
         </div>
       </section>
 

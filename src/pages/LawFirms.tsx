@@ -1,9 +1,32 @@
 import { Link } from "react-router-dom";
-import { Scale, CheckCircle, Sparkles, ArrowRight } from "lucide-react";
+import { Scale, CheckCircle, Sparkles, ArrowRight, LayoutDashboard, Gauge, LucideIcon } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import { PRODUCTS, BOOK_DEMO_HREF } from "@/config/site";
+
+const highlights: { icon: LucideIcon; title: string; body: string; points: string[] }[] = [
+  {
+    icon: LayoutDashboard,
+    title: "A case management platform",
+    body: "Our own platform to manage your active recovery cases end to end, so you always know where a matter stands.",
+    points: [
+      "Real-time recovery estimates on every matter",
+      "Report costing, so you see the spend before you commit",
+      "One place to track case status, evidence and next steps",
+    ],
+  },
+  {
+    icon: Gauge,
+    title: "Case triage",
+    body: "A simplified, low-cost report that tells you whether a case is worth taking, before you invest the hours.",
+    points: [
+      "A fast, low-cost first-look assessment",
+      "A clear call: take it on, decline, or take it on risk",
+      "So you only pursue the cases worth pursuing",
+    ],
+  },
+];
 
 const scenarios = [
   "Asset-tracing requests on contentious divorce, fraud or insolvency matters",
@@ -22,8 +45,8 @@ const deliverables = [
     body: "Up to 10% on cases you refer. Aligned incentives, no awkward fee conversations.",
   },
   {
-    title: "Pre-engagement viability scoring",
-    body: "We screen cases before you commit, using our investigation viability calculator, so you only take work that's worth taking.",
+    title: "Confidential by default",
+    body: "NDAs from first contact, conflict checks before we engage, and discreet handling that protects your client relationship.",
   },
   {
     title: "Expert witness & affidavits",
@@ -68,6 +91,43 @@ const LawFirms = () => {
             <Button size="lg" variant="outline-white" className="font-medium" asChild>
               <Link to="/case-studies">See case studies</Link>
             </Button>
+          </div>
+        </div>
+      </section>
+
+      <div className="border-t border-border" />
+
+      {/* Highlights — case management platform + case triage */}
+      <section className="py-20 sm:py-28 px-4 sm:px-6 bg-card">
+        <div className="container mx-auto max-w-5xl">
+          <p className="text-sm font-semibold uppercase tracking-widest text-primary text-center mb-4">
+            Built for your caseload
+          </p>
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-center mb-4">
+            Two tools that change how you take on cases.
+          </h2>
+          <p className="text-lg text-muted-foreground text-center mb-14 max-w-2xl mx-auto">
+            Beyond the investigation itself, we give your practice the tooling to
+            decide which cases to take, and to run the ones you do.
+          </p>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
+            {highlights.map((h) => (
+              <div key={h.title} className="border border-border rounded-xl p-6 sm:p-8 bg-background flex flex-col">
+                <div className="w-[34px] h-[34px] rounded-lg bg-brand-tint flex items-center justify-center mb-6">
+                  <h.icon className="w-[18px] h-[18px] text-primary" strokeWidth={1.75} />
+                </div>
+                <h3 className="text-xl font-medium mb-3">{h.title}</h3>
+                <p className="text-sm text-muted-foreground leading-relaxed mb-6">{h.body}</p>
+                <ul className="space-y-3 mt-auto">
+                  {h.points.map((p) => (
+                    <li key={p} className="flex items-start gap-2.5">
+                      <CheckCircle className="w-[18px] h-[18px] text-primary flex-shrink-0 mt-0.5" strokeWidth={1.75} />
+                      <span className="text-sm text-secondary-foreground leading-snug">{p}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
           </div>
         </div>
       </section>

@@ -133,7 +133,7 @@ const useCases: UseCase[] = [
       { metric: "Configurable", label: "Payout-threshold investigations" },
       { metric: "API-first", label: "Built to embed in your stack" },
     ],
-    ctaLabel: "Book a demo",
+    ctaLabel: "Book a free consultation",
   },
   {
     id: "regulators",
@@ -242,7 +242,7 @@ const Intelligence = () => {
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button size="lg" className="font-medium" asChild>
-              <Link to={BOOK_DEMO_HREF}>Book a demo</Link>
+              <Link to={BOOK_DEMO_HREF}>Book a free consultation</Link>
             </Button>
             <Button size="lg" variant="outline-white" className="font-medium" asChild>
               <a href="#stack">See how it works</a>
@@ -414,7 +414,7 @@ const Intelligence = () => {
             operator or case load, and walk your team through it.
           </p>
           <Button size="lg" className="font-medium" asChild>
-            <Link to={BOOK_DEMO_HREF}>Book a demo</Link>
+            <Link to={BOOK_DEMO_HREF}>Book a free consultation</Link>
           </Button>
         </div>
       </section>

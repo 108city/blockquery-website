@@ -21,7 +21,7 @@ const HeroSection = () => {
 
         <div className="flex flex-col sm:flex-row gap-4 mb-16">
           <Button size="lg" className="font-medium" asChild>
-            <Link to={BOOK_DEMO_HREF}>Book a demo</Link>
+            <Link to={BOOK_DEMO_HREF}>Book a free consultation</Link>
           </Button>
           <Button size="lg" variant="outline-white" className="font-medium" asChild>
             <a href="#offerings">Explore the products</a>

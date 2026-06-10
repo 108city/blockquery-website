@@ -95,7 +95,7 @@ const Navigation = () => {
               ))}
             </ul>
             <Button asChild size="default" className="font-medium">
-              <Link to={BOOK_DEMO_HREF}>Book a demo</Link>
+              <Link to={BOOK_DEMO_HREF}>Book a free consultation</Link>
             </Button>
           </div>
 
@@ -152,7 +152,7 @@ const Navigation = () => {
               ))}
               <li>
                 <Button asChild size="default" className="w-full font-medium">
-                  <Link to={BOOK_DEMO_HREF} onClick={() => setIsMobileMenuOpen(false)}>Book a demo</Link>
+                  <Link to={BOOK_DEMO_HREF} onClick={() => setIsMobileMenuOpen(false)}>Book a free consultation</Link>
                 </Button>
               </li>
             </ul>

@@ -83,7 +83,7 @@ const CaseStudiesPage = () => {
             dashboard, investigation or report that fits.
           </p>
           <Button size="lg" className="font-medium" asChild>
-            <Link to={BOOK_DEMO_HREF}>Book a demo</Link>
+            <Link to={BOOK_DEMO_HREF}>Book a free consultation</Link>
           </Button>
         </div>
       </section>
