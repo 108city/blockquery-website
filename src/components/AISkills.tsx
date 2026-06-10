@@ -26,10 +26,10 @@ const AISkills = () => {
     <section id="ai-skills" className="py-20 sm:py-28 md:py-36 px-4 sm:px-6 bg-card">
       <div className="container mx-auto max-w-5xl">
         <p className="text-sm font-semibold uppercase tracking-widest text-primary text-center mb-4">
-          Proprietary Intelligence
+          Proprietary intelligence
         </p>
         <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-center mb-4">
-          AI Skills shipped, deployed, in production.
+          New skills shipped weekly, deployed, in production.
         </h2>
         <p className="text-lg text-muted-foreground text-center mb-14 max-w-2xl mx-auto">
           We don't just consume on-chain data. We build the automation layer above it.

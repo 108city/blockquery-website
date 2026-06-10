@@ -5,6 +5,10 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import ScrollToTop from "@/components/ScrollToTop";
 import Index from "./pages/Index";
+import Intelligence from "./pages/Intelligence";
+import Embedded from "./pages/Embedded";
+import WalletChecker from "./pages/WalletChecker";
+import CaseStudiesPage from "./pages/CaseStudiesPage";
 import AboutUs from "./pages/AboutUs";
 import Contact from "./pages/Contact";
 import Events from "./pages/Events";
@@ -24,16 +28,6 @@ import ContactThankYou from "./pages/ContactThankYou";
 import SampleReportDownload from "./pages/SampleReportDownload";
 import ReportThankYou from "./pages/ReportThankYou";
 import Investigations from "./pages/Investigations";
-import ForensicServices from "./pages/ForensicServices";
-import CryptoCompliance from "./pages/CryptoCompliance";
-import IGaming from "./pages/IGaming";
-import Platform from "./pages/Platform";
-import SolutionsLawFirms from "./pages/SolutionsLawFirms";
-import SolutionsIGaming from "./pages/SolutionsIGaming";
-import SolutionsGamingRegulators from "./pages/SolutionsGamingRegulators";
-import SolutionsLawEnforcement from "./pages/SolutionsLawEnforcement";
-import SolutionsCryptoInsurance from "./pages/SolutionsCryptoInsurance";
-import SolutionsForensic from "./pages/SolutionsForensic";
 
 const queryClient = new QueryClient();
 
@@ -47,39 +41,41 @@ const App = () => (
         <Routes>
           <Route path="/" element={<Index />} />
 
-          {/* New B2B platform & solutions */}
-          <Route path="/platform" element={<Platform />} />
-          <Route path="/solutions/law-firms" element={<SolutionsLawFirms />} />
-          <Route path="/solutions/igaming-operators" element={<SolutionsIGaming />} />
-          <Route path="/solutions/gaming-regulators" element={<SolutionsGamingRegulators />} />
-          <Route path="/solutions/law-enforcement" element={<SolutionsLawEnforcement />} />
-          <Route path="/solutions/crypto-insurance" element={<SolutionsCryptoInsurance />} />
-          <Route path="/solutions/forensic-services" element={<SolutionsForensic />} />
+          {/* Three offerings */}
+          <Route path="/intelligence" element={<Intelligence />} />
+          <Route path="/embedded" element={<Embedded />} />
+          <Route path="/wallet-checker" element={<WalletChecker />} />
 
           {/* Standard pages */}
           <Route path="/about" element={<AboutUs />} />
           <Route path="/contact" element={<Contact />} />
+          <Route path="/case-studies" element={<CaseStudiesPage />} />
           <Route path="/insights" element={<Insights />} />
           <Route path="/insights/:slug" element={<ArticleDetail />} />
           <Route path="/admin/articles" element={<AdminArticles />} />
-          <Route path="/events" element={<Events />} />
-          <Route path="/events/crypto-fraud-webinar" element={<WebinarCryptoFraud />} />
           <Route path="/terms" element={<TermsAndConditions />} />
           <Route path="/privacy" element={<PrivacyPolicy />} />
           <Route path="/meeting-confirmed" element={<MeetingConfirmation />} />
           <Route path="/contact-thank-you" element={<ContactThankYou />} />
           <Route path="/thank-you" element={<ThankYou />} />
 
-          {/* Legacy routes — kept reachable but removed from navigation */}
+          {/*
+            Archived events — retained because the webinar registration writes to
+            Supabase. In production, /events/* 301s to /insights via netlify.toml.
+          */}
+          <Route path="/events" element={<Events />} />
+          <Route path="/events/crypto-fraud-webinar" element={<WebinarCryptoFraud />} />
+
+          {/*
+            Self-service forensic-report funnel — Supabase-wired, kept functional
+            but unlinked from primary navigation. Surfaced via /intelligence#forensic-reports.
+          */}
           <Route path="/companies" element={<Companies />} />
           <Route path="/individual" element={<Individual />} />
           <Route path="/investigations" element={<Investigations />} />
           <Route path="/self-service" element={<SelfServiceCheckout />} />
           <Route path="/sample-report" element={<SampleReportDownload />} />
           <Route path="/report-thank-you" element={<ReportThankYou />} />
-          <Route path="/forensic-services" element={<ForensicServices />} />
-          <Route path="/crypto-compliance" element={<CryptoCompliance />} />
-          <Route path="/igaming" element={<IGaming />} />
 
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />

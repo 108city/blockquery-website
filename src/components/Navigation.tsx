@@ -3,27 +3,25 @@ import { Link } from "react-router-dom";
 import { Menu, X, ChevronDown } from "lucide-react";
 import Logo from "@/components/Logo";
 import { Button } from "@/components/ui/button";
+import { PRODUCTS, BOOK_DEMO_HREF } from "@/config/site";
 
-const solutionsLinks = [
-  { name: "Law Firms", href: "/solutions/law-firms" },
-  { name: "iGaming Operators", href: "/solutions/igaming-operators" },
-  { name: "Gaming Regulators", href: "/solutions/gaming-regulators" },
-  { name: "Law Enforcement & Government", href: "/solutions/law-enforcement" },
-  { name: "Crypto Insurance", href: "/solutions/crypto-insurance" },
-  { name: "Forensic Services", href: "/solutions/forensic-services" },
+const productLinks = [
+  { name: PRODUCTS.intelligence.short, href: PRODUCTS.intelligence.href, desc: PRODUCTS.intelligence.tagline },
+  { name: PRODUCTS.walletChecker.short, href: PRODUCTS.walletChecker.href, desc: PRODUCTS.walletChecker.tagline },
 ];
 
 const navLinks = [
-  { name: "Platform", href: "/platform" },
-  { name: "Case Studies", href: "/insights" },
+  { name: "Embedded", href: "/embedded" },
+  { name: "Case studies", href: "/case-studies" },
+  { name: "Insights", href: "/insights" },
   { name: "About", href: "/about" },
 ];
 
 const Navigation = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [isSolutionsOpen, setIsSolutionsOpen] = useState(false);
-  const [isMobileSolutionsOpen, setIsMobileSolutionsOpen] = useState(false);
+  const [isProductsOpen, setIsProductsOpen] = useState(false);
+  const [isMobileProductsOpen, setIsMobileProductsOpen] = useState(false);
   const dropdownRef = useRef<HTMLLIElement>(null);
 
   useEffect(() => {
@@ -37,7 +35,7 @@ const Navigation = () => {
   useEffect(() => {
     const handleClickOutside = (e: MouseEvent) => {
       if (dropdownRef.current && !dropdownRef.current.contains(e.target as Node)) {
-        setIsSolutionsOpen(false);
+        setIsProductsOpen(false);
       }
     };
     document.addEventListener("mousedown", handleClickOutside);
@@ -59,59 +57,45 @@ const Navigation = () => {
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center gap-8">
             <ul className="flex items-center gap-8">
-              <li>
-                <Link
-                  to="/platform"
-                  className="text-foreground hover:text-primary transition-colors duration-200 font-medium"
-                >
-                  Platform
-                </Link>
-              </li>
-
-              {/* Solutions dropdown */}
+              {/* Products dropdown */}
               <li ref={dropdownRef} className="relative">
                 <button
-                  onClick={() => setIsSolutionsOpen(!isSolutionsOpen)}
+                  onClick={() => setIsProductsOpen(!isProductsOpen)}
                   className="text-foreground hover:text-primary transition-colors duration-200 font-medium inline-flex items-center gap-1"
                 >
-                  Solutions
-                  <ChevronDown className={`w-4 h-4 transition-transform duration-200 ${isSolutionsOpen ? "rotate-180" : ""}`} />
+                  Products
+                  <ChevronDown className={`w-4 h-4 transition-transform duration-200 ${isProductsOpen ? "rotate-180" : ""}`} />
                 </button>
-                {isSolutionsOpen && (
-                  <div className="absolute top-full left-0 mt-2 w-64 bg-background border border-border rounded-lg shadow-lg py-2 z-50">
-                    {solutionsLinks.map((sub) => (
+                {isProductsOpen && (
+                  <div className="absolute top-full left-0 mt-2 w-72 bg-background border border-border rounded-lg shadow-lg py-2 z-50">
+                    {productLinks.map((sub) => (
                       <Link
                         key={sub.name}
                         to={sub.href}
-                        className="block px-4 py-2 text-sm text-foreground hover:bg-accent hover:text-accent-foreground transition-colors"
-                        onClick={() => setIsSolutionsOpen(false)}
+                        className="block px-4 py-2.5 hover:bg-accent transition-colors"
+                        onClick={() => setIsProductsOpen(false)}
                       >
-                        {sub.name}
+                        <span className="block text-sm font-medium text-foreground">{sub.name}</span>
+                        <span className="block text-xs text-muted-foreground mt-0.5">{sub.desc}</span>
                       </Link>
                     ))}
                   </div>
                 )}
               </li>
 
-              <li>
-                <Link
-                  to="/insights"
-                  className="text-foreground hover:text-primary transition-colors duration-200 font-medium"
-                >
-                  Case Studies
-                </Link>
-              </li>
-              <li>
-                <Link
-                  to="/about"
-                  className="text-foreground hover:text-primary transition-colors duration-200 font-medium"
-                >
-                  About
-                </Link>
-              </li>
+              {navLinks.map((link) => (
+                <li key={link.name}>
+                  <Link
+                    to={link.href}
+                    className="text-foreground hover:text-primary transition-colors duration-200 font-medium"
+                  >
+                    {link.name}
+                  </Link>
+                </li>
+              ))}
             </ul>
-            <Button asChild size="default" className="font-semibold">
-              <Link to="/contact">Book a Demo</Link>
+            <Button asChild size="default" className="font-medium">
+              <Link to={BOOK_DEMO_HREF}>Book a demo</Link>
             </Button>
           </div>
 
@@ -132,26 +116,16 @@ const Navigation = () => {
           <div className="md:hidden mt-4 pb-4 bg-background/95 backdrop-blur-sm rounded-lg px-4">
             <ul className="flex flex-col gap-2">
               <li>
-                <Link
-                  to="/platform"
-                  className="block text-foreground hover:text-primary transition-colors duration-200 font-medium py-2"
-                  onClick={() => setIsMobileMenuOpen(false)}
-                >
-                  Platform
-                </Link>
-              </li>
-
-              <li>
                 <button
-                  onClick={() => setIsMobileSolutionsOpen(!isMobileSolutionsOpen)}
+                  onClick={() => setIsMobileProductsOpen(!isMobileProductsOpen)}
                   className="flex items-center justify-between w-full text-foreground hover:text-primary transition-colors duration-200 font-medium py-2"
                 >
-                  Solutions
-                  <ChevronDown className={`w-4 h-4 transition-transform duration-200 ${isMobileSolutionsOpen ? "rotate-180" : ""}`} />
+                  Products
+                  <ChevronDown className={`w-4 h-4 transition-transform duration-200 ${isMobileProductsOpen ? "rotate-180" : ""}`} />
                 </button>
-                {isMobileSolutionsOpen && (
+                {isMobileProductsOpen && (
                   <div className="pl-4 flex flex-col gap-1 mb-2">
-                    {solutionsLinks.map((sub) => (
+                    {productLinks.map((sub) => (
                       <Link
                         key={sub.name}
                         to={sub.href}
@@ -165,7 +139,7 @@ const Navigation = () => {
                 )}
               </li>
 
-              {navLinks.slice(1).map((link) => (
+              {navLinks.map((link) => (
                 <li key={link.name}>
                   <Link
                     to={link.href}
@@ -177,8 +151,8 @@ const Navigation = () => {
                 </li>
               ))}
               <li>
-                <Button asChild size="default" className="w-full font-semibold">
-                  <Link to="/contact" onClick={() => setIsMobileMenuOpen(false)}>Book a Demo</Link>
+                <Button asChild size="default" className="w-full font-medium">
+                  <Link to={BOOK_DEMO_HREF} onClick={() => setIsMobileMenuOpen(false)}>Book a demo</Link>
                 </Button>
               </li>
             </ul>

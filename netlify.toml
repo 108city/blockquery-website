@@ -5,6 +5,65 @@
 [build.environment]
   NODE_VERSION = "20"
 
+# --- 301 redirects for the IA restructure (must precede the SPA catch-all) ---
+
+[[redirects]]
+  from = "/platform"
+  to = "/intelligence"
+  status = 301
+
+[[redirects]]
+  from = "/solutions/law-firms"
+  to = "/intelligence#law-firms"
+  status = 301
+
+[[redirects]]
+  from = "/solutions/igaming-operators"
+  to = "/intelligence#igaming"
+  status = 301
+
+[[redirects]]
+  from = "/solutions/gaming-regulators"
+  to = "/intelligence#regulators"
+  status = 301
+
+[[redirects]]
+  from = "/solutions/law-enforcement"
+  to = "/intelligence#government"
+  status = 301
+
+[[redirects]]
+  from = "/solutions/crypto-insurance"
+  to = "/intelligence#insurance"
+  status = 301
+
+[[redirects]]
+  from = "/solutions/forensic-services"
+  to = "/intelligence#forensic-reports"
+  status = 301
+
+[[redirects]]
+  from = "/forensic-services"
+  to = "/intelligence"
+  status = 301
+
+[[redirects]]
+  from = "/crypto-compliance"
+  to = "/intelligence"
+  status = 301
+
+[[redirects]]
+  from = "/igaming"
+  to = "/intelligence#igaming"
+  status = 301
+
+[[redirects]]
+  from = "/events/*"
+  to = "/insights"
+  status = 301
+
+# --- SPA catch-all (keep last) ---
+
 [[redirects]]
   from = "/*"
   to = "/index.html"

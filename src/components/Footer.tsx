@@ -1,32 +1,33 @@
 import { Link } from "react-router-dom";
 import Logo from "@/components/Logo";
+import { PRODUCTS } from "@/config/site";
 
 const Footer = () => {
-  const platformLinks = [
-    { name: "Platform Overview", href: "/platform" },
-    { name: "Industry Dashboards", href: "/platform#dashboards" },
-    { name: "AI Agents", href: "/platform#ai-agents" },
-    { name: "AI Skills", href: "/platform#ai-skills" },
+  const productLinks = [
+    { name: PRODUCTS.intelligence.name, href: PRODUCTS.intelligence.href },
+    { name: PRODUCTS.embedded.name, href: PRODUCTS.embedded.href },
+    { name: PRODUCTS.walletChecker.name, href: PRODUCTS.walletChecker.href },
   ];
 
-  const solutionsLinks = [
-    { name: "Law Firms", href: "/solutions/law-firms" },
-    { name: "iGaming Operators", href: "/solutions/igaming-operators" },
-    { name: "Gaming Regulators", href: "/solutions/gaming-regulators" },
-    { name: "Law Enforcement & Government", href: "/solutions/law-enforcement" },
-    { name: "Crypto Insurance", href: "/solutions/crypto-insurance" },
-    { name: "Forensic Services", href: "/solutions/forensic-services" },
+  const useCaseLinks = [
+    { name: "Law firms", href: "/intelligence#law-firms" },
+    { name: "iGaming operators", href: "/intelligence#igaming" },
+    { name: "Gaming regulators", href: "/intelligence#regulators" },
+    { name: "Law enforcement & government", href: "/intelligence#government" },
+    { name: "Crypto insurance", href: "/intelligence#insurance" },
+    { name: "Forensic reports", href: "/intelligence#forensic-reports" },
   ];
 
   const companyLinks = [
     { name: "About", href: "/about" },
-    { name: "Case Studies", href: "/insights" },
+    { name: "Case studies", href: "/case-studies" },
+    { name: "Insights", href: "/insights" },
     { name: "Contact", href: "/contact" },
   ];
 
   const legalLinks = [
-    { name: "Terms & Conditions", href: "/terms" },
-    { name: "Privacy Policy", href: "/privacy" },
+    { name: "Terms & conditions", href: "/terms" },
+    { name: "Privacy policy", href: "/privacy" },
   ];
 
   return (
@@ -41,9 +42,9 @@ const Footer = () => {
           </div>
 
           <div>
-            <h4 className="text-sm font-semibold mb-4">Platform</h4>
+            <h4 className="text-sm font-semibold mb-4">Products</h4>
             <ul className="space-y-2">
-              {platformLinks.map((link) => (
+              {productLinks.map((link) => (
                 <li key={link.name}>
                   <Link
                     to={link.href}
@@ -57,9 +58,9 @@ const Footer = () => {
           </div>
 
           <div>
-            <h4 className="text-sm font-semibold mb-4">Solutions</h4>
+            <h4 className="text-sm font-semibold mb-4">Use cases</h4>
             <ul className="space-y-2">
-              {solutionsLinks.map((link) => (
+              {useCaseLinks.map((link) => (
                 <li key={link.name}>
                   <Link
                     to={link.href}
