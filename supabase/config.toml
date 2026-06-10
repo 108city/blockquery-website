@@ -1,0 +1,22 @@
+project_id = "fmninlwzsgkehoomgkgu"
+
+[functions.submit-contact]
+verify_jwt = false
+
+[functions.submit-self-service-report]
+verify_jwt = false
+
+[functions.validate-promo-code]
+verify_jwt = false
+
+[functions.mollie-webhook]
+verify_jwt = false
+
+[functions.manage-article]
+verify_jwt = false
+
+[functions.upload-article-image]
+verify_jwt = false
+
+[functions.submit-report-download]
+verify_jwt = false
