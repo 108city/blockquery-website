@@ -75,7 +75,7 @@ const pillars: Pillar[] = [
 ];
 
 const whyCards = [
-  { icon: Zap, title: "Built for speed", body: "Pilots live in weeks. New skills shipped weekly via vibe-code sprints." },
+  { icon: Zap, title: "Built for speed", body: "Pilots live in weeks, not quarters. New skills ship weekly as threats evolve." },
   { icon: Activity, title: "Continuous, not periodic", body: "Live intelligence feeds replace point-in-time reports." },
   { icon: Eye, title: "Operator-grade UX", body: "Designed for the analyst on the front line, not for procurement decks." },
   { icon: Lock, title: "Secure by deployment", body: "Sovereign cloud. Your data, your perimeter." },

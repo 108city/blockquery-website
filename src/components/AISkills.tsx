@@ -33,7 +33,7 @@ const AISkills = () => {
         </h2>
         <p className="text-lg text-muted-foreground text-center mb-14 max-w-2xl mx-auto">
           We don't just consume on-chain data. We build the automation layer above it.
-          New skills ship weekly via our vibe-code hackathon cadence.
+          New skills ship weekly, built and deployed as new threats and workflows emerge.
         </p>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">

@@ -9,8 +9,8 @@ const WhyChooseBlockquery = () => {
       body: "Existing forensic vendors give you raw data. We build the automation, AI agents and dashboards that turn that data into decisions.",
     },
     {
-      title: "Speed is the strategy.",
-      body: "Weekly vibe-code sprints. Functional MVPs in 48 hours. Pilots live in weeks, not quarters.",
+      title: "Fast, for what you're getting.",
+      body: "A working capability in weeks, not the quarters legacy platforms take to deploy. Fast for the scope, with a clear path from first pilot to live operation.",
     },
     {
       title: "Hybrid economics that actually scale.",
