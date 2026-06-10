@@ -4,7 +4,6 @@ import Offerings from "@/components/Offerings";
 import WhoWeServe from "@/components/WhoWeServe";
 import CaseStudies from "@/components/CaseStudies";
 import WhyChooseBlockquery from "@/components/WhyChooseBlockquery";
-import Testimonials from "@/components/Testimonials";
 import PartnerCTA from "@/components/PartnerCTA";
 import Footer from "@/components/Footer";
 
@@ -17,7 +16,6 @@ const Index = () => {
       <WhoWeServe />
       <CaseStudies />
       <WhyChooseBlockquery />
-      <Testimonials />
       <PartnerCTA />
       <Footer />
     </div>
