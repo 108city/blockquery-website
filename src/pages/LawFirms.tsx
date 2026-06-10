@@ -118,7 +118,7 @@ const LawFirms = () => {
                 </div>
                 <h3 className="text-xl font-medium mb-3">{h.title}</h3>
                 <p className="text-sm text-muted-foreground leading-relaxed mb-6">{h.body}</p>
-                <ul className="space-y-3 mt-auto">
+                <ul className="space-y-3">
                   {h.points.map((p) => (
                     <li key={p} className="flex items-start gap-2.5">
                       <CheckCircle className="w-[18px] h-[18px] text-primary flex-shrink-0 mt-0.5" strokeWidth={1.75} />
