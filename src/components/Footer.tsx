@@ -92,7 +92,7 @@ const Footer = () => {
 
         <div className="pt-8 border-t border-border flex flex-col md:flex-row justify-between items-center gap-4">
           <p className="text-xs text-muted-foreground">
-            &copy; {new Date().getFullYear()} Blockquery.io — on-chain intelligence
+            &copy; {new Date().getFullYear()} BlockQuery.io — on-chain intelligence
           </p>
           <ul className="flex gap-6">
             {legalLinks.map((link) => (

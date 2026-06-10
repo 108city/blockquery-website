@@ -14,7 +14,7 @@ const PrivacyPolicy = () => {
           
           <div className="prose prose-lg max-w-none space-y-6 text-muted-foreground">
             <p>
-              Blockquery ("Company", "we", "us", or "our") is committed to protecting your privacy. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you visit our website and use our services. By accessing or using our website, you consent to the practices described in this Privacy Policy.
+              BlockQuery ("Company", "we", "us", or "our") is committed to protecting your privacy. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you visit our website and use our services. By accessing or using our website, you consent to the practices described in this Privacy Policy.
             </p>
 
             <section>
@@ -59,7 +59,7 @@ const PrivacyPolicy = () => {
               </p>
               <ul className="list-disc pl-6 space-y-2">
                 <li><strong>Service Providers:</strong> With trusted third parties who perform services on our behalf, such as analytics or data processing.</li>
-                <li><strong>Legal Requirements:</strong> When required by law, regulation, or legal process, or to protect the rights, property, or safety of Blockquery or others.</li>
+                <li><strong>Legal Requirements:</strong> When required by law, regulation, or legal process, or to protect the rights, property, or safety of BlockQuery or others.</li>
                 <li><strong>Business Transfers:</strong> In connection with any merger, sale, or asset transfer, your information may be transferred to a successor entity.</li>
               </ul>
               <p className="mt-4">

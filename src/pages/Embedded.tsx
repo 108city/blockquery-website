@@ -92,13 +92,13 @@ const Embedded = () => {
       <section className="pt-32 pb-20 sm:pt-40 sm:pb-28 px-4 sm:px-6">
         <div className="container mx-auto max-w-4xl text-center">
           <p className="text-sm font-semibold uppercase tracking-widest text-primary mb-4">
-            Blockquery Embedded
+            BlockQuery Embedded
           </p>
           <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-6 leading-tight">
             Embedded analytics. A partner, not a portal.
           </h1>
           <p className="text-lg sm:text-xl text-muted-foreground mb-10 max-w-3xl mx-auto">
-            A named specialist learns your operation, deploys proven Blockquery
+            A named specialist learns your operation, deploys proven BlockQuery
             products, and builds what's missing. You get a partner embedded in
             your team, not a license to administer on your own.
           </p>
@@ -248,7 +248,7 @@ const Embedded = () => {
             the specialist who will own it, and show you what ships first.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            {/* TODO: swap to a Blockquery-branded booking link when supplied */}
+            {/* TODO: swap to a BlockQuery-branded booking link when supplied */}
             <Button size="lg" className="font-medium" asChild>
               <Link to={DISCOVERY_CALL_HREF}>
                 Book a discovery call <ArrowRight className="w-4 h-4 ml-2" />

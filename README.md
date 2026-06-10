@@ -1,4 +1,4 @@
-# Blockquery.io
+# BlockQuery.io
 
 Productized on-chain intelligence — wallet screening, transaction forensics, KYT and sanctioned-jurisdiction analysis for exchanges, regulators, compliance teams, and asset-recovery practitioners.
 

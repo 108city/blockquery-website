@@ -125,11 +125,11 @@ const Companies = () => {
       {/* Divider */}
       <div className="border-t border-border" />
 
-      {/* Why professionals choose Blockquery */}
+      {/* Why professionals choose BlockQuery */}
       <section className="py-20 sm:py-28 px-4 sm:px-6">
         <div className="container mx-auto max-w-5xl">
           <h2 className="text-3xl sm:text-4xl font-bold text-center mb-14">
-            Why professionals choose Blockquery
+            Why professionals choose BlockQuery
           </h2>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-center">

@@ -26,7 +26,7 @@ const WhyChooseBlockquery = () => {
     <section className="py-20 sm:py-28 md:py-36 px-4 sm:px-6 bg-card">
       <div className="container mx-auto max-w-5xl">
         <p className="text-sm font-semibold uppercase tracking-widest text-primary text-center mb-4">
-          Why Blockquery
+          Why BlockQuery
         </p>
         <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-center mb-14">
           A new kind of investigation infrastructure.

@@ -14,7 +14,7 @@ const HeroSection = () => {
           {POSITIONING_LINE}
         </h1>
         <p className="text-lg sm:text-xl text-muted-foreground mb-10 max-w-3xl">
-          Blockquery builds the dashboards, screening tools and investigation
+          BlockQuery builds the dashboards, screening tools and investigation
           services that exchanges, regulators, law firms and compliance teams rely
           on, at a fraction of incumbent cost.
         </p>

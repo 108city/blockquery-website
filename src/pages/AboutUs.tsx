@@ -17,7 +17,7 @@ const AboutUs = () => {
         <div className="container mx-auto max-w-4xl">
           <h1 className="text-5xl md:text-7xl font-bold text-center mb-8">About us</h1>
           <p className="text-lg md:text-xl text-muted-foreground leading-relaxed">
-            We are a crypto investigations agency built by the team behind Blockquery, a leader in blockchain data and
+            We are a crypto investigations agency built by the team behind BlockQuery, a leader in blockchain data and
             analytics. With expertise in transaction tracing, wallet clustering, and forensic analysis, we track stolen
             assets and uncover illicit activity using internally developed tools and a comprehensive illicit crypto
             database.

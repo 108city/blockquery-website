@@ -4,7 +4,7 @@ const Testimonials = () => {
   const testimonials = [
     {
       quote:
-        "Blockquery gave us defensible, regulator-ready blockchain intelligence that turned complex wallet activity into clear risk decisions.",
+        "BlockQuery gave us defensible, regulator-ready blockchain intelligence that turned complex wallet activity into clear risk decisions.",
       name: "Julian Thorne",
       title: "Financial Compliance Officer",
       stars: 5,
@@ -18,7 +18,7 @@ const Testimonials = () => {
     },
     {
       quote:
-        "Blockquery delivered precise attribution and court-ready reporting that strengthened our case and saved weeks of forensic work.",
+        "BlockQuery delivered precise attribution and court-ready reporting that strengthened our case and saved weeks of forensic work.",
       name: "Clara Montrose",
       title: "Corporate Attorney",
       stars: 5,

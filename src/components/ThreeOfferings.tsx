@@ -38,7 +38,7 @@ const offerings: Offering[] = [
   },
   {
     icon: ScanLine,
-    name: PRODUCTS.walletChecker.name,
+    name: PRODUCTS.walletChecker.short,
     tagline: PRODUCTS.walletChecker.tagline,
     href: PRODUCTS.walletChecker.href,
     cta: "Explore Wallet Checker",

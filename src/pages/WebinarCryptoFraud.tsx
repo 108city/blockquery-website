@@ -126,7 +126,7 @@ const WebinarCryptoFraud = () => {
                 </div>
 
                 <h1 className="text-4xl md:text-5xl font-bold mb-6 leading-tight">
-                  Crypto Fraud Response for Lawyers: Practical Insights from Crystal Intelligence and Blockquery
+                  Crypto Fraud Response for Lawyers: Practical Insights from Crystal Intelligence and BlockQuery
                 </h1>
 
                 <div className="flex flex-wrap gap-4 mb-8">
@@ -145,7 +145,7 @@ const WebinarCryptoFraud = () => {
                 </p>
 
                 <p className="text-muted-foreground mb-8 leading-relaxed">
-                  In this exclusive session, Nick Smart (Crystal Intelligence) and The Blockquery Team will share a practical, step-by-step framework for what law firms should do in the critical first 24 hours after a client reaches out.
+                  In this exclusive session, Nick Smart (Crystal Intelligence) and The BlockQuery Team will share a practical, step-by-step framework for what law firms should do in the critical first 24 hours after a client reaches out.
                 </p>
               </div>
 
@@ -200,7 +200,7 @@ const WebinarCryptoFraud = () => {
                       <div>
                         <div className="font-medium">Speakers</div>
                         <div className="text-sm text-muted-foreground">
-                          Nick Smart (Crystal Intelligence) & Blockquery
+                          Nick Smart (Crystal Intelligence) & BlockQuery
                         </div>
                       </div>
                     </div>

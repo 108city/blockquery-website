@@ -50,7 +50,7 @@ const Navigation = () => {
     >
       <div className="container mx-auto px-4 sm:px-6 py-4">
         <div className="flex items-center justify-between">
-          <Link to="/" aria-label="Blockquery home" className="flex items-center hover:opacity-80 transition-opacity duration-200">
+          <Link to="/" aria-label="BlockQuery home" className="flex items-center hover:opacity-80 transition-opacity duration-200">
             <Logo size="text-2xl md:text-3xl" />
           </Link>
 
