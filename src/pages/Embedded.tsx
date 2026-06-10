@@ -15,7 +15,7 @@ import {
   CreditCard,
   ArrowRight,
 } from "lucide-react";
-import { PRODUCTS, DISCOVERY_CALL_HREF } from "@/config/site";
+import { DISCOVERY_CALL_HREF } from "@/config/site";
 
 const layers = [
   {
@@ -34,7 +34,7 @@ const layers = [
     number: "03",
     label: "The bespoke build",
     icon: Wrench,
-    body: "AI-assisted engineering builds what's missing in days, not quarters. The gaps that no off-the-shelf product covers become yours.",
+    body: "AI-assisted engineering builds what's missing in weeks, not quarters. The gaps that no off-the-shelf product covers become yours.",
   },
 ];
 
@@ -141,24 +141,6 @@ const Embedded = () => {
                   <p className="text-base text-muted-foreground leading-relaxed">
                     {layer.body}
                   </p>
-                  {layer.number === "02" && (
-                    <div className="mt-6 flex flex-col gap-2">
-                      <Link
-                        to={PRODUCTS.intelligence.href}
-                        className="inline-flex items-center gap-2 text-sm font-medium text-primary hover:underline"
-                      >
-                        {PRODUCTS.intelligence.name}
-                        <ArrowRight className="w-4 h-4" />
-                      </Link>
-                      <Link
-                        to={PRODUCTS.walletChecker.href}
-                        className="inline-flex items-center gap-2 text-sm font-medium text-primary hover:underline"
-                      >
-                        {PRODUCTS.walletChecker.name}
-                        <ArrowRight className="w-4 h-4" />
-                      </Link>
-                    </div>
-                  )}
                 </div>
               );
             })}
