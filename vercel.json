@@ -12,6 +12,7 @@
     { "source": "/solutions/law-enforcement", "destination": "/", "permanent": false },
     { "source": "/solutions/crypto-insurance", "destination": "/", "permanent": false },
     { "source": "/solutions/forensic-services", "destination": "/", "permanent": false },
+    { "source": "/wallet-checker", "destination": "/", "permanent": true },
     { "source": "/events", "destination": "/insights", "permanent": true },
     { "source": "/events/:path*", "destination": "/insights", "permanent": true }
   ],

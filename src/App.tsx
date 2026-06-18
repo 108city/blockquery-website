@@ -6,7 +6,7 @@ import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import ScrollToTop from "@/components/ScrollToTop";
 import Index from "./pages/Index";
 import Embedded from "./pages/Embedded";
-import WalletChecker from "./pages/WalletChecker";
+import SatScore from "./pages/SatScore";
 import LawFirms from "./pages/LawFirms";
 import CaseStudiesPage from "./pages/CaseStudiesPage";
 import AboutUs from "./pages/AboutUs";
@@ -46,7 +46,7 @@ const App = () => (
               To restore: import Intelligence and use element={<Intelligence />}. */}
           <Route path="/intelligence" element={<Navigate to="/" replace />} />
           <Route path="/embedded" element={<Embedded />} />
-          <Route path="/wallet-checker" element={<WalletChecker />} />
+          <Route path="/satscore" element={<SatScore />} />
           <Route path="/law-firms" element={<LawFirms />} />
 
           {/* Standard pages */}

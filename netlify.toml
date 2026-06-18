@@ -62,7 +62,15 @@
   to = "/insights"
   status = 301
 
+# Wallet Checker product retired — send the old route home.
+[[redirects]]
+  from = "/wallet-checker"
+  to = "/"
+  status = 301
+
 # --- SPA catch-all (keep last) ---
+# NOTE: this site deploys on Vercel; the live redirects are in vercel.json.
+# This file is kept in sync for portability but is not the active config.
 
 [[redirects]]
   from = "/*"

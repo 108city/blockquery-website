@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { Users, Scale, ScanLine, CheckCircle, ArrowRight, LucideIcon } from "lucide-react";
+import { Users, Scale, Bitcoin, CheckCircle, ArrowRight, LucideIcon } from "lucide-react";
 import { PRODUCTS } from "@/config/site";
 
 interface Offering {
@@ -37,15 +37,15 @@ const offerings: Offering[] = [
     ],
   },
   {
-    icon: ScanLine,
-    name: PRODUCTS.walletChecker.short,
-    tagline: PRODUCTS.walletChecker.tagline,
-    href: PRODUCTS.walletChecker.href,
-    cta: "Explore Wallet Checker",
+    icon: Bitcoin,
+    name: PRODUCTS.satscore.name,
+    tagline: PRODUCTS.satscore.tagline,
+    href: PRODUCTS.satscore.href,
+    cta: "Explore SatScore",
     points: [
-      "Plain-language green, amber or red verdict with a score",
-      "Built for OTC desks and money exchangers",
-      "Bilingual, local pricing, no blockchain expertise needed",
+      "99 sats per check over Lightning — no account, no credit packs",
+      "Risk scoring backed by 500M+ labelled Bitcoin wallets",
+      "Built for AI agents — they screen and pay per call",
     ],
   },
 ];

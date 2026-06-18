@@ -6,7 +6,7 @@ const Footer = () => {
   const productLinks = [
     { name: PRODUCTS.embedded.name, href: PRODUCTS.embedded.href },
     { name: PRODUCTS.lawFirms.name, href: PRODUCTS.lawFirms.href },
-    { name: PRODUCTS.walletChecker.name, href: PRODUCTS.walletChecker.href },
+    { name: PRODUCTS.satscore.name, href: PRODUCTS.satscore.href },
   ];
 
   const useCaseLinks = [

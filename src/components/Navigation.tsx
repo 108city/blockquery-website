@@ -7,7 +7,7 @@ import { PRODUCTS, BOOK_DEMO_HREF } from "@/config/site";
 
 const productLinks = [
   { name: PRODUCTS.lawFirms.short, href: PRODUCTS.lawFirms.href, desc: PRODUCTS.lawFirms.tagline },
-  { name: PRODUCTS.walletChecker.short, href: PRODUCTS.walletChecker.href, desc: PRODUCTS.walletChecker.tagline },
+  { name: PRODUCTS.satscore.short, href: PRODUCTS.satscore.href, desc: PRODUCTS.satscore.tagline },
 ];
 
 const navLinks = [
