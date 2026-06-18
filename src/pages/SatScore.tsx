@@ -264,25 +264,37 @@ const SatScore = () => {
             more Bitcoin addresses, and ask.
           </p>
 
-          <div className="border border-border rounded-xl bg-card overflow-hidden">
-            <div className="flex items-center justify-between px-4 py-2.5 border-b border-border">
-              <span className="font-mono text-xs text-muted-foreground">claude_desktop_config.json</span>
-              <button
-                onClick={copySnippet}
-                className="inline-flex items-center gap-1.5 text-xs font-medium text-primary hover:underline"
-              >
-                {copied ? <Check className="w-3.5 h-3.5" /> : <Copy className="w-3.5 h-3.5" />}
-                {copied ? "Copied" : "Copy"}
-              </button>
+          {SATSCORE.mcpLive ? (
+            <>
+              <div className="border border-border rounded-xl bg-card overflow-hidden">
+                <div className="flex items-center justify-between px-4 py-2.5 border-b border-border">
+                  <span className="font-mono text-xs text-muted-foreground">claude_desktop_config.json</span>
+                  <button
+                    onClick={copySnippet}
+                    className="inline-flex items-center gap-1.5 text-xs font-medium text-primary hover:underline"
+                  >
+                    {copied ? <Check className="w-3.5 h-3.5" /> : <Copy className="w-3.5 h-3.5" />}
+                    {copied ? "Copied" : "Copy"}
+                  </button>
+                </div>
+                <pre className="font-mono text-sm text-foreground p-4 sm:p-5 overflow-x-auto leading-relaxed">
+                  {snippet}
+                </pre>
+              </div>
+              <p className="text-xs text-muted-foreground mt-4 text-center">
+                Works with Claude and any MCP-capable agent. Checks settle over Lightning at{" "}
+                {SATSCORE.priceSats} sats each.
+              </p>
+            </>
+          ) : (
+            <div className="border border-border rounded-xl bg-card p-8 text-center">
+              <p className="text-sm font-medium text-foreground mb-2">Connect details land here shortly.</p>
+              <p className="text-sm text-muted-foreground">
+                The SatScore MCP endpoint goes live soon. Want early access?{" "}
+                <a href="/contact" className="text-primary hover:underline">Talk to us.</a>
+              </p>
             </div>
-            <pre className="font-mono text-sm text-foreground p-4 sm:p-5 overflow-x-auto leading-relaxed">
-              {snippet}
-            </pre>
-          </div>
-          <p className="text-xs text-muted-foreground mt-4 text-center">
-            Works with Claude and any MCP-capable agent. Checks settle over Lightning at{" "}
-            {SATSCORE.priceSats} sats each.
-          </p>
+          )}
         </div>
       </section>
 
