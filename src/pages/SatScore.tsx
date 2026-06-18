@@ -9,6 +9,7 @@ import {
   ArrowRight,
   Check,
   Copy,
+  User,
   LucideIcon,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -74,9 +75,23 @@ const sampleResults = [
 ];
 
 const stats = [
-  { value: SATSCORE.labelCountClaim, label: "Bitcoin wallets labelled" },
+  { value: "1", label: "Chain, no compromise" },
   { value: `${SATSCORE.priceSats} sats`, label: "Per check, over Lightning" },
-  { value: "1 chain", label: "Bitcoin only, on purpose" },
+  { value: "0", label: "Accounts or API keys" },
+];
+
+/** Dual-audience: the same MCP, used by a person or an agent. */
+const audiences: { icon: LucideIcon; title: string; body: string }[] = [
+  {
+    icon: User,
+    title: "For you",
+    body: "Use it yourself in Claude. Paste an address or a CSV, ask in plain language, and read the verdict.",
+  },
+  {
+    icon: Bot,
+    title: "For your agent",
+    body: "Give your agent a Lightning balance and it screens counterparties autonomously, paying its own way per call.",
+  },
 ];
 
 /** Faint node-mesh backdrop — flat line-art that echoes the brand mark. */
@@ -158,12 +173,12 @@ const SatScore = () => {
                 {PRODUCTS.satscore.name}
               </p>
               <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-6 leading-tight">
-                The Bitcoin KYT server for AI agents.
+                The Bitcoin KYT server for you or your AI agent.
               </h1>
               <p className="text-lg sm:text-xl text-muted-foreground mb-10 max-w-xl">
-                Risk-check any Bitcoin address in plain language. Pay {SATSCORE.priceSats} sats
-                per check over Lightning. No account, no credit packs, no other chains — and
-                that's the point.
+                Risk-check any Bitcoin address in plain language — you in Claude, or your agent
+                on its own. {SATSCORE.priceSats} sats a check over Lightning. No account, no credit
+                packs, no other chains. That's the point.
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
                 <Button size="lg" className="font-medium" asChild>
@@ -218,15 +233,52 @@ const SatScore = () => {
 
       <div className="border-t border-border" />
 
-      {/* Stat band */}
-      <section className="relative overflow-hidden py-16 sm:py-20 px-4 sm:px-6">
+      {/* Maxi band — one MCP, one chain */}
+      <section className="relative overflow-hidden py-16 sm:py-24 px-4 sm:px-6 bg-card">
         <NetworkBackdrop className="opacity-[0.05]" />
-        <div className="container mx-auto max-w-5xl relative">
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 sm:gap-6 text-center">
+        <div className="container mx-auto max-w-5xl relative text-center">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4">
+            One MCP. One chain.
+          </h2>
+          <p className="text-lg text-muted-foreground max-w-2xl mx-auto mb-12 sm:mb-14">
+            Bitcoin is where illicit value actually settles. We go deep on the one chain that
+            matters — the labels, the lineage, the verdicts — instead of spreading thin across fifty.
+          </p>
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 sm:gap-6">
             {stats.map((s) => (
               <div key={s.label}>
                 <p className="font-mono text-4xl sm:text-5xl font-medium text-primary mb-2">{s.value}</p>
                 <p className="text-sm text-muted-foreground">{s.label}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <div className="border-t border-border" />
+
+      {/* For you, or your agent */}
+      <section className="relative overflow-hidden py-20 sm:py-28 px-4 sm:px-6">
+        <NetworkBackdrop className="opacity-[0.05]" />
+        <div className="container mx-auto max-w-5xl relative">
+          <p className="text-sm font-semibold uppercase tracking-widest text-primary text-center mb-4">
+            However you work
+          </p>
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-center mb-4">
+            Run it yourself, or hand it to your agent.
+          </h2>
+          <p className="text-lg text-muted-foreground text-center mb-14 max-w-2xl mx-auto">
+            The same MCP server and the same {SATSCORE.priceSats}-sat check, whether a person is
+            asking or an agent is screening on its own.
+          </p>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
+            {audiences.map((a) => (
+              <div key={a.title} className="border border-border rounded-xl p-6 sm:p-8 bg-card">
+                <div className="w-[34px] h-[34px] rounded-lg bg-brand-tint flex items-center justify-center mb-6">
+                  <a.icon className="w-[18px] h-[18px] text-primary" strokeWidth={1.75} />
+                </div>
+                <h3 className="text-lg font-medium mb-3">{a.title}</h3>
+                <p className="text-sm text-muted-foreground leading-relaxed">{a.body}</p>
               </div>
             ))}
           </div>
