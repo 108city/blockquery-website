@@ -22,12 +22,15 @@ const PAGE_DESCRIPTION =
   `no account or credit packs. A Bitcoin-only KYT MCP server for AI agents, backed by BlockQuery's ` +
   `${SATSCORE.labelCountClaim} labelled wallets.`;
 
+/** Headline USP — gets the featured treatment in "Why SatScore". */
+const featured = {
+  icon: Database,
+  metric: SATSCORE.labelCountClaim,
+  title: "Bitcoin wallets labelled",
+  body: "Risk scoring backed by one of the largest Bitcoin address-label datasets available — the depth behind every verdict.",
+};
+
 const usps: { icon: LucideIcon; title: string; body: string }[] = [
-  {
-    icon: Database,
-    title: `${SATSCORE.labelCountClaim} Bitcoin wallets labelled`,
-    body: "Risk scoring backed by one of the largest Bitcoin address-label datasets available.",
-  },
   {
     icon: Zap,
     title: "Pay per check, never upfront",
@@ -232,22 +235,57 @@ const SatScore = () => {
 
       <div className="border-t border-border" />
 
-      {/* USP row */}
-      <section className="py-20 sm:py-28 md:py-36 px-4 sm:px-6 bg-card">
-        <div className="container mx-auto max-w-6xl">
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-center mb-14">
-            Why SatScore.
+      {/* Why SatScore */}
+      <section className="relative overflow-hidden py-20 sm:py-28 md:py-36 px-4 sm:px-6 bg-card">
+        <NetworkBackdrop className="opacity-[0.05]" />
+        <div className="container mx-auto max-w-6xl relative">
+          <p className="text-sm font-semibold uppercase tracking-widest text-primary text-center mb-4">
+            Why SatScore
+          </p>
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-center mb-4">
+            Single-chain depth, agent-native economics.
           </h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
-            {usps.map((u) => (
-              <div key={u.title} className="border border-border rounded-xl p-6 sm:p-8 bg-background flex flex-col">
-                <div className="w-[34px] h-[34px] rounded-lg bg-brand-tint flex items-center justify-center mb-6">
-                  <u.icon className="w-[18px] h-[18px] text-primary" strokeWidth={1.75} />
-                </div>
-                <h3 className="text-base font-medium mb-3 leading-snug">{u.title}</h3>
-                <p className="text-sm text-muted-foreground leading-relaxed">{u.body}</p>
+          <p className="text-lg text-muted-foreground text-center mb-14 max-w-2xl mx-auto">
+            Built to do one chain properly — and to be paid for, per call, by the agents that use it.
+          </p>
+
+          <div className="grid lg:grid-cols-12 gap-6 lg:gap-8 items-stretch">
+            {/* Featured headline USP */}
+            <div className="lg:col-span-5 border border-border rounded-xl p-8 sm:p-10 bg-background flex flex-col justify-between">
+              <div className="w-[34px] h-[34px] rounded-lg bg-brand-tint flex items-center justify-center mb-10">
+                <featured.icon className="w-[18px] h-[18px] text-primary" strokeWidth={1.75} />
               </div>
-            ))}
+              <div>
+                <p className="font-mono text-5xl sm:text-6xl font-medium text-primary mb-4 leading-none">
+                  {featured.metric}
+                </p>
+                <h3 className="text-xl font-medium mb-3">{featured.title}</h3>
+                <p className="text-muted-foreground leading-relaxed">{featured.body}</p>
+              </div>
+            </div>
+
+            {/* Three supporting reasons */}
+            <div className="lg:col-span-7 grid gap-4 lg:gap-5 content-start">
+              {usps.map((u, i) => (
+                <div
+                  key={u.title}
+                  className="border border-border rounded-xl p-6 sm:p-7 bg-background flex items-start gap-5 hover:border-primary transition-colors duration-300"
+                >
+                  <div className="w-[34px] h-[34px] rounded-lg bg-brand-tint flex items-center justify-center shrink-0">
+                    <u.icon className="w-[18px] h-[18px] text-primary" strokeWidth={1.75} />
+                  </div>
+                  <div className="flex-1">
+                    <div className="flex items-baseline justify-between gap-3 mb-1.5">
+                      <h3 className="text-lg font-medium">{u.title}</h3>
+                      <span className="font-mono text-xs text-muted-foreground shrink-0">
+                        {String(i + 1).padStart(2, "0")}
+                      </span>
+                    </div>
+                    <p className="text-sm text-muted-foreground leading-relaxed">{u.body}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </section>
