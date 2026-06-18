@@ -70,6 +70,43 @@ const sampleResults = [
   { addr: "1Hx9…q7m3", verdict: "Block", reason: "Direct exposure to a sanctioned address", cls: "bg-danger-tint text-danger" },
 ];
 
+const stats = [
+  { value: SATSCORE.labelCountClaim, label: "Bitcoin wallets labelled" },
+  { value: `${SATSCORE.priceSats} sats`, label: "Per check, over Lightning" },
+  { value: "1 chain", label: "Bitcoin only, on purpose" },
+];
+
+/** Faint node-mesh backdrop — flat line-art that echoes the brand mark. */
+const NetworkBackdrop = ({ className = "" }: { className?: string }) => (
+  <svg
+    className={`pointer-events-none absolute inset-0 h-full w-full ${className}`}
+    viewBox="0 0 1200 600"
+    preserveAspectRatio="xMidYMid slice"
+    aria-hidden="true"
+    fill="none"
+  >
+    <path
+      stroke="hsl(var(--brand))"
+      strokeWidth="1"
+      strokeLinecap="round"
+      d="M70 120 L300 70 L470 200 M300 70 L520 300 M470 200 L520 300 L760 160 M520 300 L640 470 M760 160 L980 110 L1140 240 M980 110 L1010 360 M760 160 L1010 360 M640 470 L1010 360 M180 360 L520 300 M180 360 L380 520 M640 470 L380 520"
+    />
+    <g fill="hsl(var(--brand))">
+      <circle cx="70" cy="120" r="2.5" />
+      <circle cx="300" cy="70" r="3" />
+      <circle cx="470" cy="200" r="2" />
+      <circle cx="520" cy="300" r="3.5" />
+      <circle cx="760" cy="160" r="2.5" />
+      <circle cx="640" cy="470" r="2" />
+      <circle cx="980" cy="110" r="2.5" />
+      <circle cx="1010" cy="360" r="3" />
+      <circle cx="1140" cy="240" r="2" />
+      <circle cx="180" cy="360" r="2.5" />
+      <circle cx="380" cy="520" r="2" />
+    </g>
+  </svg>
+);
+
 const SatScore = () => {
   const [copied, setCopied] = useState(false);
 
@@ -106,8 +143,9 @@ const SatScore = () => {
       <Navigation />
 
       {/* Hero */}
-      <section className="pt-32 pb-20 sm:pt-40 sm:pb-28 px-4 sm:px-6">
-        <div className="container mx-auto max-w-6xl">
+      <section className="relative overflow-hidden pt-32 pb-20 sm:pt-40 sm:pb-28 px-4 sm:px-6">
+        <NetworkBackdrop className="opacity-[0.06]" />
+        <div className="container mx-auto max-w-6xl relative">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
             <div>
               <div className="w-[34px] h-[34px] rounded-lg bg-brand-tint flex items-center justify-center mb-6">
@@ -134,38 +172,60 @@ const SatScore = () => {
               </div>
             </div>
 
-            {/* Sample agent reply — the one place risk colours appear */}
-            <div className="border border-border rounded-xl bg-card p-6 sm:p-7">
-              <div className="flex items-center justify-between mb-5">
-                <span className="text-xs uppercase tracking-wider text-muted-foreground">
-                  Your agent, in plain language
-                </span>
-                <span className="text-[10px] uppercase tracking-wider text-muted-foreground">
-                  Illustrative
-                </span>
+            {/* Sample agent reply — terminal-style, the one place risk colours appear */}
+            <div className="border border-border rounded-xl bg-card overflow-hidden">
+              <div className="flex items-center justify-between px-4 py-3 border-b border-border">
+                <div className="flex items-center gap-2.5">
+                  <span className="flex gap-1.5">
+                    <span className="w-2 h-2 rounded-full bg-border-strong" />
+                    <span className="w-2 h-2 rounded-full bg-border-strong" />
+                    <span className="w-2 h-2 rounded-full bg-primary animate-pulse" />
+                  </span>
+                  <span className="font-mono text-xs text-muted-foreground">satscore · agent</span>
+                </div>
+                <span className="text-[10px] uppercase tracking-wider text-muted-foreground">Illustrative</span>
               </div>
-              <p className="text-sm text-foreground mb-5">
-                <span className="text-muted-foreground">You: </span>
-                Are any of these risky?
-              </p>
-              <div className="space-y-2.5">
-                {sampleResults.map((r) => (
-                  <div
-                    key={r.addr}
-                    className="flex items-center gap-3 rounded-lg border border-border bg-background px-3 py-2.5"
-                  >
-                    <span className="font-mono text-xs text-muted-foreground w-20 shrink-0">{r.addr}</span>
-                    <span className={`rounded-full px-2.5 py-0.5 text-[11px] font-medium shrink-0 ${r.cls}`}>
-                      {r.verdict}
-                    </span>
-                    <span className="text-xs text-muted-foreground leading-snug">{r.reason}</span>
-                  </div>
-                ))}
+              <div className="p-6 sm:p-7">
+                <p className="text-sm text-foreground mb-5">
+                  <span className="font-mono text-primary">&gt; </span>Are any of these risky?
+                </p>
+                <div className="space-y-2.5">
+                  {sampleResults.map((r, i) => (
+                    <div
+                      key={r.addr}
+                      className="flex items-center gap-3 rounded-lg border border-border bg-background px-3 py-2.5 animate-fade-in"
+                      style={{ animationDelay: `${200 + i * 180}ms`, animationFillMode: "both" }}
+                    >
+                      <span className="font-mono text-xs text-muted-foreground w-20 shrink-0">{r.addr}</span>
+                      <span className={`rounded-full px-2.5 py-0.5 text-[11px] font-medium shrink-0 ${r.cls}`}>
+                        {r.verdict}
+                      </span>
+                      <span className="text-xs text-muted-foreground leading-snug">{r.reason}</span>
+                    </div>
+                  ))}
+                </div>
+                <p className="font-mono text-[11px] text-muted-foreground mt-5">
+                  {SATSCORE.priceSats} sats / check · settled over Lightning
+                </p>
               </div>
-              <p className="font-mono text-[11px] text-muted-foreground mt-5">
-                {SATSCORE.priceSats} sats / check · settled over Lightning
-              </p>
             </div>
+          </div>
+        </div>
+      </section>
+
+      <div className="border-t border-border" />
+
+      {/* Stat band */}
+      <section className="relative overflow-hidden py-16 sm:py-20 px-4 sm:px-6">
+        <NetworkBackdrop className="opacity-[0.05]" />
+        <div className="container mx-auto max-w-5xl relative">
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 sm:gap-6 text-center">
+            {stats.map((s) => (
+              <div key={s.label}>
+                <p className="font-mono text-4xl sm:text-5xl font-medium text-primary mb-2">{s.value}</p>
+                <p className="text-sm text-muted-foreground">{s.label}</p>
+              </div>
+            ))}
           </div>
         </div>
       </section>
@@ -223,8 +283,9 @@ const SatScore = () => {
       <div className="border-t border-border" />
 
       {/* Pricing */}
-      <section id="pricing" className="py-20 sm:py-28 md:py-36 px-4 sm:px-6 bg-card scroll-mt-20">
-        <div className="container mx-auto max-w-3xl text-center">
+      <section id="pricing" className="relative overflow-hidden py-20 sm:py-28 md:py-36 px-4 sm:px-6 bg-card scroll-mt-20">
+        <NetworkBackdrop className="opacity-[0.05]" />
+        <div className="container mx-auto max-w-3xl text-center relative">
           <p className="text-sm font-semibold uppercase tracking-widest text-primary mb-4">
             Pricing
           </p>
@@ -232,8 +293,11 @@ const SatScore = () => {
             Pay for exactly what you screen.
           </h2>
           <div className="border border-border rounded-xl bg-background p-8 sm:p-10 max-w-md mx-auto">
+            <div className="w-[34px] h-[34px] rounded-lg bg-brand-tint flex items-center justify-center mb-6 mx-auto">
+              <Zap className="w-[18px] h-[18px] text-primary" strokeWidth={1.75} />
+            </div>
             <p className="mb-1">
-              <span className="font-mono text-4xl sm:text-5xl font-medium text-foreground">{SATSCORE.priceSats} sats</span>
+              <span className="font-mono text-5xl sm:text-6xl font-medium text-foreground">{SATSCORE.priceSats} sats</span>
               <span className="text-base text-muted-foreground"> / check</span>
             </p>
             <p className="text-xs text-muted-foreground mb-6">≈ $0.10 per check (approx., floats with BTC)</p>
