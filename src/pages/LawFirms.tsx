@@ -20,16 +20,16 @@ import { BOOK_DEMO_HREF, SATSCORE } from "@/config/site";
 
 const audiences: { icon: LucideIcon; title: string; body: string; href: string }[] = [
   {
-    icon: Scale,
-    title: "Law firms",
-    body: "Court-ready evidence, asset tracing and expert testimony, delivered quietly behind your practice.",
-    href: "#law-firms",
-  },
-  {
     icon: Landmark,
     title: "Government and law enforcement",
     body: "A bird's eye view on the intersection of national security and the submerged economy.",
     href: "#government",
+  },
+  {
+    icon: Scale,
+    title: "Law firms",
+    body: "Court-ready evidence, asset tracing and expert testimony, delivered quietly behind your practice.",
+    href: "#law-firms",
   },
   {
     icon: ShieldCheck,
@@ -176,60 +176,8 @@ const LawFirms = () => {
 
       <div className="border-t border-border" />
 
-      {/* For law firms */}
-      <section id="law-firms" className="py-20 sm:py-28 px-4 sm:px-6 scroll-mt-20">
-        <div className="container mx-auto max-w-5xl">
-          <div className="flex items-center gap-3 mb-5">
-            <div className="w-[34px] h-[34px] rounded-lg bg-brand-tint flex items-center justify-center">
-              <Scale className="w-[18px] h-[18px] text-primary" strokeWidth={1.75} />
-            </div>
-            <p className="text-sm font-semibold uppercase tracking-widest text-primary">For law firms</p>
-          </div>
-          <h2 className="text-3xl sm:text-4xl font-bold mb-4 leading-tight max-w-3xl">
-            Investigation capability behind your practice.
-          </h2>
-          <p className="text-lg text-muted-foreground mb-12 max-w-3xl">
-            We sit quietly behind your practice, delivering the analysis, evidence and expert
-            testimony you commit to your clients - plus the tooling to decide which cases to take.
-          </p>
-
-          {/* Two tools */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8 mb-6 lg:mb-8">
-            {highlights.map((h) => (
-              <div key={h.title} className="border border-border rounded-xl p-6 sm:p-8 bg-card flex flex-col">
-                <div className="w-[34px] h-[34px] rounded-lg bg-brand-tint flex items-center justify-center mb-6">
-                  <h.icon className="w-[18px] h-[18px] text-primary" strokeWidth={1.75} />
-                </div>
-                <h3 className="text-xl font-medium mb-3">{h.title}</h3>
-                <p className="text-sm text-muted-foreground leading-relaxed mb-6">{h.body}</p>
-                <ul className="space-y-3">
-                  {h.points.map((p) => (
-                    <li key={p} className="flex items-start gap-2.5">
-                      <CheckCircle className="w-[18px] h-[18px] text-primary flex-shrink-0 mt-0.5" strokeWidth={1.75} />
-                      <span className="text-sm text-secondary-foreground leading-snug">{p}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            ))}
-          </div>
-
-          {/* Deliverables */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
-            {lawFirmDeliverables.map((d) => (
-              <div key={d.title} className="border border-border rounded-xl p-6 sm:p-8 bg-card">
-                <h3 className="text-lg font-medium mb-3">{d.title}</h3>
-                <p className="text-sm text-muted-foreground leading-relaxed">{d.body}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <div className="border-t border-border" />
-
       {/* Government and law enforcement */}
-      <section id="government" className="py-20 sm:py-28 px-4 sm:px-6 bg-card scroll-mt-20">
+      <section id="government" className="py-20 sm:py-28 px-4 sm:px-6 scroll-mt-20">
         <div className="container mx-auto max-w-5xl">
           <div className="flex items-center gap-3 mb-5">
             <div className="w-[34px] h-[34px] rounded-lg bg-brand-tint flex items-center justify-center">
@@ -250,6 +198,58 @@ const LawFirms = () => {
           </p>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
             {govDeliverables.map((d) => (
+              <div key={d.title} className="border border-border rounded-xl p-6 sm:p-8 bg-card">
+                <h3 className="text-lg font-medium mb-3">{d.title}</h3>
+                <p className="text-sm text-muted-foreground leading-relaxed">{d.body}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <div className="border-t border-border" />
+
+      {/* For law firms */}
+      <section id="law-firms" className="py-20 sm:py-28 px-4 sm:px-6 bg-card scroll-mt-20">
+        <div className="container mx-auto max-w-5xl">
+          <div className="flex items-center gap-3 mb-5">
+            <div className="w-[34px] h-[34px] rounded-lg bg-brand-tint flex items-center justify-center">
+              <Scale className="w-[18px] h-[18px] text-primary" strokeWidth={1.75} />
+            </div>
+            <p className="text-sm font-semibold uppercase tracking-widest text-primary">For law firms</p>
+          </div>
+          <h2 className="text-3xl sm:text-4xl font-bold mb-4 leading-tight max-w-3xl">
+            Investigation capability behind your practice.
+          </h2>
+          <p className="text-lg text-muted-foreground mb-12 max-w-3xl">
+            We sit quietly behind your practice, delivering the analysis, evidence and expert
+            testimony you commit to your clients - plus the tooling to decide which cases to take.
+          </p>
+
+          {/* Two tools */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8 mb-6 lg:mb-8">
+            {highlights.map((h) => (
+              <div key={h.title} className="border border-border rounded-xl p-6 sm:p-8 bg-background flex flex-col">
+                <div className="w-[34px] h-[34px] rounded-lg bg-brand-tint flex items-center justify-center mb-6">
+                  <h.icon className="w-[18px] h-[18px] text-primary" strokeWidth={1.75} />
+                </div>
+                <h3 className="text-xl font-medium mb-3">{h.title}</h3>
+                <p className="text-sm text-muted-foreground leading-relaxed mb-6">{h.body}</p>
+                <ul className="space-y-3">
+                  {h.points.map((p) => (
+                    <li key={p} className="flex items-start gap-2.5">
+                      <CheckCircle className="w-[18px] h-[18px] text-primary flex-shrink-0 mt-0.5" strokeWidth={1.75} />
+                      <span className="text-sm text-secondary-foreground leading-snug">{p}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
+
+          {/* Deliverables */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
+            {lawFirmDeliverables.map((d) => (
               <div key={d.title} className="border border-border rounded-xl p-6 sm:p-8 bg-background">
                 <h3 className="text-lg font-medium mb-3">{d.title}</h3>
                 <p className="text-sm text-muted-foreground leading-relaxed">{d.body}</p>
