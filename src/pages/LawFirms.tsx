@@ -11,6 +11,10 @@ import {
   ArrowRight,
   LayoutDashboard,
   Gauge,
+  Network,
+  Globe,
+  FileText,
+  Lock,
   LucideIcon,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -81,20 +85,24 @@ const lawFirmDeliverables = [
   },
 ];
 
-const govDeliverables = [
+const govDeliverables: { icon: LucideIcon; title: string; body: string }[] = [
   {
-    title: "Wide coverage of known illicit entities and clusters",
+    icon: Network,
+    title: "Wide coverage of illicit actors",
     body: "A map of the actors that matter - sanctioned entities, illicit services and the clusters around them - across chains and jurisdictions.",
   },
   {
+    icon: Globe,
     title: "A jurisdiction-level risk picture",
     body: "Where risk concentrates by country and corridor, including high-risk jurisdictions, so analysts know where to look - not just what one address did.",
   },
   {
+    icon: FileText,
     title: "Briefings your analysts can act on",
     body: "Structured intelligence and periodic briefings framed for decision-makers, not raw transaction dumps.",
   },
   {
+    icon: Lock,
     title: "Discreet, sovereign handling",
     body: "NDAs from first contact and deployment options that keep sensitive work inside your perimeter.",
   },
@@ -199,6 +207,9 @@ const LawFirms = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
             {govDeliverables.map((d) => (
               <div key={d.title} className="border border-border rounded-xl p-6 sm:p-8 bg-card">
+                <div className="w-[34px] h-[34px] rounded-lg bg-brand-tint flex items-center justify-center mb-5">
+                  <d.icon className="w-[18px] h-[18px] text-primary" strokeWidth={1.75} />
+                </div>
                 <h3 className="text-lg font-medium mb-3">{d.title}</h3>
                 <p className="text-sm text-muted-foreground leading-relaxed">{d.body}</p>
               </div>
