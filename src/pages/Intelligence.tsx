@@ -389,7 +389,7 @@ const Intelligence = () => {
                     </Link>
                   )}
                   {uc.id === "law-firms" && (
-                    <Link to="/law-firms" className="text-sm text-primary font-medium hover:underline">
+                    <Link to="/investigations" className="text-sm text-primary font-medium hover:underline">
                       Investigations for law firms →
                     </Link>
                   )}

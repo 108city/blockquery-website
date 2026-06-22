@@ -68,6 +68,12 @@
   to = "/"
   status = 301
 
+# Investigations page broadened beyond law firms; renamed to /investigations.
+[[redirects]]
+  from = "/law-firms"
+  to = "/investigations"
+  status = 301
+
 # --- SPA catch-all (keep last) ---
 # NOTE: this site deploys on Vercel; the live redirects are in vercel.json.
 # This file is kept in sync for portability but is not the active config.

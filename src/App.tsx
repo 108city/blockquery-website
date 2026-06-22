@@ -47,7 +47,7 @@ const App = () => (
           <Route path="/intelligence" element={<Navigate to="/" replace />} />
           <Route path="/embedded" element={<Embedded />} />
           <Route path="/satscore" element={<SatScore />} />
-          <Route path="/law-firms" element={<LawFirms />} />
+          <Route path="/investigations" element={<LawFirms />} />
 
           {/* Standard pages */}
           <Route path="/about" element={<AboutUs />} />
@@ -75,7 +75,7 @@ const App = () => (
           */}
           <Route path="/companies" element={<Companies />} />
           <Route path="/individual" element={<Individual />} />
-          <Route path="/investigations" element={<Investigations />} />
+          <Route path="/report" element={<Investigations />} />
           <Route path="/self-service" element={<SelfServiceCheckout />} />
           <Route path="/sample-report" element={<SampleReportDownload />} />
           <Route path="/report-thank-you" element={<ReportThankYou />} />

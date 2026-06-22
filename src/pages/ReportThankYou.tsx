@@ -27,7 +27,7 @@ const ReportThankYou = () => {
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button size="lg" className="font-semibold text-base px-8" asChild>
-              <Link to="/investigations">Get Your Own Report</Link>
+              <Link to="/report">Get Your Own Report</Link>
             </Button>
             <Button size="lg" variant="outline-white" className="font-semibold text-base px-8" asChild>
               <Link to="/">Back to Home</Link>

@@ -33,11 +33,11 @@ export const PRODUCTS = {
     href: "/embedded",
     tagline: "A specialist embedded in your team. A partner, not a portal.",
   },
-  lawFirms: {
-    name: "Investigations for law firms",
-    short: "Law firm investigations",
-    href: "/law-firms",
-    tagline: "White-label blockchain investigation behind your practice.",
+  investigations: {
+    name: "Investigations",
+    short: "Investigations",
+    href: "/investigations",
+    tagline: "Blockchain intelligence and investigations for law firms, law enforcement and government.",
   },
   satscore: {
     name: `${SATSCORE.name} by BlockQuery`,

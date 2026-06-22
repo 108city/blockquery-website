@@ -21,7 +21,7 @@ const Individual = () => {
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button size="lg" className="font-semibold text-base px-8" asChild>
-              <Link to="/investigations">Quick Report</Link>
+              <Link to="/report">Quick Report</Link>
             </Button>
             <Button size="lg" variant="outline-white" className="font-semibold text-base px-8" asChild>
               <Link to="/contact">Get Help</Link>
@@ -119,7 +119,7 @@ const Individual = () => {
           </Link>
           <div>
             <Button size="lg" className="font-semibold text-base px-8" asChild>
-              <Link to="/investigations">Get Your Own Report</Link>
+              <Link to="/report">Get Your Own Report</Link>
             </Button>
           </div>
         </div>
@@ -158,7 +158,7 @@ const Individual = () => {
           </p>
           <div className="text-center mt-10">
             <Button size="lg" className="font-semibold text-base px-8" asChild>
-              <Link to="/investigations">Get Report</Link>
+              <Link to="/report">Get Report</Link>
             </Button>
           </div>
         </div>
@@ -181,7 +181,7 @@ const Individual = () => {
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 max-w-xl mx-auto">
             <div className="border border-border rounded-lg p-6 text-center">
               <Button variant="outline-white" className="w-full font-semibold mb-3" asChild>
-                <Link to="/investigations">Quick Investigation Report</Link>
+                <Link to="/report">Quick Investigation Report</Link>
               </Button>
               <p className="text-muted-foreground text-sm">
                 Structured findings delivered within 48 hours.

@@ -5,13 +5,23 @@ import Logo from "@/components/Logo";
 import { Button } from "@/components/ui/button";
 import { PRODUCTS, BOOK_DEMO_HREF } from "@/config/site";
 
+const industryLinks = [
+  { name: "Law Firms", href: "/investigations#law-firms", desc: "Court-ready evidence, asset tracing and expert testimony." },
+  { name: "Government", href: "/investigations#government", desc: "Wide-net intelligence across jurisdictions and high-risk countries." },
+  { name: "AML and KYT", href: "/investigations#aml-kyt", desc: "Counterparty screening and monitoring for compliance teams." },
+];
+
 const productLinks = [
-  { name: PRODUCTS.lawFirms.short, href: PRODUCTS.lawFirms.href, desc: PRODUCTS.lawFirms.tagline },
-  { name: PRODUCTS.satscore.short, href: PRODUCTS.satscore.href, desc: PRODUCTS.satscore.tagline },
+  { name: PRODUCTS.investigations.short, href: PRODUCTS.investigations.href, desc: PRODUCTS.investigations.tagline },
+  { name: PRODUCTS.embedded.short, href: PRODUCTS.embedded.href, desc: PRODUCTS.embedded.tagline },
+];
+
+const menus = [
+  { key: "industries", label: "Industries", items: industryLinks },
+  { key: "products", label: "Products", items: productLinks },
 ];
 
 const navLinks = [
-  { name: "Embedded", href: "/embedded" },
   { name: "Case studies", href: "/case-studies" },
   { name: "Insights", href: "/insights" },
   { name: "About", href: "/about" },
@@ -20,22 +30,20 @@ const navLinks = [
 const Navigation = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [isProductsOpen, setIsProductsOpen] = useState(false);
-  const [isMobileProductsOpen, setIsMobileProductsOpen] = useState(false);
-  const dropdownRef = useRef<HTMLLIElement>(null);
+  const [openMenu, setOpenMenu] = useState<string | null>(null);
+  const [openMobileMenu, setOpenMobileMenu] = useState<string | null>(null);
+  const navRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20);
-    };
+    const handleScroll = () => setIsScrolled(window.scrollY > 20);
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   useEffect(() => {
     const handleClickOutside = (e: MouseEvent) => {
-      if (dropdownRef.current && !dropdownRef.current.contains(e.target as Node)) {
-        setIsProductsOpen(false);
+      if (navRef.current && !navRef.current.contains(e.target as Node)) {
+        setOpenMenu(null);
       }
     };
     document.addEventListener("mousedown", handleClickOutside);
@@ -55,33 +63,34 @@ const Navigation = () => {
           </Link>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center gap-8">
+          <div ref={navRef} className="hidden md:flex items-center gap-8">
             <ul className="flex items-center gap-8">
-              {/* Products dropdown */}
-              <li ref={dropdownRef} className="relative">
-                <button
-                  onClick={() => setIsProductsOpen(!isProductsOpen)}
-                  className="text-foreground hover:text-primary transition-colors duration-200 font-medium inline-flex items-center gap-1"
-                >
-                  Products
-                  <ChevronDown className={`w-4 h-4 transition-transform duration-200 ${isProductsOpen ? "rotate-180" : ""}`} />
-                </button>
-                {isProductsOpen && (
-                  <div className="absolute top-full left-0 mt-2 w-72 bg-background border border-border rounded-lg shadow-lg py-2 z-50">
-                    {productLinks.map((sub) => (
-                      <Link
-                        key={sub.name}
-                        to={sub.href}
-                        className="block px-4 py-2.5 hover:bg-accent transition-colors"
-                        onClick={() => setIsProductsOpen(false)}
-                      >
-                        <span className="block text-sm font-medium text-foreground">{sub.name}</span>
-                        <span className="block text-xs text-muted-foreground mt-0.5">{sub.desc}</span>
-                      </Link>
-                    ))}
-                  </div>
-                )}
-              </li>
+              {menus.map((menu) => (
+                <li key={menu.key} className="relative">
+                  <button
+                    onClick={() => setOpenMenu(openMenu === menu.key ? null : menu.key)}
+                    className="text-foreground hover:text-primary transition-colors duration-200 font-medium inline-flex items-center gap-1"
+                  >
+                    {menu.label}
+                    <ChevronDown className={`w-4 h-4 transition-transform duration-200 ${openMenu === menu.key ? "rotate-180" : ""}`} />
+                  </button>
+                  {openMenu === menu.key && (
+                    <div className="absolute top-full left-0 mt-2 w-72 bg-background border border-border rounded-lg shadow-lg py-2 z-50">
+                      {menu.items.map((sub) => (
+                        <Link
+                          key={sub.name}
+                          to={sub.href}
+                          className="block px-4 py-2.5 hover:bg-accent transition-colors"
+                          onClick={() => setOpenMenu(null)}
+                        >
+                          <span className="block text-sm font-medium text-foreground">{sub.name}</span>
+                          <span className="block text-xs text-muted-foreground mt-0.5">{sub.desc}</span>
+                        </Link>
+                      ))}
+                    </div>
+                  )}
+                </li>
+              ))}
 
               {navLinks.map((link) => (
                 <li key={link.name}>
@@ -115,29 +124,31 @@ const Navigation = () => {
         {isMobileMenuOpen && (
           <div className="md:hidden mt-4 pb-4 bg-background/95 backdrop-blur-sm rounded-lg px-4">
             <ul className="flex flex-col gap-2">
-              <li>
-                <button
-                  onClick={() => setIsMobileProductsOpen(!isMobileProductsOpen)}
-                  className="flex items-center justify-between w-full text-foreground hover:text-primary transition-colors duration-200 font-medium py-2"
-                >
-                  Products
-                  <ChevronDown className={`w-4 h-4 transition-transform duration-200 ${isMobileProductsOpen ? "rotate-180" : ""}`} />
-                </button>
-                {isMobileProductsOpen && (
-                  <div className="pl-4 flex flex-col gap-1 mb-2">
-                    {productLinks.map((sub) => (
-                      <Link
-                        key={sub.name}
-                        to={sub.href}
-                        className="block text-muted-foreground hover:text-primary transition-colors py-1.5 text-sm"
-                        onClick={() => setIsMobileMenuOpen(false)}
-                      >
-                        {sub.name}
-                      </Link>
-                    ))}
-                  </div>
-                )}
-              </li>
+              {menus.map((menu) => (
+                <li key={menu.key}>
+                  <button
+                    onClick={() => setOpenMobileMenu(openMobileMenu === menu.key ? null : menu.key)}
+                    className="flex items-center justify-between w-full text-foreground hover:text-primary transition-colors duration-200 font-medium py-2"
+                  >
+                    {menu.label}
+                    <ChevronDown className={`w-4 h-4 transition-transform duration-200 ${openMobileMenu === menu.key ? "rotate-180" : ""}`} />
+                  </button>
+                  {openMobileMenu === menu.key && (
+                    <div className="pl-4 flex flex-col gap-1 mb-2">
+                      {menu.items.map((sub) => (
+                        <Link
+                          key={sub.name}
+                          to={sub.href}
+                          className="block text-muted-foreground hover:text-primary transition-colors py-1.5 text-sm"
+                          onClick={() => setIsMobileMenuOpen(false)}
+                        >
+                          {sub.name}
+                        </Link>
+                      ))}
+                    </div>
+                  )}
+                </li>
+              ))}
 
               {navLinks.map((link) => (
                 <li key={link.name}>

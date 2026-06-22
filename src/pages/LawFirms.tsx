@@ -1,9 +1,43 @@
+// Investigations services page - serves law firms, government / law enforcement,
+// and AML and KYT. Routed at /investigations.
 import { Link } from "react-router-dom";
-import { Scale, CheckCircle, Sparkles, ArrowRight, LayoutDashboard, Gauge, LucideIcon } from "lucide-react";
+import {
+  Search,
+  Scale,
+  Landmark,
+  ShieldCheck,
+  CheckCircle,
+  Sparkles,
+  ArrowRight,
+  LayoutDashboard,
+  Gauge,
+  LucideIcon,
+} from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
-import { PRODUCTS, BOOK_DEMO_HREF } from "@/config/site";
+import { BOOK_DEMO_HREF, SATSCORE } from "@/config/site";
+
+const audiences: { icon: LucideIcon; title: string; body: string; href: string }[] = [
+  {
+    icon: Scale,
+    title: "Law firms",
+    body: "Court-ready evidence, asset tracing and expert testimony, delivered quietly behind your practice.",
+    href: "#law-firms",
+  },
+  {
+    icon: Landmark,
+    title: "Government and law enforcement",
+    body: "A bird's eye view on the intersection of national security and the submerged economy.",
+    href: "#government",
+  },
+  {
+    icon: ShieldCheck,
+    title: "AML and KYT",
+    body: "Counterparty screening and monitoring for compliance teams, backed by our address intelligence.",
+    href: "#aml-kyt",
+  },
+];
 
 const highlights: { icon: LucideIcon; title: string; body: string; points: string[] }[] = [
   {
@@ -28,14 +62,7 @@ const highlights: { icon: LucideIcon; title: string; body: string; points: strin
   },
 ];
 
-const scenarios = [
-  "Asset-tracing requests on contentious divorce, fraud or insolvency matters",
-  "Crypto-related disputes where you need defensible on-chain evidence",
-  "Clients asking for blockchain investigation capability you don't yet have in-house",
-  "Existing partners who deliver slowly, expensively or inconsistently",
-];
-
-const deliverables = [
+const lawFirmDeliverables = [
   {
     title: "White-label investigation capability",
     body: "Cases delivered under your firm's brand or ours, your choice. Court-ready output, your client relationship preserved.",
@@ -49,15 +76,34 @@ const deliverables = [
     body: "NDAs from first contact, conflict checks before we engage, and discreet handling that protects your client relationship.",
   },
   {
-    title: "Expert witness & affidavits",
+    title: "Expert witness and affidavits",
     body: "Senior investigators available for testimony, sworn statements and rebuttal analysis when matters head to court.",
+  },
+];
+
+const govDeliverables = [
+  {
+    title: "Wide coverage of known illicit entities and clusters",
+    body: "A map of the actors that matter - sanctioned entities, illicit services and the clusters around them - across chains and jurisdictions.",
+  },
+  {
+    title: "A jurisdiction-level risk picture",
+    body: "Where risk concentrates by country and corridor, including high-risk jurisdictions, so analysts know where to look - not just what one address did.",
+  },
+  {
+    title: "Briefings your analysts can act on",
+    body: "Structured intelligence and periodic briefings framed for decision-makers, not raw transaction dumps.",
+  },
+  {
+    title: "Discreet, sovereign handling",
+    body: "NDAs from first contact and deployment options that keep sensitive work inside your perimeter.",
   },
 ];
 
 const proof = [
   { metric: "27+", label: "Law firms in partnership" },
-  { metric: "10%", label: "Referral commission, where permitted" },
-  { metric: "Days", label: "From brief to first findings" },
+  { metric: "Government", label: "Intelligence deployments delivered" },
+  { metric: "Multi-chain", label: "Coverage across jurisdictions" },
   { metric: "Court-ready", label: "Evidence packages by default" },
 ];
 
@@ -70,19 +116,17 @@ const LawFirms = () => {
       <section className="pt-32 pb-20 sm:pt-40 sm:pb-28 px-4 sm:px-6">
         <div className="container mx-auto max-w-4xl text-center">
           <div className="w-[34px] h-[34px] mx-auto rounded-lg bg-brand-tint flex items-center justify-center mb-6">
-            <Scale className="w-[18px] h-[18px] text-primary" strokeWidth={1.75} />
+            <Search className="w-[18px] h-[18px] text-primary" strokeWidth={1.75} />
           </div>
           <p className="text-sm font-semibold uppercase tracking-widest text-primary mb-6">
-            {PRODUCTS.lawFirms.name}
+            Intelligence and investigations
           </p>
           <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-6 leading-tight">
-            Investigation capability behind your practice.
+            Blockchain intelligence and investigations for law firms, law enforcement, and government.
           </h1>
           <p className="text-lg sm:text-xl text-muted-foreground mb-10 max-w-3xl mx-auto">
-            A growing number of law firms advertise blockchain services without an
-            in-house investigation function. We're the team that sits quietly behind
-            your practice, delivering the analysis, evidence and expert testimony you
-            commit to your clients.
+            We give legal teams, law enforcement and government the on-chain analysis, evidence
+            and intelligence they rely on - from a single case to a wide view across jurisdictions.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button size="lg" className="font-medium" asChild>
@@ -97,22 +141,62 @@ const LawFirms = () => {
 
       <div className="border-t border-border" />
 
-      {/* Highlights — case management platform + case triage */}
+      {/* Who we serve */}
       <section className="py-20 sm:py-28 px-4 sm:px-6 bg-card">
-        <div className="container mx-auto max-w-5xl">
+        <div className="container mx-auto max-w-6xl">
           <p className="text-sm font-semibold uppercase tracking-widest text-primary text-center mb-4">
-            Built for your caseload
+            Who we serve
           </p>
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-center mb-4">
-            Two tools that change how you take on cases.
+            One capability, three kinds of buyer.
           </h2>
           <p className="text-lg text-muted-foreground text-center mb-14 max-w-2xl mx-auto">
-            Beyond the investigation itself, we give your practice the tooling to
-            decide which cases to take, and to run the ones you do.
+            The same on-chain intelligence, shaped to the question you are actually asking.
           </p>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
+            {audiences.map((a) => (
+              <a
+                key={a.title}
+                href={a.href}
+                className="border border-border rounded-xl p-6 sm:p-8 bg-background hover:border-primary transition-colors duration-300 group flex flex-col"
+              >
+                <div className="w-[34px] h-[34px] rounded-lg bg-brand-tint flex items-center justify-center mb-6">
+                  <a.icon className="w-[18px] h-[18px] text-primary" strokeWidth={1.75} />
+                </div>
+                <h3 className="text-lg font-medium mb-2">{a.title}</h3>
+                <p className="text-sm text-muted-foreground leading-relaxed flex-1">{a.body}</p>
+                <span className="text-sm text-primary font-medium inline-flex items-center gap-1.5 mt-5 group-hover:gap-2.5 transition-all">
+                  Learn more <ArrowRight className="w-4 h-4" />
+                </span>
+              </a>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <div className="border-t border-border" />
+
+      {/* For law firms */}
+      <section id="law-firms" className="py-20 sm:py-28 px-4 sm:px-6 scroll-mt-20">
+        <div className="container mx-auto max-w-5xl">
+          <div className="flex items-center gap-3 mb-5">
+            <div className="w-[34px] h-[34px] rounded-lg bg-brand-tint flex items-center justify-center">
+              <Scale className="w-[18px] h-[18px] text-primary" strokeWidth={1.75} />
+            </div>
+            <p className="text-sm font-semibold uppercase tracking-widest text-primary">For law firms</p>
+          </div>
+          <h2 className="text-3xl sm:text-4xl font-bold mb-4 leading-tight max-w-3xl">
+            Investigation capability behind your practice.
+          </h2>
+          <p className="text-lg text-muted-foreground mb-12 max-w-3xl">
+            We sit quietly behind your practice, delivering the analysis, evidence and expert
+            testimony you commit to your clients - plus the tooling to decide which cases to take.
+          </p>
+
+          {/* Two tools */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8 mb-6 lg:mb-8">
             {highlights.map((h) => (
-              <div key={h.title} className="border border-border rounded-xl p-6 sm:p-8 bg-background flex flex-col">
+              <div key={h.title} className="border border-border rounded-xl p-6 sm:p-8 bg-card flex flex-col">
                 <div className="w-[34px] h-[34px] rounded-lg bg-brand-tint flex items-center justify-center mb-6">
                   <h.icon className="w-[18px] h-[18px] text-primary" strokeWidth={1.75} />
                 </div>
@@ -129,44 +213,43 @@ const LawFirms = () => {
               </div>
             ))}
           </div>
-        </div>
-      </section>
 
-      <div className="border-t border-border" />
-
-      {/* Scenarios */}
-      <section className="py-20 sm:py-28 px-4 sm:px-6">
-        <div className="container mx-auto max-w-3xl">
-          <h2 className="text-3xl sm:text-4xl font-bold text-center mb-10">
-            You may be facing:
-          </h2>
-          <ul className="space-y-4 max-w-xl mx-auto mb-8">
-            {scenarios.map((s) => (
-              <li key={s} className="flex items-start gap-3">
-                <CheckCircle className="w-6 h-6 text-primary flex-shrink-0 mt-0.5" />
-                <span className="text-lg">{s}</span>
-              </li>
-            ))}
-          </ul>
-          <p className="text-foreground font-medium text-center text-lg">
-            In professional matters, assumptions are not enough. Structured analysis is required.
-          </p>
-        </div>
-      </section>
-
-      <div className="border-t border-border" />
-
-      {/* Deliverables */}
-      <section className="py-20 sm:py-28 px-4 sm:px-6 bg-card">
-        <div className="container mx-auto max-w-5xl">
-          <p className="text-sm font-semibold uppercase tracking-widest text-primary text-center mb-4">
-            What we deliver
-          </p>
-          <h2 className="text-3xl sm:text-4xl font-bold text-center mb-14">
-            Built around the workflow you actually run.
-          </h2>
+          {/* Deliverables */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
-            {deliverables.map((d) => (
+            {lawFirmDeliverables.map((d) => (
+              <div key={d.title} className="border border-border rounded-xl p-6 sm:p-8 bg-card">
+                <h3 className="text-lg font-medium mb-3">{d.title}</h3>
+                <p className="text-sm text-muted-foreground leading-relaxed">{d.body}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <div className="border-t border-border" />
+
+      {/* Government and law enforcement */}
+      <section id="government" className="py-20 sm:py-28 px-4 sm:px-6 bg-card scroll-mt-20">
+        <div className="container mx-auto max-w-5xl">
+          <div className="flex items-center gap-3 mb-5">
+            <div className="w-[34px] h-[34px] rounded-lg bg-brand-tint flex items-center justify-center">
+              <Landmark className="w-[18px] h-[18px] text-primary" strokeWidth={1.75} />
+            </div>
+            <p className="text-sm font-semibold uppercase tracking-widest text-primary">
+              For government and law enforcement
+            </p>
+          </div>
+          <h2 className="text-3xl sm:text-4xl font-bold mb-4 leading-tight max-w-3xl">
+            A bird's eye view on the submerged economy.
+          </h2>
+          <p className="text-lg text-muted-foreground mb-12 max-w-3xl">
+            Where national security meets illicit finance, the value moves on-chain. We give
+            intelligence and law-enforcement teams a wide view of that activity across many
+            jurisdictions and high-risk countries - broad coverage of the known illicit economy,
+            not single-transaction enforcement detail.
+          </p>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
+            {govDeliverables.map((d) => (
               <div key={d.title} className="border border-border rounded-xl p-6 sm:p-8 bg-background">
                 <h3 className="text-lg font-medium mb-3">{d.title}</h3>
                 <p className="text-sm text-muted-foreground leading-relaxed">{d.body}</p>
@@ -178,8 +261,60 @@ const LawFirms = () => {
 
       <div className="border-t border-border" />
 
+      {/* AML and KYT */}
+      <section id="aml-kyt" className="py-20 sm:py-28 px-4 sm:px-6 scroll-mt-20">
+        <div className="container mx-auto max-w-5xl">
+          <div className="grid grid-cols-1 lg:grid-cols-5 gap-10 lg:gap-16 items-start">
+            <div className="lg:col-span-3">
+              <div className="flex items-center gap-3 mb-5">
+                <div className="w-[34px] h-[34px] rounded-lg bg-brand-tint flex items-center justify-center">
+                  <ShieldCheck className="w-[18px] h-[18px] text-primary" strokeWidth={1.75} />
+                </div>
+                <p className="text-sm font-semibold uppercase tracking-widest text-primary">For AML and KYT</p>
+              </div>
+              <h2 className="text-3xl sm:text-4xl font-bold mb-4 leading-tight">
+                Screening and monitoring, backed by our address intelligence.
+              </h2>
+              <p className="text-lg text-muted-foreground mb-8">
+                Compliance teams use the same labelled-wallet intelligence to screen counterparties
+                and monitor exposure - turning our address data into a clear risk decision.
+              </p>
+              <ul className="space-y-3 max-w-xl">
+                {[
+                  "Counterparty screening against known illicit entities and clusters",
+                  "Plain-language risk verdicts, not raw transaction dumps",
+                  "Per-check pricing, with no platform to buy up front",
+                ].map((p) => (
+                  <li key={p} className="flex items-start gap-3">
+                    <CheckCircle className="w-6 h-6 text-primary flex-shrink-0 mt-0.5" />
+                    <span className="text-lg">{p}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* SatScore tool card */}
+            <div className="lg:col-span-2 border border-border rounded-xl p-6 sm:p-8 bg-card">
+              <p className="text-xs uppercase tracking-wider text-muted-foreground mb-2">The tool</p>
+              <h3 className="text-xl font-medium mb-3">SatScore</h3>
+              <p className="text-sm text-muted-foreground leading-relaxed mb-6">
+                Our self-serve KYT tool for Bitcoin. Paste an address, get a plain-language risk
+                verdict, and pay {SATSCORE.priceSats} sats per check over Lightning.
+              </p>
+              <Button variant="outline-white" className="font-medium w-full" asChild>
+                <Link to={SATSCORE.route}>
+                  Explore SatScore <ArrowRight className="w-4 h-4 ml-2" />
+                </Link>
+              </Button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div className="border-t border-border" />
+
       {/* Proof */}
-      <section className="py-20 sm:py-28 px-4 sm:px-6">
+      <section className="py-20 sm:py-28 px-4 sm:px-6 bg-card">
         <div className="container mx-auto max-w-5xl">
           <div className="grid grid-cols-1 lg:grid-cols-5 gap-10 lg:gap-16 items-start">
             <div className="lg:col-span-2">
@@ -187,17 +322,16 @@ const LawFirms = () => {
                 Proof of work
               </p>
               <h2 className="text-3xl sm:text-4xl font-bold mb-6 leading-tight">
-                A growing strategic network.
+                Trusted where the stakes are highest.
               </h2>
               <p className="text-muted-foreground text-lg leading-relaxed">
-                We've partnered with 27+ law firms across multiple jurisdictions.
-                Where legal action is the destination, we're the team they call to
-                build the evidence.
+                We work with law firms across multiple jurisdictions and have delivered intelligence
+                for government clients. Where the answer has to hold up, we are the team they call.
               </p>
             </div>
             <div className="lg:col-span-3 grid grid-cols-1 sm:grid-cols-2 gap-4">
               {proof.map((p) => (
-                <div key={p.label} className="border border-border rounded-xl p-6 bg-card flex flex-col">
+                <div key={p.label} className="border border-border rounded-xl p-6 bg-background flex flex-col">
                   <div className="w-9 h-9 rounded-lg bg-brand-tint flex items-center justify-center mb-4">
                     <Sparkles className="w-4 h-4 text-primary" strokeWidth={1.75} />
                   </div>
@@ -213,14 +347,14 @@ const LawFirms = () => {
       <div className="border-t border-border" />
 
       {/* CTA */}
-      <section className="py-20 sm:py-28 md:py-36 px-4 sm:px-6 bg-card">
+      <section className="py-20 sm:py-28 md:py-36 px-4 sm:px-6">
         <div className="container mx-auto max-w-3xl text-center">
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-6">
-            Add investigation capability to your practice.
+            Talk to our investigations team.
           </h2>
           <p className="text-lg text-muted-foreground mb-10 max-w-2xl mx-auto">
-            Whether you're scoping a single matter or building an ongoing referral
-            relationship, the conversation starts the same way.
+            Whether you are scoping a single matter or briefing an intelligence team, the
+            conversation starts the same way.
           </p>
           <Button size="lg" className="font-medium" asChild>
             <Link to={BOOK_DEMO_HREF}>

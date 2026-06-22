@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { Users, Scale, Bitcoin, CheckCircle, ArrowRight, LucideIcon } from "lucide-react";
+import { Users, Search, Bitcoin, CheckCircle, ArrowRight, LucideIcon } from "lucide-react";
 import { PRODUCTS } from "@/config/site";
 
 interface Offering {
@@ -25,15 +25,15 @@ const offerings: Offering[] = [
     ],
   },
   {
-    icon: Scale,
-    name: PRODUCTS.lawFirms.name,
-    tagline: PRODUCTS.lawFirms.tagline,
-    href: PRODUCTS.lawFirms.href,
+    icon: Search,
+    name: PRODUCTS.investigations.name,
+    tagline: PRODUCTS.investigations.tagline,
+    href: PRODUCTS.investigations.href,
     cta: "Explore investigations",
     points: [
-      "White-label cases under your firm's brand",
-      "Referral commission where regulation permits",
-      "Court-ready evidence and expert-witness testimony",
+      "Court-ready evidence and expert testimony for law firms",
+      "Wide-net on-chain intelligence for government and law enforcement",
+      "Known illicit entities and clusters across chains and jurisdictions",
     ],
   },
   {

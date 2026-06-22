@@ -5,17 +5,14 @@ import { PRODUCTS } from "@/config/site";
 const Footer = () => {
   const productLinks = [
     { name: PRODUCTS.embedded.name, href: PRODUCTS.embedded.href },
-    { name: PRODUCTS.lawFirms.name, href: PRODUCTS.lawFirms.href },
+    { name: PRODUCTS.investigations.name, href: PRODUCTS.investigations.href },
     { name: PRODUCTS.satscore.name, href: PRODUCTS.satscore.href },
   ];
 
-  const useCaseLinks = [
-    { name: "Law firms", href: "/law-firms" },
-    { name: "iGaming operators", href: "/contact" },
-    { name: "Gaming regulators", href: "/contact" },
-    { name: "Law enforcement & government", href: "/contact" },
-    { name: "Crypto insurance", href: "/contact" },
-    { name: "Forensic reports", href: "/contact" },
+  const industryLinks = [
+    { name: "Law firms", href: "/investigations#law-firms" },
+    { name: "Government", href: "/investigations#government" },
+    { name: "AML and KYT", href: "/investigations#aml-kyt" },
   ];
 
   const companyLinks = [
@@ -58,9 +55,9 @@ const Footer = () => {
           </div>
 
           <div>
-            <h4 className="text-sm font-semibold mb-4">Use cases</h4>
+            <h4 className="text-sm font-semibold mb-4">Industries</h4>
             <ul className="space-y-2">
-              {useCaseLinks.map((link) => (
+              {industryLinks.map((link) => (
                 <li key={link.name}>
                   <Link
                     to={link.href}
