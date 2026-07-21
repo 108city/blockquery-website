@@ -230,6 +230,8 @@
     .form-ok .tick svg { width: 24px; height: 24px; stroke: var(--green); }
     .form-ok h3 { font-size: 20px; margin-bottom: 10px; }
     .form-ok p { color: var(--muted); font-size: 15px; }
+    .form-err { display: none; margin-top: 14px; color: var(--amber); font-size: 14px; text-align: center; }
+    .form-err a { color: var(--muted); }
 
     /* Footer */
     footer.site { border-top: 1px solid var(--border); padding: 40px 0; }
@@ -573,12 +575,20 @@
 
         <div>
           <!--
-            TODO(integration): wire this form to the real intake endpoint.
-            Replace FORM_ENDPOINT below and remove the preventDefault handler at the
-            bottom of the page so the browser performs the POST. No live integration
-            is wired up yet, by design.
+            Lead delivery: Web3Forms (https://web3forms.com) -> emails greg@chainlabs.ai.
+            ONE-TIME SETUP (~2 min, no code): go to web3forms.com, enter greg@chainlabs.ai,
+            and paste the free access key into the access_key hidden input below (value=).
+            Until a real key replaces the placeholder, the form shows the confirmation but
+            does NOT deliver. The JS below submits via AJAX; the form action is the no-JS
+            fallback (Web3Forms then redirects back to /data).
           -->
-          <form id="sample-form" action="https://REPLACE-ME.blockquery.io/sample-request" method="post" novalidate>
+          <form id="sample-form" action="https://api.web3forms.com/submit" method="post" novalidate>
+            <input type="hidden" name="access_key" value="REPLACE_WITH_WEB3FORMS_ACCESS_KEY" />
+            <input type="hidden" name="subject" value="New BlockQuery sample-data request" />
+            <input type="hidden" name="from_name" value="BlockQuery data page" />
+            <input type="hidden" name="redirect" value="https://www.blockquery.io/data" />
+            <!-- spam honeypot: bots tick this, humans never see it -->
+            <input type="checkbox" name="botcheck" style="display:none" tabindex="-1" aria-hidden="true" />
             <div class="field">
               <label for="f-name">Name</label>
               <input id="f-name" name="name" type="text" autocomplete="name" required placeholder="Your name" />
@@ -604,6 +614,7 @@
             <h3>Request received.</h3>
             <p>Thanks. We will be in touch shortly to set up your sample.</p>
           </div>
+          <p class="form-err" id="form-err" role="alert">Something went wrong sending that. Please try again, or <a href="mailto:hello@blockquery.io?subject=BlockQuery%20sample%20data%20request">email us directly</a>.</p>
         </div>
       </div>
     </section>
@@ -626,20 +637,63 @@
   </footer>
 
   <script>
-    // Placeholder submit handling. No live integration is wired up (see TODO above).
-    // Intercept the submit so the demo POST to REPLACE-ME does not fire, and show a
-    // confirmation state. Whoever wires the real endpoint should remove this handler.
+    // Lead delivery via Web3Forms (https://web3forms.com) -> greg@chainlabs.ai.
+    // Submits via AJAX so the on-page confirmation works; the form's action attribute is
+    // the no-JS fallback. Paste the Web3Forms access key into the access_key hidden field
+    // (see the comment above the form) to go live.
     (function () {
       var form = document.getElementById('sample-form');
       var ok = document.getElementById('form-ok');
+      var err = document.getElementById('form-err');
       if (!form) return;
+      var PLACEHOLDER = 'REPLACE_WITH_WEB3FORMS_ACCESS_KEY';
+
+      function reveal() {
+        form.style.display = 'none';
+        if (err) err.style.display = 'none';
+        ok.classList.add('show');
+        if (ok.focus) ok.focus();
+      }
+
       form.addEventListener('submit', function (e) {
         e.preventDefault();
         if (!form.checkValidity()) { form.reportValidity(); return; }
-        // TODO(integration): POST the form data to the real intake endpoint here.
-        form.style.display = 'none';
-        ok.classList.add('show');
-        ok.focus && ok.focus();
+
+        var keyEl = form.elements['access_key'];
+        var key = keyEl ? keyEl.value : '';
+
+        // Not configured yet: confirm locally so the page is not broken, but this does
+        // NOT deliver. Set a real Web3Forms key for greg@chainlabs.ai to enable delivery.
+        if (!key || key === PLACEHOLDER) {
+          if (window.console) console.warn('[BlockQuery] Web3Forms access key not set - submission not delivered.');
+          reveal();
+          return;
+        }
+
+        var btn = form.querySelector('button[type="submit"]');
+        var label = btn.textContent;
+        btn.disabled = true;
+        btn.textContent = 'Sending...';
+        if (err) err.style.display = 'none';
+
+        var payload = {};
+        new FormData(form).forEach(function (v, k) { payload[k] = v; });
+
+        fetch('https://api.web3forms.com/submit', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+          body: JSON.stringify(payload)
+        })
+          .then(function (r) { return r.json(); })
+          .then(function (out) {
+            if (out && out.success) { reveal(); }
+            else { throw new Error((out && out.message) || 'failed'); }
+          })
+          .catch(function () {
+            btn.disabled = false;
+            btn.textContent = label;
+            if (err) err.style.display = 'block';
+          });
       });
     })();
   </script>
