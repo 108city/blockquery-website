@@ -330,7 +330,7 @@
           <p class="sub">Every desk sees 400 BTC move onto an exchange. Almost nobody sees who moved it. <b>BlockQuery names the entity on both sides of an on-chain flow</b>, delivered as data you own and run against your own models.</p>
           <div class="hero-ctas">
             <a class="btn btn-primary" href="#form">Request sample data</a>
-            <a class="btn-link" href="mailto:hello@blockquery.io?subject=BlockQuery%20sample%20data%20-%20book%20a%20call">Book a call</a>
+            <a class="btn-link" href="https://koalendar.com/e/meet-with-greg-schneider-chainlabs" target="_blank" rel="noopener noreferrer">Book a call</a>
           </div>
           <div class="cred" aria-label="Track record">
             <span><b>Six years</b> of entity attribution</span>
@@ -576,14 +576,13 @@
         <div>
           <!--
             Lead delivery: Web3Forms (https://web3forms.com) -> emails greg@chainlabs.ai.
-            ONE-TIME SETUP (~2 min, no code): go to web3forms.com, enter greg@chainlabs.ai,
-            and paste the free access key into the access_key hidden input below (value=).
-            Until a real key replaces the placeholder, the form shows the confirmation but
-            does NOT deliver. The JS below submits via AJAX; the form action is the no-JS
-            fallback (Web3Forms then redirects back to /data).
+            access_key below is a Web3Forms PUBLIC key (safe to expose in HTML), tied to
+            greg@chainlabs.ai. To change the destination, create a new key at web3forms.com
+            and replace the value. The JS below submits via AJAX; the form action is the
+            no-JS fallback (Web3Forms then redirects back to /data).
           -->
           <form id="sample-form" action="https://api.web3forms.com/submit" method="post" novalidate>
-            <input type="hidden" name="access_key" value="REPLACE_WITH_WEB3FORMS_ACCESS_KEY" />
+            <input type="hidden" name="access_key" value="b09b8765-736f-49f8-9ff6-284dab89ebea" />
             <input type="hidden" name="subject" value="New BlockQuery sample-data request" />
             <input type="hidden" name="from_name" value="BlockQuery data page" />
             <input type="hidden" name="redirect" value="https://www.blockquery.io/data" />
@@ -606,7 +605,7 @@
               <textarea id="f-trade" name="trades" placeholder="e.g. BTC spot and perps, medium-frequency systematic. We would test it against our flow-imbalance signals."></textarea>
             </div>
             <button class="btn btn-primary" type="submit">Request sample data</button>
-            <p class="form-foot">Prefer to talk first? <a href="mailto:hello@blockquery.io?subject=BlockQuery%20sample%20data%20-%20book%20a%20call">Book a call</a>.</p>
+            <p class="form-foot">Prefer to talk first? <a href="https://koalendar.com/e/meet-with-greg-schneider-chainlabs" target="_blank" rel="noopener noreferrer">Book a call</a>.</p>
           </form>
 
           <div class="form-ok" id="form-ok" role="status" aria-live="polite" tabindex="-1">
@@ -629,7 +628,7 @@
       </span>
       <nav class="foot-links" aria-label="Footer">
         <a href="#form">Request sample data</a>
-        <a href="mailto:hello@blockquery.io?subject=BlockQuery%20sample%20data%20-%20book%20a%20call">Book a call</a>
+        <a href="https://koalendar.com/e/meet-with-greg-schneider-chainlabs" target="_blank" rel="noopener noreferrer">Book a call</a>
         <a href="/privacy">Privacy</a>
       </nav>
       <span class="copy">&copy; 2026 BlockQuery. On-chain intelligence, powered by Chainlabs.</span>
