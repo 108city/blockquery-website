@@ -86,16 +86,16 @@ a{ color:inherit; }
 .rail a:hover{ color:var(--white); }
 
 /* ---------- section scaffolding ---------- */
-section{ padding:clamp(56px,9vw,116px) 0; }
+section{ padding:clamp(40px,5.5vw,64px) 0; }
 /* also used on an h2 in section 02, so it must reset the display-face rule */
 .marker{ font-family:var(--mono); font-weight:400; line-height:1.4;
   font-size:10.5px; letter-spacing:.22em; text-transform:uppercase;
-  color:var(--muted); margin:0 0 clamp(26px,4vw,44px); }
+  color:var(--muted); margin:0 0 clamp(22px,3vw,34px); }
 h2{ font-size:clamp(28px,4.4vw,44px); }
 
 /* ---------- hero ---------- */
 .hero{ position:relative; overflow:hidden;
-  padding-top:clamp(52px,8vw,96px); padding-bottom:clamp(40px,6vw,72px); }
+  padding-top:clamp(48px,7vw,84px); padding-bottom:clamp(30px,4vw,48px); }
 .hero .wrap{ position:relative; z-index:1; }
 /* address rain: canvas behind the hero copy, right-weighted, faint.
    Purely decorative (aria-hidden); a static scatter under reduced motion. */
@@ -124,7 +124,7 @@ h2{ font-size:clamp(28px,4.4vw,44px); }
    No container, no background, no radius. Hairlines only.
    One variable (--wipe) draws the strike on row 1 and
    reveals the name on row 2, so they cannot desynchronise. */
-.resolve{ margin:clamp(48px,7vw,88px) 0 0; padding:clamp(20px,2.6vw,32px) 0;
+.resolve{ margin:clamp(40px,5.5vw,64px) 0 0; padding:clamp(20px,2.6vw,32px) 0;
   border-top:1px solid var(--border); border-bottom:1px solid var(--border); }
 .rec{ display:grid; align-items:baseline;
   grid-template-columns:max-content max-content 2.4ch max-content;
