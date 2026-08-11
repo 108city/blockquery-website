@@ -166,15 +166,21 @@ h2{ font-size:clamp(28px,4.4vw,44px); }
     animation:edge 780ms linear calc(420ms + var(--i,0)*60ms) both; }
 }
 
-/* ---------- what we cover ---------- */
-.items{ border-top:1px solid var(--border); }
-.item{ display:grid; grid-template-columns:4.5ch minmax(0,300px) minmax(0,1fr);
-  gap:clamp(14px,3vw,44px); padding:clamp(26px,3.4vw,40px) 0;
-  border-bottom:1px solid var(--border); }
-.item .n{ color:var(--muted); font-size:12px; letter-spacing:.1em; padding-top:.35em; }
-.item h3{ margin:0; font-family:var(--mono); font-weight:500; font-size:clamp(15px,1.7vw,18px);
-  color:var(--white); line-height:1.4; letter-spacing:0; text-wrap:balance; }
-.item p{ color:var(--muted); font-size:14.5px; line-height:1.72; }
+/* ---------- what we cover ----------
+   Three blocks across, separated by hairlines - a ruled strip, not cards.
+   Icons are hand-drawn monoline strokes in muted, per the house style. */
+.cover{ display:grid; grid-template-columns:repeat(3,1fr);
+  border-top:1px solid var(--border); border-bottom:1px solid var(--border); }
+.cov{ padding:clamp(26px,3.4vw,42px) clamp(20px,2.6vw,36px); }
+.cov+.cov{ border-left:1px solid var(--border); }
+.cov:first-child{ padding-left:0; }
+.cov:last-child{ padding-right:0; }
+.ci{ width:24px; height:24px; stroke:var(--muted); fill:none; stroke-width:1.5;
+  stroke-linecap:round; stroke-linejoin:round; display:block;
+  margin-bottom:clamp(16px,2vw,22px); }
+.cov h3{ margin:0 0 12px; font-family:var(--mono); font-weight:500;
+  font-size:clamp(15px,1.7vw,17px); color:var(--white); line-height:1.4; }
+.cov p{ color:var(--muted); font-size:14px; line-height:1.7; }
 .foot-note{ margin-top:clamp(22px,3vw,32px); color:var(--muted);
   font-size:12.5px; line-height:1.75; max-width:78ch; }
 
@@ -238,8 +244,9 @@ footer{ border-top:1px solid var(--border); padding:30px 0 44px; }
 /* ---------- responsive ---------- */
 @media (max-width:860px){
   .cta-grid{ grid-template-columns:1fr; }
-  .item{ grid-template-columns:3.5ch 1fr; }
-  .item p{ grid-column:2; }
+  .cover{ grid-template-columns:1fr; }
+  .cov{ padding-left:0; padding-right:0; }
+  .cov+.cov{ border-left:0; border-top:1px solid var(--border); }
   .figs{ grid-template-columns:1fr; gap:22px; }
   .fig{ display:flex; align-items:baseline; gap:14px; }
   .fig .k{ margin-top:0; }
@@ -309,22 +316,37 @@ footer{ border-top:1px solid var(--border); padding:30px 0 44px; }
   <section>
     <div class="wrap">
       <h2 class="marker">What we cover</h2>
-      <div class="items">
+      <div class="cover">
 
-        <div class="item">
-          <span class="n">01</span>
+        <div class="cov">
+          <!-- coin flowing to a venue -->
+          <svg class="ci" viewBox="0 0 24 24" aria-hidden="true">
+            <circle cx="7.5" cy="7.5" r="4.5"/>
+            <path d="M10.8 10.8 L14.6 14.6" />
+            <path d="M14.6 14.6 l-3 -0.55 M14.6 14.6 l-0.55 -3" />
+            <rect x="15.2" y="15.2" width="5.8" height="5.8"/>
+          </svg>
           <h3>Stablecoin flows</h3>
           <p>Everyone sees the mint. Almost nobody sees where it goes. We track USDC and USDT to the venue that receives it, including the regional exchanges across LatAm, Africa and Asia that run on stablecoin rails and sit unattributed everywhere else.</p>
         </div>
 
-        <div class="item">
-          <span class="n">02</span>
+        <div class="cov">
+          <!-- clock: seen before it confirms -->
+          <svg class="ci" viewBox="0 0 24 24" aria-hidden="true">
+            <circle cx="12" cy="12" r="8.5"/>
+            <path d="M12 7.2 V12 L15.6 13.9"/>
+          </svg>
           <h3>Bitcoin, before it confirms</h3>
           <p>We see BTC transactions in the mempool with the sending entity named. You know a specific desk or treasury is moving size before it lands on-chain.</p>
         </div>
 
-        <div class="item">
-          <span class="n">03</span>
+        <div class="cov">
+          <!-- crosshair: cut to the question -->
+          <svg class="ci" viewBox="0 0 24 24" aria-hidden="true">
+            <circle cx="12" cy="12" r="7"/>
+            <path d="M12 2.6 V5.8 M12 18.2 V21.4 M2.6 12 H5.8 M18.2 12 H21.4"/>
+            <circle cx="12" cy="12" r="1.1" fill="currentColor" stroke="none"/>
+          </svg>
           <h3>Cut to your question</h3>
           <p>Every feed comes off the same attribution layer. Choose the entities, the chains, the granularity and the history that match what you are actually trying to answer.</p>
         </div>
