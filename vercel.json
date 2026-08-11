@@ -1,12 +1,5 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
-  "_comment": [
-    "blockquery.io is a single static page (index.html) selling on-chain entity",
-    "attribution to trading desks. The React SPA still builds to app.html and",
-    "every non-file path rewrites to it, so the old pages remain FULLY WORKING",
-    "behind the redirects below - they are hidden, not deleted.",
-    "TO UN-HIDE A PAGE: delete its line from 'redirects'. Nothing else needed."
-  ],
   "redirects": [
     { "source": "/investigations", "destination": "/", "permanent": false },
     { "source": "/satscore", "destination": "/", "permanent": false },
