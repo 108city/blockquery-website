@@ -1,50 +1,447 @@
 <!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>BlockQuery — on-chain intelligence & blockchain forensics</title>
-    <meta name="description" content="Intel. Insights. Investigations. Productized on-chain intelligence — wallet screening, transaction forensics, KYT and sanctioned-jurisdiction analysis for exchanges, regulators, compliance teams and asset-recovery practitioners." />
-    
-    <!-- Google Tag Manager -->
-    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-    })(window,document,'script','dataLayer','GTM-PS38JVZK');</script>
-    <!-- End Google Tag Manager -->
+<html lang="en-GB">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <!-- Start VWO Async SmartCode -->
-    <link rel="preconnect" href="https://dev.visualwebsiteoptimizer.com" />
-    <script type='text/javascript' id='vwoCode'>
-    window._vwo_code ||
-    (function () {
-    var w=window,d=document;var account_id=1200010,version=2.2,settings_tolerance=2000,hide_element='body',hide_element_style = 'opacity:0 !important;filter:alpha(opacity=0) !important;background:none !important',f=0;
-    if(f=!1,v=d.querySelector('#vwoCode'),cc={},-1<d.URL.indexOf('__vwo_disable__')||w._vwo_code)return;try{var e=JSON.parse(localStorage.getItem('_vwo_'+account_id+'_config'));cc=e&&'object'==typeof e?e:{}}catch(e){}function r(t){try{return decodeURIComponent(t)}catch(e){return t}}var s=function(){var e={combination:[],combinationChoose:[],split:[],exclude:[],uuid:null,consent:null,optOut:null},t=d.cookie||'';if(!t)return e;for(var n,i,o=/(?:^|;\s*)(?:(_vis_opt_exp_(\d+)_combi=([^;]*))|(_vis_opt_exp_(\d+)_combi_choose=([^;]*))|(_vis_opt_exp_(\d+)_split=([^:;]*))|(_vis_opt_exp_(\d+)_exclude=[^;]*)|(_vis_opt_out=([^;]*))|(_vwo_global_opt_out=[^;]*)|(_vwo_uuid=([^;]*))|(_vwo_consent=([^;]*)))/g;null!==(n=o.exec(t));)try{n[1]?e.combination.push({id:n[2],value:r(n[3])}):n[4]?e.combinationChoose.push({id:n[5],value:r(n[6])}):n[7]?e.split.push({id:n[8],value:r(n[9])}):n[10]?e.exclude.push({id:n[11]}):n[12]?e.optOut=r(n[13]):n[14]?e.optOut=!0:n[15]?e.uuid=r(n[16]):n[17]&&(i=r(n[18]),e.consent=i&&3<=i.length?i.substring(0,3):null)}catch(e){}return e}();function i(){var e=function(){if(w.VWO&&Array.isArray(w.VWO))for(var e=0;e<w.VWO.length;e++){var t=w.VWO[e];if(Array.isArray(t)&&('setVisitorId'===t[0]||'setSessionId'===t[0]))return!0}return!1}(),t='a='+account_id+'&u='+encodeURIComponent(w._vis_opt_url||d.URL)+'&vn='+version+'&ph=1'+('undefined'!=typeof platform?'&p='+platform:'')+'&st='+w.performance.now();e||((n=function(){var e,t=[],n={},i=w.VWO&&w.VWO.appliedCampaigns||{};for(e in i){var o=i[e]&&i[e].v;o&&(t.push(e+'-'+o+'-1'),n[e]=!0)}if(s&&s.combination)for(var r=0;r<s.combination.length;r++){var a=s.combination[r];n[a.id]||t.push(a.id+'-'+a.value)}return t.join('|')}())&&(t+='&c='+n),(n=function(){var e=[],t={};if(s&&s.combinationChoose)for(var n=0;n<s.combinationChoose.length;n++){var i=s.combinationChoose[n];e.push(i.id+'-'+i.value),t[i.id]=!0}if(s&&s.split)for(var o=0;o<s.split.length;o++)t[(i=s.split[o]).id]||e.push(i.id+'-'+i.value);return e.join('|')}())&&(t+='&cc='+n),(n=function(){var e={},t=[];if(w.VWO&&Array.isArray(w.VWO))for(var n=0;n<w.VWO.length;n++){var i=w.VWO[n];if(Array.isArray(i)&&'setVariation'===i[0]&&i[1]&&Array.isArray(i[1]))for(var o=0;o<i[1].length;o++){var r,a=i[1][o];a&&'object'==typeof a&&(r=a.e,a=a.v,r&&a&&(e[r]=a))}}for(r in e)t.push(r+'-'+e[r]);return t.join('|')}())&&(t+='&sv='+n)),s&&s.optOut&&(t+='&o='+s.optOut);var n=function(){var e=[],t={};if(s&&s.exclude)for(var n=0;n<s.exclude.length;n++){var i=s.exclude[n];t[i.id]||(e.push(i.id),t[i.id]=!0)}return e.join('|')}();return n&&(t+='&e='+n),s&&s.uuid&&(t+='&id='+s.uuid),s&&s.consent&&(t+='&consent='+s.consent),w.name&&-1<w.name.indexOf('_vis_preview')&&(t+='&pM=true'),w.VWO&&w.VWO.ed&&(t+='&ed='+w.VWO.ed),t}code={nonce:v&&v.nonce,library_tolerance:function(){return'undefined'!=typeof library_tolerance?library_tolerance:void 0},settings_tolerance:function(){return cc.sT||settings_tolerance},hide_element_style:function(){return'{'+(cc.hES||hide_element_style)+'}'},hide_element:function(){return performance.getEntriesByName('first-contentful-paint')[0]?'':'string'==typeof cc.hE?cc.hE:hide_element},getVersion:function(){return version},finish:function(e){var t;f||(f=!0,(t=d.getElementById('_vis_opt_path_hides'))&&t.parentNode.removeChild(t),e&&((new Image).src='https://dev.visualwebsiteoptimizer.com/ee.gif?a='+account_id+e))},finished:function(){return f},addScript:function(e){var t=d.createElement('script');t.type='text/javascript',e.src?t.src=e.src:t.text=e.text,v&&t.setAttribute('nonce',v.nonce),d.getElementsByTagName('head')[0].appendChild(t)},load:function(e,t){t=t||{};var n=new XMLHttpRequest;n.open('GET',e,!0),n.withCredentials=!t.dSC,n.responseType=t.responseType||'text',n.onload=function(){if(t.onloadCb)return t.onloadCb(n,e);200===n.status?_vwo_code.addScript({text:n.responseText}):_vwo_code.finish('&e=loading_failure:'+e)},n.onerror=function(){if(t.onerrorCb)return t.onerrorCb(e);_vwo_code.finish('&e=loading_failure:'+e)},n.send()},init:function(){var e,t=this.settings_tolerance();w._vwo_settings_timer=setTimeout(function(){_vwo_code.finish()},t),'body'!==this.hide_element()?(n=d.createElement('style'),e=(t=this.hide_element())?t+this.hide_element_style():'',t=d.getElementsByTagName('head')[0],n.setAttribute('id','_vis_opt_path_hides'),v&&n.setAttribute('nonce',v.nonce),n.setAttribute('type','text/css'),n.styleSheet?n.styleSheet.cssText=e:n.appendChild(d.createTextNode(e)),t.appendChild(n)):(n=d.getElementsByTagName('head')[0],(e=d.createElement('div')).style.cssText='z-index: 2147483647 !important;position: fixed !important;left: 0 !important;top: 0 !important;width: 100% !important;height: 100% !important;background: white !important;',e.setAttribute('id','_vis_opt_path_hides'),e.classList.add('_vis_hide_layer'),n.parentNode.insertBefore(e,n.nextSibling));var n='https://dev.visualwebsiteoptimizer.com/j.php?'+i();-1!==w.location.search.indexOf('_vwo_xhr')?this.addScript({src:n}):this.load(n+'&x=true',{l:1})}};w._vwo_code=code;code.init();})();
-    </script>
-    <!-- End VWO Async SmartCode -->
+<title>BlockQuery - See the flows nobody else can name</title>
+<meta name="description" content="BlockQuery names the entity behind an on-chain transaction. See where a stablecoin mint lands and when a named desk moves BTC. Free month of sample data." />
+<link rel="canonical" href="https://www.blockquery.io/" />
+<meta name="theme-color" content="#0B0E14" />
 
-    <!-- Fonts: Inter (UI/body) + JetBrains Mono (addresses, hashes, chain IDs) -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="BlockQuery" />
+<meta property="og:url" content="https://www.blockquery.io/" />
+<meta property="og:title" content="See the flows nobody else can name" />
+<meta property="og:description" content="BlockQuery names the entity behind an on-chain transaction. Where a stablecoin mint actually lands. When a named desk moves BTC, before it confirms." />
+<meta property="og:image" content="https://www.blockquery.io/og.png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:image:alt" content="400 BTC, from a Seoul OTC desk to Binance. BlockQuery entity attribution." />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="See the flows nobody else can name" />
+<meta name="twitter:description" content="BlockQuery names the entity behind an on-chain transaction. Delivered as data you own." />
+<meta name="twitter:image" content="https://www.blockquery.io/og.png" />
 
-    <meta property="og:type" content="website" />
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta property="og:title" content="BlockQuery — on-chain intelligence & blockchain forensics">
-    <meta name="twitter:title" content="BlockQuery — on-chain intelligence & blockchain forensics">
-    <meta property="og:description" content="Intel. Insights. Investigations. Wallet screening, transaction forensics, KYT and sanctioned-jurisdiction analysis for exchanges, regulators, compliance teams and asset-recovery practitioners.">
-    <meta name="twitter:description" content="Intel. Insights. Investigations. Wallet screening, transaction forensics, KYT and sanctioned-jurisdiction analysis for exchanges, regulators, compliance teams and asset-recovery practitioners.">
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
-    <link rel="alternate icon" type="image/x-icon" href="/favicon.ico">
-  </head>
+<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+<link rel="alternate icon" type="image/x-icon" href="/favicon.ico" />
 
-  <body>
-    <!-- Google Tag Manager (noscript) -->
-    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PS38JVZK"
-    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-    <!-- End Google Tag Manager (noscript) -->
-    <div id="root"></div>
-    <script type="module" src="/src/main.tsx"></script>
-  </body>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Newsreader:opsz,wght@6..72,400;6..72,500&display=swap" />
+
+<style>
+/* ============================================================
+   BlockQuery - terminal-grade financial instrument
+   Teal appears ONLY on resolved entity names and the primary
+   action. Nowhere else. That is what makes it mean something.
+   ============================================================ */
+
+@property --wipe { syntax: '<percentage>'; inherits: true; initial-value: 100%; }
+
+:root{
+  --canvas:#0B0E14; --border:#2A3445;
+  --white:#FFFFFF; --body:#E4E8EF; --muted:#8A94A6; --faint:#5C6678;
+  --accent:#19C3D6;
+  --mono:"IBM Plex Mono", "Cascadia Mono", Consolas, Menlo, "DejaVu Sans Mono", monospace;
+  --display:"Newsreader", Georgia, "Times New Roman", serif;
+  --gut:clamp(20px, 5vw, 64px);
+  --maxw:1140px;
+}
+
+*,*::before,*::after{ box-sizing:border-box; }
+html{ -webkit-text-size-adjust:100%; }
+body{
+  margin:0; background:var(--canvas); color:var(--body);
+  font-family:var(--mono); font-weight:400;
+  font-size:15px; line-height:1.65;
+  font-variant-numeric:tabular-nums;
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
+h1,h2{ font-family:var(--display); font-weight:500; color:var(--white);
+       letter-spacing:-0.015em; line-height:1.06; margin:0; }
+p{ margin:0; }
+a{ color:inherit; }
+
+.wrap{ width:100%; max-width:var(--maxw); margin:0 auto; padding:0 var(--gut); }
+
+.sr-only{ position:absolute; width:1px; height:1px; padding:0; margin:-1px;
+  overflow:hidden; clip:rect(0 0 0 0); white-space:nowrap; border:0; }
+
+:focus-visible{ outline:2px solid var(--accent); outline-offset:3px; }
+.skip{ position:absolute; left:-9999px; top:0; z-index:99;
+  background:var(--accent); color:var(--canvas); padding:10px 16px; font-weight:500; }
+.skip:focus{ left:0; }
+
+/* ---------- status rail ---------- */
+.rail{ border-bottom:1px solid var(--border); }
+.rail-in{ display:flex; align-items:center; justify-content:space-between; gap:16px;
+  height:46px; font-size:11px; letter-spacing:.16em; text-transform:uppercase; }
+.rail-id{ color:var(--white); font-weight:500;
+  text-transform:none; letter-spacing:0; font-size:13.5px; }
+.rail-id span{ color:var(--muted); font-weight:400;
+  font-size:11px; letter-spacing:.16em; text-transform:uppercase; }
+.rail a{ color:var(--muted); text-decoration:none; }
+.rail a:hover{ color:var(--white); }
+
+/* ---------- section scaffolding ---------- */
+section{ padding:clamp(56px,9vw,116px) 0; }
+/* also used on an h2 in section 02, so it must reset the display-face rule */
+.marker{ font-family:var(--mono); font-weight:400; line-height:1.4;
+  font-size:10.5px; letter-spacing:.22em; text-transform:uppercase;
+  color:var(--muted); margin:0 0 clamp(26px,4vw,44px); }
+h2{ font-size:clamp(28px,4.4vw,44px); }
+
+/* ---------- hero ---------- */
+.hero{ padding-top:clamp(52px,8vw,96px); padding-bottom:clamp(40px,6vw,72px); }
+.hero h1{ font-size:clamp(38px,7.6vw,76px); max-width:15ch; }
+.hero .sub{ margin-top:clamp(22px,3vw,30px); max-width:60ch;
+  color:var(--muted); font-size:clamp(14px,1.5vw,16px); line-height:1.7; }
+.hero .sub b{ color:var(--body); font-weight:400; }
+.acts{ display:flex; flex-wrap:wrap; align-items:center; gap:14px 26px;
+  margin-top:clamp(30px,4vw,42px); }
+.btn{ display:inline-flex; align-items:center; justify-content:center;
+  font-family:var(--mono); font-size:12.5px; font-weight:500;
+  letter-spacing:.14em; text-transform:uppercase; text-decoration:none;
+  padding:15px 26px; border:1px solid transparent;
+  background:var(--accent); color:var(--canvas);
+  transition:opacity .15s ease; }
+.btn:hover{ opacity:.86; }
+.btn:disabled{ opacity:.55; cursor:default; }
+.lnk{ font-size:12.5px; letter-spacing:.14em; text-transform:uppercase;
+  color:var(--body); text-decoration:none; padding-bottom:3px;
+  border-bottom:1px solid var(--border); transition:border-color .15s ease; }
+.lnk:hover{ border-bottom-color:var(--body); }
+
+/* ---------- the resolve: signature element ----------
+   No container, no background, no radius. Hairlines only.
+   One variable (--wipe) draws the strike on row 1 and
+   reveals the name on row 2, so they cannot desynchronise. */
+.resolve{ margin:clamp(48px,7vw,88px) 0 0; padding:clamp(20px,2.6vw,32px) 0;
+  border-top:1px solid var(--border); border-bottom:1px solid var(--border); }
+.rec{ display:grid; align-items:baseline;
+  grid-template-columns:max-content max-content 2.4ch max-content;
+  column-gap:clamp(10px,2.8vw,46px); row-gap:clamp(9px,1vw,15px);
+  font-size:clamp(13px,2.2vw,27px); line-height:1.16; letter-spacing:-.005em;
+  font-feature-settings:"liga" 0,"calt" 0; }
+.h{ grid-row:1; font-size:9.5px; line-height:1; letter-spacing:.2em;
+  text-transform:uppercase; color:var(--muted); padding-bottom:clamp(6px,1vw,12px); }
+/* justify-self:start so the cell shrinks to its own text - otherwise the
+   strike runs the full column width and overshoots the shorter string */
+.r1{ position:relative; white-space:nowrap; color:var(--muted); justify-self:start;
+  background-image:linear-gradient(var(--faint),var(--faint));
+  background-repeat:no-repeat; background-position:0 55%;
+  background-size:var(--wipe,100%) 1px; }
+.arw{ color:var(--muted); background:none; }
+/* the size is not in dispute - only the counterparties resolve, so only
+   the address fields carry the strike */
+.nostrike{ background:none; }
+.amt{ color:var(--white); white-space:nowrap; }
+.cell{ position:relative; display:grid; }
+.cell > *{ grid-area:1/1; white-space:nowrap; }
+/* every var() carries the resolved end state as its fallback, so an engine
+   without @property support renders the finished record instead of
+   overprinting .pre and .post in the same grid cell */
+.pre { color:var(--muted); clip-path:inset(0 0 0 var(--wipe,100%)); }
+.post{ color:var(--accent); font-weight:500;
+       clip-path:inset(0 calc(100% - var(--wipe,100%)) 0 0); }
+.r1::after,.cell::after{ content:''; position:absolute; inset:-.14em auto -.14em 0;
+  left:var(--wipe,100%); width:1px; background:var(--accent); opacity:0; }
+/* the sweep is teal, so it may only cross cells that actually resolve */
+.nostrike::after,.arw::after{ content:none; }
+
+@keyframes wipe{ from{ --wipe:0% } to{ --wipe:100% } }
+@keyframes edge{ 0%{opacity:0} 10%{opacity:.85} 84%{opacity:.85} 100%{opacity:0} }
+@media (prefers-reduced-motion:no-preference){
+  .resolve.go .r1, .resolve.go .cell{
+    animation:wipe 780ms cubic-bezier(.2,.7,.25,1) calc(420ms + var(--i,0)*60ms) both; }
+  .resolve.go .r1::after, .resolve.go .cell::after{
+    animation:edge 780ms linear calc(420ms + var(--i,0)*60ms) both; }
+}
+
+/* ---------- what we cover ---------- */
+.items{ border-top:1px solid var(--border); }
+.item{ display:grid; grid-template-columns:4.5ch minmax(0,300px) minmax(0,1fr);
+  gap:clamp(14px,3vw,44px); padding:clamp(26px,3.4vw,40px) 0;
+  border-bottom:1px solid var(--border); }
+.item .n{ color:var(--muted); font-size:12px; letter-spacing:.1em; padding-top:.35em; }
+.item h3{ margin:0; font-family:var(--mono); font-weight:500; font-size:clamp(15px,1.7vw,18px);
+  color:var(--white); line-height:1.4; letter-spacing:0; text-wrap:balance; }
+.item p{ color:var(--muted); font-size:14.5px; line-height:1.72; }
+.foot-note{ margin-top:clamp(22px,3vw,32px); color:var(--muted);
+  font-size:12.5px; line-height:1.75; max-width:78ch; }
+
+/* ---------- provenance ---------- */
+.prov p.lede{ margin-top:clamp(22px,3vw,30px); max-width:66ch;
+  color:var(--muted); font-size:14.5px; line-height:1.75; }
+.figs{ display:grid; grid-template-columns:repeat(3,1fr); gap:clamp(16px,3vw,40px);
+  margin-top:clamp(38px,5vw,60px); padding:clamp(24px,3vw,34px) 0;
+  border-top:1px solid var(--border); border-bottom:1px solid var(--border); }
+.fig .v{ color:var(--white); font-size:clamp(22px,3.4vw,34px); line-height:1; }
+.fig .k{ color:var(--muted); font-size:11px; letter-spacing:.14em;
+  text-transform:uppercase; margin-top:12px; line-height:1.5; }
+.clients{ margin-top:clamp(34px,4.5vw,52px); }
+.clients .k{ color:var(--muted); font-size:10.5px; letter-spacing:.22em;
+  text-transform:uppercase; }
+.clients .row{ display:flex; flex-wrap:wrap; align-items:baseline; gap:14px 40px; margin-top:18px; }
+.clients .row span{ color:var(--white); font-size:clamp(17px,2.2vw,22px); letter-spacing:-.01em; }
+.trust{ margin-top:clamp(30px,4vw,44px); display:grid; gap:12px; max-width:74ch; }
+.trust p{ color:var(--muted); font-size:13.5px; line-height:1.7; padding-left:16px;
+  border-left:1px solid var(--border); }
+
+/* ---------- form ---------- */
+.cta-grid{ display:grid; grid-template-columns:1fr 1fr; gap:clamp(36px,6vw,80px); align-items:start; }
+.cta h2{ font-size:clamp(28px,4.4vw,44px); }
+.cta .sub{ margin-top:22px; color:var(--muted); font-size:14.5px; line-height:1.72; max-width:46ch; }
+form{ border-top:1px solid var(--border); padding-top:clamp(22px,3vw,30px); }
+.field{ margin-bottom:26px; }
+.field label{ display:block; font-size:10.5px; letter-spacing:.2em; text-transform:uppercase;
+  color:var(--muted); margin-bottom:9px; }
+.field input,.field textarea{ width:100%; background:transparent;
+  border:0; border-bottom:1px solid var(--border);
+  color:var(--white); font-family:var(--mono); font-size:15px; line-height:1.6;
+  padding:9px 0; transition:border-color .15s ease; }
+.field textarea{ resize:vertical; min-height:76px; }
+.field input::placeholder,.field textarea::placeholder{ color:var(--muted); }
+.field input:focus,.field textarea:focus{ border-bottom-color:var(--accent); }
+.field input:focus:not(:focus-visible),
+.field textarea:focus:not(:focus-visible){ outline:none; }
+form .btn{ width:100%; margin-top:10px; cursor:pointer; }
+.talk{ margin-top:18px; color:var(--muted); font-size:12.5px; }
+.talk a{ color:var(--body); text-decoration:none; border-bottom:1px solid var(--border); }
+.talk a:hover{ border-bottom-color:var(--body); }
+.ok{ display:none; border-top:1px solid var(--border); padding-top:26px; }
+/* :target so the no-JS POST, which returns to #form-ok, still confirms */
+.ok.show,.ok:target{ display:block; }
+.ok h3{ font-family:var(--mono); font-weight:500; font-size:16px; color:var(--white); margin:0 0 10px; }
+.ok p{ color:var(--muted); font-size:14px; }
+.ok a{ color:var(--body); text-decoration:none; border-bottom:1px solid var(--muted); }
+.err{ display:none; margin-top:16px; color:#F5A623; font-size:12.5px; }
+.err a{ color:var(--body); text-decoration:underline; }
+
+/* ---------- foot ---------- */
+footer{ border-top:1px solid var(--border); padding:30px 0 44px; }
+.foot-in{ display:flex; flex-wrap:wrap; justify-content:space-between; gap:12px 24px;
+  font-size:11px; letter-spacing:.14em; text-transform:uppercase; color:var(--muted); }
+.fb{ text-transform:none; letter-spacing:0; font-size:12.5px;
+  font-weight:500; color:var(--body); }
+
+/* ---------- responsive ---------- */
+@media (max-width:860px){
+  .cta-grid{ grid-template-columns:1fr; }
+  .item{ grid-template-columns:3.5ch 1fr; }
+  .item p{ grid-column:2; }
+  .figs{ grid-template-columns:1fr; gap:22px; }
+  .fig{ display:flex; align-items:baseline; gap:14px; }
+  .fig .k{ margin-top:0; }
+}
+@media (max-width:560px){
+  .rail-in .rail-cta{ display:none; }
+  .rec{ column-gap:9px; }
+  .h{ font-size:8.5px; letter-spacing:.14em; }
+}
+</style>
+</head>
+
+<body>
+<a class="skip" href="#request">Skip to request sample data</a>
+
+<header class="rail">
+  <div class="wrap rail-in">
+    <div class="rail-id">BlockQuery <span>&middot; entity attribution</span></div>
+    <a class="rail-cta" href="#request">Request sample data</a>
+  </div>
+</header>
+
+<main id="main">
+
+  <!-- 01 ................................................. hero -->
+  <section class="hero">
+    <div class="wrap">
+      <h1>See the flows nobody else can name.</h1>
+      <p class="sub">BlockQuery names the entity behind an on-chain transaction. <b>Where a stablecoin mint actually lands. When a named desk moves BTC, before it confirms.</b> Delivered as data you own.</p>
+
+      <div class="acts">
+        <a class="btn" href="#request">Request sample data</a>
+        <a class="lnk" href="https://koalendar.com/e/meet-with-greg-schneider-chainlabs" target="_blank" rel="noopener noreferrer">Book a call</a>
+      </div>
+
+      <figure class="resolve" id="resolve">
+        <p class="sr-only">A specimen record. On chain: 400 BTC from address 3F2a to bc1q. BlockQuery resolves the same transfer to: 400 BTC from a Seoul OTC desk to Binance.</p>
+        <div class="rec" aria-hidden="true">
+          <span class="h">size</span>
+          <span class="h">origin</span>
+          <span class="h"></span>
+          <span class="h">destination</span>
+
+          <span class="r1 nostrike" style="--i:0">400 BTC</span>
+          <span class="r1" style="--i:1">3F2a&hellip;91cd</span>
+          <span class="r1 arw" style="--i:2">-&gt;</span>
+          <span class="r1" style="--i:3">bc1q&hellip;7e4f</span>
+
+          <span class="amt">400 BTC</span>
+          <span class="cell" style="--i:1">
+            <span class="pre">3F2a&hellip;91cd</span>
+            <span class="post">Seoul OTC desk</span>
+          </span>
+          <span class="arw">-&gt;</span>
+          <span class="cell" style="--i:3">
+            <span class="pre">bc1q&hellip;7e4f</span>
+            <span class="post">Binance</span>
+          </span>
+        </div>
+      </figure>
+      <script>document.getElementById('resolve').classList.add('go');</script>
+    </div>
+  </section>
+
+  <!-- 02 ........................................... what we cover -->
+  <section>
+    <div class="wrap">
+      <h2 class="marker">What we cover</h2>
+      <div class="items">
+
+        <div class="item">
+          <span class="n">01</span>
+          <h3>Stablecoin flows</h3>
+          <p>Everyone sees the mint. Almost nobody sees where it goes. We track USDC and USDT to the venue that receives it, including the regional exchanges across LatAm, Africa and Asia that run on stablecoin rails and sit unattributed everywhere else.</p>
+        </div>
+
+        <div class="item">
+          <span class="n">02</span>
+          <h3>Bitcoin, before it confirms</h3>
+          <p>We see BTC transactions in the mempool with the sending entity named. You know a specific desk or treasury is moving size before it lands on-chain.</p>
+        </div>
+
+        <div class="item">
+          <span class="n">03</span>
+          <h3>Cut to your question</h3>
+          <p>Every feed comes off the same attribution layer. Choose the entities, the chains, the granularity and the history that match what you are actually trying to answer.</p>
+        </div>
+
+      </div>
+      <p class="foot-note">CSV or parquet for history, live feed in the identical schema, no dashboard. Point-in-time attributed, so a backtest only sees what was knowable at the time.</p>
+    </div>
+  </section>
+
+  <!-- 03 ............................................. provenance -->
+  <section class="prov">
+    <div class="wrap">
+      <p class="marker">Provenance</p>
+      <h2>Powered by Chainlabs.</h2>
+      <p class="lede">Chainlabs has spent six years building one of the largest entity attribution datasets in crypto, naming the exchanges, OTC desks, funds, miners and treasuries behind on-chain addresses. BlockQuery is the same attribution layer, pointed at the questions a trading desk asks.</p>
+
+      <div class="figs">
+        <div class="fig"><div class="v">6 years</div><div class="k">building entity attribution</div></div>
+        <div class="fig"><div class="v">30,000+</div><div class="k">entities mapped</div></div>
+        <div class="fig"><div class="v">20</div><div class="k">blockchains</div></div>
+      </div>
+
+      <div class="clients">
+        <p class="k">Clients include</p>
+        <div class="row"><span>Coinbase</span><span>OKX</span></div>
+      </div>
+
+      <div class="trust">
+        <p>Human-verified by a team of intelligence analysts, not purely algorithmic.</p>
+        <p>Verifiable source evidence behind each attribution.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 04 ................................... request sample data -->
+  <section class="cta" id="request">
+    <div class="wrap cta-grid">
+      <div>
+        <p class="marker">Access</p>
+        <h2>One month of sample data, free.</h2>
+        <p class="sub">Tell us what you trade and we will send a sample in the schema you would receive. No dashboard, no sales sequence.</p>
+      </div>
+
+      <div>
+        <!--
+          Lead delivery: Web3Forms -> greg@chainlabs.ai. access_key is a
+          Web3Forms PUBLIC key, safe in HTML. AJAX submit below keeps the
+          on-page confirmation; the form action is the no-JS fallback.
+        -->
+        <form id="sample-form" action="https://api.web3forms.com/submit" method="post">
+          <input type="hidden" name="access_key" value="b09b8765-736f-49f8-9ff6-284dab89ebea" />
+          <input type="hidden" name="subject" value="New BlockQuery sample-data request" />
+          <input type="hidden" name="from_name" value="blockquery.io" />
+          <input type="hidden" name="redirect" value="https://www.blockquery.io/#form-ok" />
+          <input type="checkbox" name="botcheck" style="display:none" tabindex="-1" aria-hidden="true" />
+
+          <div class="field">
+            <label for="f-name">Name</label>
+            <input id="f-name" name="name" type="text" autocomplete="name" required />
+          </div>
+          <div class="field">
+            <label for="f-email">Work email</label>
+            <input id="f-email" name="email" type="email" autocomplete="email" required />
+          </div>
+          <div class="field">
+            <label for="f-firm">Firm</label>
+            <input id="f-firm" name="firm" type="text" autocomplete="organization" required />
+          </div>
+          <div class="field">
+            <label for="f-trade">What you trade, and what you would test the data against</label>
+            <textarea id="f-trade" name="trades"></textarea>
+          </div>
+
+          <button class="btn" type="submit">Request sample data</button>
+          <p class="talk">Prefer to talk first? <a href="https://koalendar.com/e/meet-with-greg-schneider-chainlabs" target="_blank" rel="noopener noreferrer">Book a call</a>.</p>
+        </form>
+
+        <div class="ok" id="form-ok" role="status" aria-live="polite" tabindex="-1">
+          <h3>Request received.</h3>
+          <p>We will be in touch to set up your sample. <a href="https://koalendar.com/e/meet-with-greg-schneider-chainlabs" target="_blank" rel="noopener noreferrer">Book a call</a> if you would rather talk sooner.</p>
+        </div>
+        <p class="err" id="form-err" role="alert">That did not send. Please try again, or <a href="mailto:greg@chainlabs.ai?subject=BlockQuery%20sample%20data">email us directly</a>.</p>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap foot-in">
+    <span><b class="fb">BlockQuery</b> &middot; powered by Chainlabs</span>
+    <span>&copy; 2026</span>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var form=document.getElementById('sample-form'),
+      ok=document.getElementById('form-ok'),
+      err=document.getElementById('form-err');
+  if(!form) return;
+  form.addEventListener('submit',function(e){
+    e.preventDefault();
+    if(!form.checkValidity()){ form.reportValidity(); return; }
+    var btn=form.querySelector('button[type=submit]'), label=btn.textContent;
+    btn.disabled=true; btn.textContent='Sending';
+    err.style.display='none';
+    var payload={}; new FormData(form).forEach(function(v,k){ payload[k]=v; });
+    // abort after 15s so a proxy that swallows the connection still surfaces
+    // the error path rather than leaving the button stuck on "Sending"
+    var ctl=new AbortController(), t=setTimeout(function(){ ctl.abort(); },15000);
+    fetch('https://api.web3forms.com/submit',{
+      method:'POST', signal:ctl.signal,
+      headers:{'Content-Type':'application/json','Accept':'application/json'},
+      body:JSON.stringify(payload)
+    }).then(function(r){ clearTimeout(t); return r.json(); })
+      .then(function(out){
+        if(out&&out.success){ form.style.display='none'; ok.classList.add('show'); ok.focus(); }
+        else{ throw new Error('failed'); }
+      })
+      .catch(function(){
+        clearTimeout(t);
+        btn.disabled=false; btn.textContent=label; err.style.display='block';
+      });
+  });
+})();
+</script>
+</body>
 </html>

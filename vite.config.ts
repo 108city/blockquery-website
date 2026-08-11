@@ -24,6 +24,15 @@ export default defineConfig(({ mode }) => ({
   },
   build: {
     target: 'esnext',
+    rollupOptions: {
+      input: {
+        // index.html is the static BlockQuery landing page and owns "/".
+        // app.html is the React SPA shell; vercel.json rewrites every other
+        // path to it, so the existing routes keep working behind the 301s.
+        main: path.resolve(__dirname, "index.html"),
+        app: path.resolve(__dirname, "app.html"),
+      },
+    },
     commonjsOptions: {
       include: [/three/, /node_modules/],
       transformMixedEsModules: true,

@@ -1,23 +1,35 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
+  "_comment": [
+    "blockquery.io is a single static page (index.html) selling on-chain entity",
+    "attribution to trading desks. The React SPA still builds to app.html and",
+    "every non-file path rewrites to it, so the old pages remain FULLY WORKING",
+    "behind the redirects below - they are hidden, not deleted.",
+    "TO UN-HIDE A PAGE: delete its line from 'redirects'. Nothing else needed."
+  ],
   "redirects": [
+    { "source": "/investigations", "destination": "/", "permanent": false },
+    { "source": "/satscore", "destination": "/", "permanent": false },
+    { "source": "/embedded", "destination": "/", "permanent": false },
+    { "source": "/case-studies", "destination": "/", "permanent": false },
+    { "source": "/insights", "destination": "/", "permanent": false },
+    { "source": "/insights/:path*", "destination": "/", "permanent": false },
+    { "source": "/about", "destination": "/", "permanent": false },
+    { "source": "/contact", "destination": "/", "permanent": false },
+    { "source": "/data", "destination": "/", "permanent": false },
+
     { "source": "/intelligence", "destination": "/", "permanent": false },
     { "source": "/platform", "destination": "/", "permanent": false },
     { "source": "/forensic-services", "destination": "/", "permanent": false },
     { "source": "/crypto-compliance", "destination": "/", "permanent": false },
     { "source": "/igaming", "destination": "/", "permanent": false },
-    { "source": "/law-firms", "destination": "/investigations", "permanent": true },
-    { "source": "/solutions/law-firms", "destination": "/investigations#law-firms", "permanent": true },
-    { "source": "/solutions/igaming-operators", "destination": "/", "permanent": false },
-    { "source": "/solutions/gaming-regulators", "destination": "/", "permanent": false },
-    { "source": "/solutions/law-enforcement", "destination": "/", "permanent": false },
-    { "source": "/solutions/crypto-insurance", "destination": "/", "permanent": false },
-    { "source": "/solutions/forensic-services", "destination": "/", "permanent": false },
+    { "source": "/law-firms", "destination": "/", "permanent": false },
+    { "source": "/solutions/:path*", "destination": "/", "permanent": false },
     { "source": "/wallet-checker", "destination": "/", "permanent": true },
-    { "source": "/events", "destination": "/insights", "permanent": true },
-    { "source": "/events/:path*", "destination": "/insights", "permanent": true }
+    { "source": "/events", "destination": "/", "permanent": false },
+    { "source": "/events/:path*", "destination": "/", "permanent": false }
   ],
   "rewrites": [
-    { "source": "/(.*)", "destination": "/index.html" }
+    { "source": "/(.*)", "destination": "/app.html" }
   ]
 }
