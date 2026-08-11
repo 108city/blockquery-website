@@ -185,7 +185,7 @@
     .tag { display: inline-block; font-family: "JetBrains Mono", monospace; font-size: 11.5px; color: var(--amber); border: 1px solid var(--border); border-radius: 999px; padding: 3px 10px; margin-left: 10px; vertical-align: middle; letter-spacing: .04em; }
 
     /* Proof / why chainlabs */
-    .proof { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2px; background: var(--border); border: 1px solid var(--border); border-radius: 14px; overflow: hidden; }
+    .proof { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; background: var(--border); border: 1px solid var(--border); border-radius: 14px; overflow: hidden; }
     .stat { background: var(--card); padding: 26px 22px; }
     .stat .n { font-family: "JetBrains Mono", monospace; font-size: 26px; color: var(--white); letter-spacing: -0.01em; }
     .stat .l { color: var(--muted); font-size: 14px; margin-top: 8px; line-height: 1.45; }
@@ -334,7 +334,7 @@
           </div>
           <div class="cred" aria-label="Track record">
             <span><b>Six years</b> of entity attribution</span>
-            <span><b>15,000+</b> organisations mapped</span>
+            <span><b>30,000+</b> entities mapped</span>
             <span><b>Worldwide</b> coverage of exchanges, OTC desks and regional venues</span>
           </div>
         </div>
@@ -343,36 +343,7 @@
 
     <hr class="divider" />
 
-    <!-- 5.2 The problem -->
-    <section>
-      <div class="wrap">
-        <div class="section-head">
-          <p class="eyebrow">The gap</p>
-          <h2>You can see the transaction. You cannot see the counterparty.</h2>
-        </div>
-        <div class="grid grid-3" style="margin-top: 44px;">
-          <div class="card">
-            <div class="idx">01</div>
-            <h3>What moved, not who moved it</h3>
-            <p>On-chain data shows you the amount, the direction and the block. It does not tell you the desk, the fund or the treasury standing behind the address.</p>
-          </div>
-          <div class="card">
-            <div class="idx">02</div>
-            <h3>Exchange coverage is a commodity</h3>
-            <p>Public explorers name the large exchanges. Past them, visibility falls away: the OTC desks, the regional venues, the funds. That is exactly where the informative flow sits.</p>
-          </div>
-          <div class="card">
-            <div class="idx">03</div>
-            <h3>You find out too late</h3>
-            <p>By the time the counterparty is clear, the market has already moved. The signal was on-chain the whole time. You just could not read it.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <hr class="divider" />
-
-    <!-- 5.3 What you get -->
+    <!-- What you get -->
     <section>
       <div class="wrap">
         <div class="section-head">
@@ -383,14 +354,14 @@
         <div class="feats" style="margin-top: 40px;">
           <div class="feat">
             <h3>Named entities, not buckets</h3>
-            <p>Not "whale" or "smart money". Actual names: exchanges, OTC desks, corporate treasuries, ETF issuers, miners and regional venues.</p>
+            <p>Not "whale" or "smart money". Actual names: exchanges, OTC desks, major corporations and treasuries, ETF and stablecoin issuers, funds, and key individuals.</p>
           </div>
           <div class="feat">
             <h3>Both sides, where we have them</h3>
             <p>The source and the destination entity on the same transaction, so you can read the move as a relationship rather than a single address.</p>
           </div>
           <div class="feat">
-            <h3>Point-in-time by design <a href="#point-in-time">see how</a></h3>
+            <h3>Point-in-time by design</h3>
             <p>Every attribution carries the date we established it, not just what it says. Your backtest reflects what was actually knowable at the time.</p>
           </div>
           <div class="feat">
@@ -409,46 +380,13 @@
       </div>
     </section>
 
-    <!-- 7. Point-in-time attribution (its own section) -->
-    <section class="pit" id="point-in-time">
-      <svg class="pit-art" viewBox="0 0 360 360" fill="none" aria-hidden="true" focusable="false">
-        <g stroke="#19C3D6" stroke-opacity="0.28" stroke-width="1">
-          <line x1="60" y1="80" x2="180" y2="140" />
-          <line x1="180" y1="140" x2="300" y2="90" />
-          <line x1="180" y1="140" x2="160" y2="270" />
-          <line x1="160" y1="270" x2="290" y2="260" />
-        </g>
-        <g fill="#0B0E14" stroke="#19C3D6" stroke-width="1.5">
-          <circle cx="60" cy="80" r="6" /><circle cx="300" cy="90" r="5" /><circle cx="290" cy="260" r="5" />
-        </g>
-        <g fill="#19C3D6"><circle cx="180" cy="140" r="7" /><circle cx="160" cy="270" r="6" /></g>
-      </svg>
-      <div class="wrap pit-grid">
-        <div>
-          <p class="eyebrow">Point-in-time attribution</p>
-          <h2>Your backtest should only know what you knew.</h2>
-          <p>Entity attribution improves over time. You might discover months later that a wallet belonged to an OTC desk. If a vendor serves you everything it knows <b>today</b> across a historical window, your backtest is quietly contaminated. It trades on knowledge that did not exist at the time.</p>
-          <p>The result looks excellent, you deploy it, and it fails live.</p>
-          <p>BlockQuery timestamps when each attribution was established. Query March 2025 and you see what was knowable in March 2025. <b>Your backtest reflects a signal you could actually have traded.</b></p>
-        </div>
-        <div class="code" role="img" aria-label="Example record: an attribution field named first_known holds the date the entity was established, separate from the transaction date, so historical queries return only what was knowable at that time.">
-<span class="c"># one attribution record</span>
-<span class="k">entity_name  </span> <span class="t">"OTC desk, regional"</span>
-<span class="k">entity_type  </span> <span class="t">otc_desk</span>
-<span class="k">first_known  </span> <span class="g">2025-06-11</span>   <span class="c">// when we knew it</span>
-<span class="k">tx_date      </span> <span class="g">2025-03-14</span>   <span class="c">// when it happened</span>
-<span class="k">side         </span> source
-<span class="c"># query as-of 2025-03-14  -> entity is NOT yet</span>
-<span class="c"># attributed. no lookahead. honest backtest.</span>
-</div>
-      </div>
-    </section>
+    <hr class="divider" />
 
-    <!-- 5.4 Use cases -->
+    <!-- How our clients use our data -->
     <section>
       <div class="wrap">
         <div class="section-head">
-          <p class="eyebrow">What desks do with it</p>
+          <p class="eyebrow">How our clients use our data</p>
           <h2>Read positioning, not just price.</h2>
         </div>
         <div class="grid grid-3" style="margin-top: 44px;">
@@ -479,46 +417,17 @@
 
     <hr class="divider" />
 
-    <!-- 5.5 How it is delivered -->
+    <!-- Who is BlockQuery -->
     <section>
       <div class="wrap">
         <div class="section-head">
-          <p class="eyebrow">Delivery</p>
-          <h2>Into your environment, not another screen to check.</h2>
-        </div>
-        <div class="rows" style="margin-top: 40px;">
-          <div class="row">
-            <h3>Bulk history</h3>
-            <p>Multi-year historical files for research, delivered as CSV and parquet. Load it straight into your own pipeline.</p>
-          </div>
-          <div class="row">
-            <h3>Live API</h3>
-            <p>A live feed in the same schema as the historical files, line for line. What you research is what you run.</p>
-          </div>
-          <div class="row">
-            <h3>No dashboard</h3>
-            <p>No UI to learn and no cleaning step. It goes into your environment and your models. Several desks told us they did not want another dashboard, so we did not build one.</p>
-          </div>
-          <div class="row">
-            <h3>Mempool feed <span class="tag">add-on</span></h3>
-            <p>An optional feed of attributed transactions before they are mined, for desks that want the earliest possible read.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- 5.6 Why Chainlabs -->
-    <section>
-      <div class="wrap">
-        <div class="section-head">
-          <p class="eyebrow">Why Chainlabs</p>
-          <h2>BlockQuery is powered by Chainlabs.</h2>
-          <p class="lede">The same attribution work that has been running for six years, pointed at the questions a trading desk asks.</p>
+          <p class="eyebrow">Who is BlockQuery</p>
+          <h2>A leading entity-labelling provider in blockchain analytics.</h2>
+          <p class="lede">Powered by Chainlabs, built on six years of continuous attribution work, now pointed at the questions a trading desk asks.</p>
         </div>
         <div class="proof" style="margin-top: 40px;" aria-label="Track record">
           <div class="stat"><div class="n">2019</div><div class="l">Building entity attribution since. Six years of continuous work.</div></div>
-          <div class="stat"><div class="n">15,000+</div><div class="l">On-chain organisations mapped.</div></div>
-          <div class="stat"><div class="n">60%+</div><div class="l">Of daily Bitcoin and Ethereum transactions covered.</div></div>
+          <div class="stat"><div class="n">30,000+</div><div class="l">Entities mapped, including key individuals, major corporations, ETF and stablecoin issuers.</div></div>
           <div class="stat"><div class="n">20</div><div class="l">Blockchains mapped by Chainlabs.</div></div>
         </div>
         <div class="proof-notes">
@@ -529,37 +438,7 @@
       </div>
     </section>
 
-    <hr class="divider" />
-
-    <!-- 5.7 How to start -->
-    <section>
-      <div class="wrap">
-        <div class="section-head">
-          <p class="eyebrow">How to start</p>
-          <h2>Test it before you commit to anything.</h2>
-        </div>
-        <div class="steps" style="margin-top: 40px;">
-          <div class="step">
-            <div class="n">Step 1</div>
-            <h3>Free sample</h3>
-            <p>One month of sample data, free, for a couple of assets. Run it against your own models.</p>
-          </div>
-          <div class="step">
-            <div class="n">Step 2</div>
-            <h3>Paid trial</h3>
-            <p>A three-month paid trial if the sample proves useful, with the full schema and history.</p>
-          </div>
-          <div class="step">
-            <div class="n">Step 3</div>
-            <h3>Annual licence</h3>
-            <p>An annual licence once it earns its place in your process. History and live feed included.</p>
-          </div>
-        </div>
-        <p class="pricing-note">Pricing is set per engagement and shared on request. We would rather understand what you trade first.</p>
-      </div>
-    </section>
-
-    <!-- 5.8 Final CTA + form -->
+    <!-- Request sample data (final CTA) -->
     <section class="cta" id="form">
       <div class="wrap cta-grid">
         <div>
