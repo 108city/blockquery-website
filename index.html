@@ -94,7 +94,13 @@ section{ padding:clamp(56px,9vw,116px) 0; }
 h2{ font-size:clamp(28px,4.4vw,44px); }
 
 /* ---------- hero ---------- */
-.hero{ padding-top:clamp(52px,8vw,96px); padding-bottom:clamp(40px,6vw,72px); }
+.hero{ position:relative; overflow:hidden;
+  padding-top:clamp(52px,8vw,96px); padding-bottom:clamp(40px,6vw,72px); }
+.hero .wrap{ position:relative; z-index:1; }
+/* address rain: canvas behind the hero copy, right-weighted, faint.
+   Purely decorative (aria-hidden); a static scatter under reduced motion. */
+.rain{ position:absolute; inset:0; z-index:0; width:100%; height:100%;
+  display:block; pointer-events:none; }
 .hero h1{ font-size:clamp(38px,7.6vw,76px); max-width:15ch; }
 .hero .sub{ margin-top:clamp(22px,3vw,30px); max-width:60ch;
   color:var(--muted); font-size:clamp(14px,1.5vw,16px); line-height:1.7; }
@@ -184,8 +190,10 @@ h2{ font-size:clamp(28px,4.4vw,44px); }
 .clients{ margin-top:clamp(34px,4.5vw,52px); }
 .clients .k{ color:var(--muted); font-size:10.5px; letter-spacing:.22em;
   text-transform:uppercase; }
-.clients .row{ display:flex; flex-wrap:wrap; align-items:baseline; gap:14px 40px; margin-top:18px; }
-.clients .row span{ color:var(--white); font-size:clamp(17px,2.2vw,22px); letter-spacing:-.01em; }
+.clients .row{ display:flex; flex-wrap:wrap; align-items:center; gap:18px 44px; margin-top:22px; }
+.clients .row svg{ display:block; width:auto; color:var(--white); opacity:.92; }
+.logo-cb{ height:21px; }
+.logo-okx{ height:17px; }
 .trust{ margin-top:clamp(30px,4vw,44px); display:grid; gap:12px; max-width:74ch; }
 .trust p{ color:var(--muted); font-size:13.5px; line-height:1.7; padding-left:16px;
   border-left:1px solid var(--border); }
@@ -249,7 +257,7 @@ footer{ border-top:1px solid var(--border); padding:30px 0 44px; }
 
 <header class="rail">
   <div class="wrap rail-in">
-    <div class="rail-id">BlockQuery <span>&middot; entity attribution</span></div>
+    <div class="rail-id">BlockQuery <span>powered by Chainlabs.ai</span></div>
     <a class="rail-cta" href="#request">Request sample data</a>
   </div>
 </header>
@@ -258,6 +266,7 @@ footer{ border-top:1px solid var(--border); padding:30px 0 44px; }
 
   <!-- 01 ................................................. hero -->
   <section class="hero">
+    <canvas class="rain" id="rain" aria-hidden="true"></canvas>
     <div class="wrap">
       <h1>See the flows nobody else can name.</h1>
       <p class="sub">BlockQuery names the entity behind an on-chain transaction. <b>Where a stablecoin mint actually lands. When a named desk moves BTC, before it confirms.</b> Delivered as data you own.</p>
@@ -340,7 +349,7 @@ footer{ border-top:1px solid var(--border); padding:30px 0 44px; }
 
       <div class="clients">
         <p class="k">Clients include</p>
-        <div class="row"><span>Coinbase</span><span>OKX</span></div>
+        <div class="row"><svg class="logo-cb" viewBox="0 0 1101.64 196.79" role="img" aria-label="Coinbase" fill="currentColor"><path d="M222.34,54.94c-40.02,0-71.29,30.38-71.29,71.05s30.48,70.79,71.29,70.79c40.81,0,71.82-30.64,71.82-71.05 C294.16,85.58,263.68,54.94,222.34,54.94z M222.61,167.47c-22.79,0-39.49-17.7-39.49-41.47c0-24.04,16.43-41.73,39.22-41.73 c23.06,0,39.75,17.96,39.75,41.73S245.4,167.47,222.61,167.47z M302.9,85.85h19.88v108.3h31.8V57.58H302.9V85.85z M71.02,84.26 c16.7,0,29.95,10.3,34.98,25.62h33.66c-6.1-32.75-33.13-54.94-68.37-54.94C31.27,54.94,0,85.32,0,126s30.48,70.79,71.29,70.79 c34.45,0,62.01-22.19,68.11-55.21H106c-4.77,15.32-18.02,25.89-34.72,25.89c-23.06,0-39.22-17.7-39.22-41.47 C32.07,101.96,47.97,84.26,71.02,84.26z M907.12,112.79l-23.32-3.43c-11.13-1.58-19.08-5.28-19.08-14 c0-9.51,10.34-14.26,24.38-14.26c15.37,0,25.18,6.6,27.3,17.43h30.74c-3.45-27.47-24.65-43.58-57.24-43.58 c-33.66,0-55.92,17.17-55.92,41.47c0,23.24,14.58,36.72,43.99,40.94l23.32,3.43c11.4,1.58,17.76,6.08,17.76,14.53 c0,10.83-11.13,15.32-26.5,15.32c-18.82,0-29.42-7.66-31.01-19.28h-31.27c2.92,26.68,23.85,45.43,62.01,45.43 c34.72,0,57.77-15.85,57.77-43.06C950.05,129.43,933.36,116.75,907.12,112.79z M338.68,1.32c-11.66,0-20.41,8.45-20.41,20.07 s8.74,20.07,20.41,20.07c11.66,0,20.41-8.45,20.41-20.07S350.34,1.32,338.68,1.32z M805.36,104.34c0-29.58-18.02-49.39-56.18-49.39 c-36.04,0-56.18,18.23-60.16,46.23h31.54c1.59-10.83,10.07-19.81,28.09-19.81c16.17,0,24.12,7.13,24.12,15.85 c0,11.36-14.58,14.26-32.6,16.11c-24.38,2.64-54.59,11.09-54.59,42.79c0,24.57,18.29,40.41,47.44,40.41 c22.79,0,37.1-9.51,44.26-24.57c1.06,13.47,11.13,22.19,25.18,22.19h18.55v-28.26h-15.64V104.34z M774.09,138.68 c0,18.23-15.9,31.7-35.25,31.7c-11.93,0-22-5.02-22-15.58c0-13.47,16.17-17.17,31.01-18.75c14.31-1.32,22.26-4.49,26.24-10.57 V138.68z M605.28,54.94c-17.76,0-32.6,7.4-43.2,19.81V0h-31.8v194.15h31.27v-17.96c10.6,12.94,25.71,20.6,43.73,20.6 c38.16,0,67.05-30.11,67.05-70.79S642.91,54.94,605.28,54.94z M600.51,167.47c-22.79,0-39.49-17.7-39.49-41.47 s16.96-41.73,39.75-41.73c23.06,0,39.22,17.7,39.22,41.73C639.99,149.77,623.3,167.47,600.51,167.47z M454.22,54.94 c-20.67,0-34.19,8.45-42.14,20.34v-17.7h-31.54v136.56h31.8v-74.22c0-20.87,13.25-35.66,32.86-35.66c18.29,0,29.68,12.94,29.68,31.7 v78.19h31.8v-80.56C506.69,79.24,488.94,54.94,454.22,54.94z M1101.64,121.51c0-39.09-28.62-66.56-67.05-66.56 c-40.81,0-70.76,30.64-70.76,71.05c0,42.53,32.07,70.79,71.29,70.79c33.13,0,59.1-19.55,65.72-47.28h-33.13 c-4.77,12.15-16.43,19.02-32.07,19.02c-20.41,0-35.78-12.68-39.22-34.87h105.21V121.51z M998.28,110.94 c5.04-19.02,19.35-28.26,35.78-28.26c18.02,0,31.8,10.3,34.98,28.26H998.28z"/></svg><svg class="logo-okx" viewBox="166.65 428 746.75 224" role="img" aria-label="OKX" fill="currentColor"><path d="M385.67 428H171.631C170.311 428 169.045 428.524 168.112 429.458C167.178 430.391 166.654 431.657 166.654 432.978V647.017C166.654 648.337 167.178 649.603 168.112 650.536C169.045 651.47 170.311 651.994 171.631 651.994H385.67C386.991 651.994 388.257 651.47 389.19 650.536C390.124 649.603 390.648 648.337 390.648 647.017V432.978C390.648 431.657 390.124 430.391 389.19 429.458C388.257 428.524 386.991 428 385.67 428ZM315.983 572.352C315.983 573.672 315.459 574.938 314.525 575.872C313.592 576.805 312.326 577.33 311.006 577.33H246.296C244.976 577.33 243.71 576.805 242.776 575.872C241.843 574.938 241.319 573.672 241.319 572.352V507.642C241.319 506.322 241.843 505.056 242.776 504.123C243.71 503.189 244.976 502.665 246.296 502.665H311.006C312.326 502.665 313.592 503.189 314.525 504.123C315.459 505.056 315.983 506.322 315.983 507.642V572.352Z"/><path d="M833.783 502.673H769.074C766.325 502.673 764.096 504.901 764.096 507.65V572.36C764.096 575.109 766.325 577.338 769.074 577.338H833.783C836.532 577.338 838.761 575.109 838.761 572.36V507.65C838.761 504.901 836.532 502.673 833.783 502.673Z"/><path d="M759.088 428.006H694.379C691.63 428.006 689.401 430.234 689.401 432.984V497.693C689.401 500.442 691.63 502.671 694.379 502.671H759.088C761.838 502.671 764.066 500.442 764.066 497.693V432.984C764.066 430.234 761.838 428.006 759.088 428.006Z"/><path d="M908.418 428.006H843.708C840.959 428.006 838.73 430.234 838.73 432.984V497.693C838.73 500.442 840.959 502.671 843.708 502.671H908.418C911.167 502.671 913.395 500.442 913.395 497.693V432.984C913.395 430.234 911.167 428.006 908.418 428.006Z"/><path d="M759.088 577.334H694.379C691.63 577.334 689.401 579.562 689.401 582.311V647.021C689.401 649.77 691.63 651.999 694.379 651.999H759.088C761.838 651.999 764.066 649.77 764.066 647.021V582.311C764.066 579.562 761.838 577.334 759.088 577.334Z"/><path d="M908.418 577.334H843.708C840.959 577.334 838.73 579.562 838.73 582.311V647.021C838.73 649.77 840.959 651.999 843.708 651.999H908.418C911.167 651.999 913.395 649.77 913.395 647.021V582.311C913.395 579.562 911.167 577.334 908.418 577.334Z"/><path d="M646.997 428.006H582.288C579.539 428.006 577.31 430.234 577.31 432.984V497.693C577.31 500.442 579.539 502.671 582.288 502.671H646.997C649.746 502.671 651.975 500.442 651.975 497.693V432.984C651.975 430.234 649.746 428.006 646.997 428.006Z"/><path d="M646.997 577.334H582.288C579.539 577.334 577.31 579.562 577.31 582.311V647.021C577.31 649.77 579.539 651.999 582.288 651.999H646.997C649.746 651.999 651.975 649.77 651.975 647.021V582.311C651.975 579.562 649.746 577.334 646.997 577.334Z"/><path d="M577.31 507.586C577.31 506.266 576.785 505 575.852 504.067C574.918 503.133 573.652 502.609 572.332 502.609H502.645V432.978C502.645 431.657 502.12 430.391 501.187 429.458C500.253 428.524 498.987 428 497.667 428H432.958C431.637 428 430.371 428.524 429.438 429.458C428.504 430.391 427.98 431.657 427.98 432.978V646.905C427.98 648.225 428.504 649.491 429.438 650.424C430.371 651.358 431.637 651.882 432.958 651.882H497.667C498.987 651.882 500.253 651.358 501.187 650.424C502.12 649.491 502.645 648.225 502.645 646.905V577.274H572.332C573.652 577.274 574.918 576.749 575.852 575.816C576.785 574.882 577.31 573.616 577.31 572.296V507.586Z"/></svg></div>
       </div>
 
       <div class="trust">
@@ -441,6 +450,111 @@ footer{ border-top:1px solid var(--border); padding:30px 0 44px; }
         btn.disabled=false; btn.textContent=label; err.style.display='block';
       });
   });
+})();
+
+/* Address rain. Columns of address characters fall behind the hero;
+   occasionally one resolves into an entity name in brighter teal - the
+   product story as ambient texture. Right-weighted and faded around the
+   copy so the headline and the resolve record stay clean. Decorative
+   only: aria-hidden canvas, static scatter under prefers-reduced-motion,
+   nothing at all without JS. */
+(function(){
+  var cv=document.getElementById('rain');
+  if(!cv||!cv.getContext) return;
+  var hero=cv.parentElement, ctx=cv.getContext('2d');
+  var reduce=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var CHARS='0123456789abcdefqpzry9x8gf2tvdw0s3jn54khce6mua7l';
+  var NAMES=['BINANCE','OTC DESK','COINBASE','OKX','MINER','TREASURY','ETF ISSUER'];
+  var TEAL='25,195,214', SLATE='92,102,120';
+  var FS=13, CW=22, cols=[], W=0, H=0;
+
+  function setFont(){ ctx.font='500 '+FS+'px "IBM Plex Mono",Menlo,monospace'; ctx.textBaseline='top'; }
+  /* fade in from the left so the rain never sits behind the headline */
+  function xa(x){ var lo=W>860?0.42:0.30, t=(x/W-lo)/0.32; return t<0?0:t>1?1:t; }
+  /* fade at the top edge and out before the resolve record */
+  function ya(y){ if(y<0) return 0; if(y<36) return y/36;
+    var lim=H*0.72; return y>lim?Math.max(0,1-(y-lim)/(H*0.2)):1; }
+  /* seed inside the canvas so the rain is already mid-fall on first paint;
+     recycled columns re-enter from just above the top edge */
+  function mkcol(i,seed){ return {x:i*CW+4, y:seed?Math.random()*H*0.9:-20,
+    v:0.55+Math.random()*0.95, name:null, ni:0}; }
+
+  function size(){
+    var d=Math.min(window.devicePixelRatio||1,2);
+    W=hero.clientWidth; H=hero.clientHeight;
+    cv.width=Math.round(W*d); cv.height=Math.round(H*d);
+    ctx.setTransform(d,0,0,d,0,0); setFont();
+    cols=[]; for(var i=0,n=Math.ceil(W/CW);i<n;i++) cols.push(mkcol(i,true));
+    ctx.clearRect(0,0,W,H);
+    if(reduce) still();
+  }
+
+  function glyph(c){
+    var chr,clr,a;
+    if(c.name){
+      chr=c.name[c.ni]; clr=TEAL; a=0.8;
+      c.ni++; if(c.ni>=c.name.length) c.name=null;
+    }else{
+      chr=CHARS[(Math.random()*CHARS.length)|0];
+      clr=Math.random()<0.7?TEAL:SLATE;
+      a=Math.random()<0.12?0.35:0.16;
+      if(xa(c.x)>0.25&&Math.random()<0.0015){ c.name=NAMES[(Math.random()*NAMES.length)|0]; c.ni=0; }
+    }
+    var f=a*xa(c.x)*ya(c.y);
+    if(f>0.01&&chr!==' '){ ctx.fillStyle='rgba('+clr+','+f.toFixed(3)+')'; ctx.fillText(chr,c.x,c.y); }
+  }
+
+  function step(){
+    ctx.globalCompositeOperation='destination-out';
+    ctx.fillStyle='rgba(0,0,0,0.12)';
+    ctx.fillRect(0,0,W,H);
+    ctx.globalCompositeOperation='source-over';
+    for(var i=0;i<cols.length;i++){
+      var c=cols[i];
+      c.y+=c.name?FS:c.v*FS;           /* names advance one cell per tick, evenly spaced */
+      if(c.y>H+30){ cols[i]=mkcol(i,false); continue; }
+      glyph(c);
+    }
+  }
+
+  /* reduced motion: one quiet frame, no loop */
+  function still(){
+    ctx.clearRect(0,0,W,H);
+    for(var i=0;i<150;i++){
+      var x=Math.random()*W, y=Math.random()*H;
+      var a=(Math.random()<0.15?0.28:0.12)*xa(x)*ya(y);
+      if(a<0.02) continue;
+      ctx.fillStyle='rgba('+(Math.random()<0.7?TEAL:SLATE)+','+a.toFixed(3)+')';
+      ctx.fillText(CHARS[(Math.random()*CHARS.length)|0],x,y);
+    }
+    for(var n=0;n<2;n++){
+      var nm=NAMES[n], nx=W*(0.6+0.2*n), ny=H*0.16+n*H*0.3;
+      for(var k=0;k<nm.length;k++){
+        var a2=0.5*xa(nx)*ya(ny+k*FS);
+        if(a2<0.02||nm[k]===' ') continue;
+        ctx.fillStyle='rgba('+TEAL+','+a2.toFixed(3)+')';
+        ctx.fillText(nm[k],nx,ny+k*FS);
+      }
+    }
+  }
+
+  var run=false,last=0;
+  function loop(ts){ if(!run) return; requestAnimationFrame(loop);
+    if(ts-last<85) return; last=ts; step(); }
+  function play(){ if(run||reduce) return; run=true; requestAnimationFrame(loop); }
+  function stop(){ run=false; }
+
+  size();
+  if(!reduce){
+    if('IntersectionObserver' in window){
+      new IntersectionObserver(function(e){ e[0].isIntersecting?play():stop(); }).observe(hero);
+    }else{ play(); }
+  }
+  if('ResizeObserver' in window){ new ResizeObserver(size).observe(hero); }
+  else{ addEventListener('resize',size); }
+  if(document.fonts&&document.fonts.ready){
+    document.fonts.ready.then(function(){ setFont(); if(reduce) still(); });
+  }
 })();
 </script>
 </body>
