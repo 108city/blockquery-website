@@ -187,12 +187,14 @@ h2{ font-size:clamp(28px,4.4vw,44px); }
 /* ---------- provenance ---------- */
 .prov p.lede{ margin-top:clamp(22px,3vw,30px); max-width:66ch;
   color:var(--muted); font-size:14.5px; line-height:1.75; }
-.figs{ display:grid; grid-template-columns:repeat(3,1fr); gap:clamp(16px,3vw,40px);
+.figs{ display:grid; grid-template-columns:repeat(4,1fr); gap:clamp(16px,3vw,40px);
   margin-top:clamp(38px,5vw,60px); padding:clamp(24px,3vw,34px) 0;
   border-top:1px solid var(--border); border-bottom:1px solid var(--border); }
 .fig .v{ color:var(--white); font-size:clamp(22px,3.4vw,34px); line-height:1; }
 .fig .k{ color:var(--muted); font-size:11px; letter-spacing:.14em;
   text-transform:uppercase; margin-top:12px; line-height:1.5; }
+.figs-note{ margin-top:16px; color:var(--muted); font-size:12.5px;
+  line-height:1.7; max-width:86ch; }
 .clients{ margin-top:clamp(34px,4.5vw,52px); }
 .clients .k{ color:var(--muted); font-size:10.5px; letter-spacing:.22em;
   text-transform:uppercase; }
@@ -364,10 +366,12 @@ footer{ border-top:1px solid var(--border); padding:30px 0 44px; }
       <p class="lede">Chainlabs has spent six years building one of the largest entity attribution datasets in crypto, naming the exchanges, OTC desks, funds, miners and treasuries behind on-chain addresses. BlockQuery is the same attribution layer, pointed at the questions a trading desk asks.</p>
 
       <div class="figs">
-        <div class="fig"><div class="v">6 years</div><div class="k">building entity attribution</div></div>
-        <div class="fig"><div class="v">30,000+</div><div class="k">entities mapped</div></div>
-        <div class="fig"><div class="v">20</div><div class="k">blockchains</div></div>
+        <div class="fig"><div class="v">800+</div><div class="k">OTC desks attributed</div></div>
+        <div class="fig"><div class="v">480+</div><div class="k">regional exchanges</div></div>
+        <div class="fig"><div class="v">18,000</div><div class="k">commercial entities</div></div>
+        <div class="fig"><div class="v">30+</div><div class="k">blockchains</div></div>
       </div>
+      <p class="figs-note">90,000 addresses attributed through direct research, hundreds of millions more through entity clustering - 312M+ on Bitcoin, 47M+ on Ethereum, 94.4M+ on Tron. Around 300 new attributions added monthly.</p>
 
       <div class="clients">
         <p class="k">Clients include</p>
