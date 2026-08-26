@@ -93,6 +93,7 @@ a{ color:inherit; }
   font-size:11px; letter-spacing:.16em; text-transform:uppercase; }
 .rail a{ color:var(--muted); text-decoration:none; }
 .rail a:hover{ color:var(--white); }
+.rail-nav{ display:flex; align-items:center; gap:clamp(16px,2.6vw,30px); }
 
 /* ---------- section scaffolding ---------- */
 section{ padding:clamp(40px,5.5vw,64px) 0; }
@@ -285,7 +286,9 @@ footer{ border-top:1px solid var(--border); padding:30px 0 44px; }
   .fig .k{ margin-top:0; }
 }
 @media (max-width:560px){
+  /* free up the rail so the Monitoring link survives at 375px */
   .rail-in .rail-cta{ display:none; }
+  .rail-id span{ display:none; }
   .rec{ column-gap:9px; }
   .h{ font-size:8.5px; letter-spacing:.14em; }
 }
@@ -298,7 +301,10 @@ footer{ border-top:1px solid var(--border); padding:30px 0 44px; }
 <header class="rail">
   <div class="wrap rail-in">
     <div class="rail-id">BlockQuery <span>powered by Chainlabs.ai</span></div>
-    <a class="rail-cta" href="#request">Request sample data</a>
+    <nav class="rail-nav">
+      <a href="/monitoring">Monitoring</a>
+      <a class="rail-cta" href="#request">Request sample data</a>
+    </nav>
   </div>
 </header>
 

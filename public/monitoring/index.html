@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 
 <title>BlockQuery - counterparty monitoring for OTC desks</title>
-<meta name="description" content="Ongoing monitoring of your counterparty book, delivered as recurring written reports. See where the room is on the accounts you have, who you are not trading with yet, and who is starting to route elsewhere." />
+<meta name="description" content="Ongoing monitoring of your counterparty book, delivered as recurring written reports. Where the room is on the accounts you have, who is not trading with you yet, and who is starting to route elsewhere." />
 <link rel="canonical" href="https://www.blockquery.io/monitoring" />
 <meta name="theme-color" content="#0B0E14" />
 
@@ -87,6 +87,8 @@ a{ color:inherit; }
   font-size:11px; letter-spacing:.16em; text-transform:uppercase; }
 .rail a{ color:var(--muted); text-decoration:none; }
 .rail a:hover{ color:var(--white); }
+.rail-nav{ display:flex; align-items:center; gap:clamp(16px,2.6vw,30px); }
+.rail-nav .on{ color:var(--white); }
 
 section{ padding:clamp(40px,5.5vw,64px) 0; }
 .marker{ font-family:var(--mono); font-weight:400; line-height:1.4;
@@ -103,44 +105,62 @@ section{ padding:clamp(40px,5.5vw,64px) 0; }
 .btn:disabled{ opacity:.55; cursor:default; }
 
 /* ---------- head of page ---------- */
-.top h1{ font-size:clamp(30px,5vw,54px); max-width:20ch; }
-.top .stand{ margin-top:clamp(16px,2vw,22px); max-width:78ch; color:var(--muted);
+.top h1{ font-size:clamp(30px,5vw,54px); max-width:19ch; }
+.top .stand{ margin-top:clamp(16px,2vw,22px); max-width:60ch; color:var(--muted);
   font-size:clamp(14px,1.5vw,16px); line-height:1.7; }
 .top .stand b{ color:var(--body); font-weight:400; }
 
 /* ---------- the three outcomes: the most prominent element ---------- */
 .outcomes{ display:grid; grid-template-columns:repeat(3,1fr);
   border-top:1px solid var(--border); border-bottom:1px solid var(--border);
-  margin-top:clamp(30px,4vw,44px); }
-.out{ padding:clamp(24px,3vw,34px) clamp(20px,2.4vw,32px); }
+  margin-top:clamp(28px,3.6vw,40px); }
+.out{ padding:clamp(22px,2.8vw,30px) clamp(20px,2.4vw,32px); }
 .out+.out{ border-left:1px solid var(--border); }
 .out:first-child{ padding-left:0; }
 .out:last-child{ padding-right:0; }
-.out h2{ margin:0 0 12px; font-family:var(--mono); font-weight:500;
+.out h2{ margin:0 0 10px; font-family:var(--mono); font-weight:500;
   font-size:clamp(15px,1.7vw,18px); color:var(--white); line-height:1.4;
   letter-spacing:0; }
 .out p{ color:var(--muted); font-size:13.5px; line-height:1.7; }
 
-/* ---------- how it works + the honest note ---------- */
-.lower{ display:grid; grid-template-columns:1.1fr 0.9fr;
-  gap:clamp(30px,4vw,60px); align-items:start; }
+/* ---------- how it works: four ruled steps, each with a monoline mark ---------- */
 .steps{ list-style:none; margin:0; padding:0; counter-reset:s;
-  display:grid; grid-template-columns:repeat(2,1fr); gap:20px clamp(16px,2.2vw,30px); }
-.steps li{ counter-increment:s; padding-top:18px; position:relative;
-  border-top:1px solid var(--border);
-  color:var(--muted); font-size:12.5px; line-height:1.65; }
-.steps li::before{ content:counter(s,decimal-leading-zero); position:absolute;
-  top:6px; left:0; color:var(--muted); font-size:10.5px; letter-spacing:.16em; }
-.steps li span{ display:block; margin-top:14px; }
-.cadence{ margin-top:clamp(22px,3vw,30px); color:var(--body);
-  font-size:13px; line-height:1.65; }
-.notnote{ margin-top:12px; color:var(--muted); font-size:12.5px; line-height:1.7; }
+  display:grid; grid-template-columns:repeat(4,1fr); gap:clamp(16px,2.4vw,34px); }
+.steps li{ counter-increment:s; padding-top:20px; border-top:1px solid var(--border); }
+.si{ width:24px; height:24px; stroke:var(--muted); fill:none; stroke-width:1.5;
+  stroke-linecap:round; stroke-linejoin:round; display:block; margin-bottom:16px; }
+.steps b{ display:block; font-weight:500; color:var(--white); font-size:14px;
+  line-height:1.4; margin-bottom:6px; }
+.steps b::before{ content:counter(s,decimal-leading-zero) "  ";
+  color:var(--muted); font-weight:400; font-size:11px; letter-spacing:.16em; }
+.steps p{ color:var(--muted); font-size:12.5px; line-height:1.65; }
+/* specimen: shows that both sides of a transaction are named, rather
+   than saying so in another paragraph. Teal marks the named entity,
+   exactly as it does on the home page. */
+.spec{ margin-top:clamp(26px,3.4vw,38px); }
+.spec-k{ color:var(--muted); font-size:12.5px; line-height:1.7; margin-bottom:14px; }
+.rec-wrap{ overflow-x:auto; }
+.rec{ display:grid; align-items:baseline; width:max-content; min-width:100%;
+  grid-template-columns:max-content max-content 2.4ch max-content;
+  column-gap:clamp(12px,2.6vw,44px); row-gap:11px;
+  border-top:1px solid var(--border); border-bottom:1px solid var(--border);
+  padding:16px 0; font-size:clamp(12.5px,1.5vw,17px); line-height:1.2;
+  font-feature-settings:"liga" 0,"calt" 0; }
+.rec .h{ grid-row:1; font-size:9.5px; letter-spacing:.2em; line-height:1;
+  text-transform:uppercase; color:var(--muted); padding-bottom:7px; }
+.rec .amt{ color:var(--white); white-space:nowrap; }
+.rec .ent{ color:var(--accent); font-weight:500; white-space:nowrap; }
+.rec .who{ color:var(--body); white-space:nowrap; }
+.rec .arw{ color:var(--muted); }
 
-/* ---------- form ---------- */
+/* ---------- form, at the foot of the page ---------- */
+.cta{ border-top:1px solid var(--border); background:var(--raised); }
+.cta-grid{ display:grid; grid-template-columns:1fr 1fr;
+  gap:clamp(30px,5vw,70px); align-items:start; }
+.cta h2{ font-size:clamp(26px,3.6vw,38px); }
+.cta .sub{ margin-top:18px; color:var(--muted); font-size:14px;
+  line-height:1.7; max-width:44ch; }
 form{ border-top:1px solid var(--border); padding-top:clamp(20px,2.6vw,26px); }
-.form-h{ font-family:var(--mono); font-weight:500; font-size:15px;
-  color:var(--white); margin:0 0 4px; }
-.form-s{ color:var(--muted); font-size:12.5px; line-height:1.6; margin:0 0 22px; }
 .field{ margin-bottom:24px; }
 .field label{ display:block; font-size:10.5px; letter-spacing:.2em;
   text-transform:uppercase; color:var(--muted); margin-bottom:9px; }
@@ -176,7 +196,16 @@ footer{ border-top:1px solid var(--border); padding:30px 0 44px; }
   .outcomes{ grid-template-columns:1fr; }
   .out{ padding-left:0; padding-right:0; }
   .out+.out{ border-left:0; border-top:1px solid var(--border); }
-  .lower{ grid-template-columns:1fr; }
+  .steps{ grid-template-columns:repeat(2,1fr); }
+  .terms{ grid-template-columns:1fr; gap:12px; }
+  .cta-grid{ grid-template-columns:1fr; }
+}
+@media (max-width:560px){
+  /* free up the rail so the nav survives at 375px */
+  .rail-in .rail-cta{ display:none; }
+  .rail-id span{ display:none; }
+}
+@media (max-width:520px){
   .steps{ grid-template-columns:1fr; }
 }
 </style>
@@ -188,7 +217,10 @@ footer{ border-top:1px solid var(--border); padding:30px 0 44px; }
 <header class="rail">
   <div class="wrap rail-in">
     <a class="rail-id" href="/">BlockQuery <span>powered by Chainlabs.ai</span></a>
-    <a href="/">Back to the data</a>
+    <nav class="rail-nav">
+      <a class="on" href="/monitoring" aria-current="page">Monitoring</a>
+      <a class="rail-cta" href="#start">Start with a first report</a>
+    </nav>
   </div>
 </header>
 
@@ -198,37 +230,97 @@ footer{ border-top:1px solid var(--border); padding:30px 0 44px; }
     <div class="wrap">
       <p class="marker">Monitoring</p>
       <h1>See your book from the outside, every week</h1>
-      <p class="stand">You see your own fills. You do not see what your counterparties do when they are not trading with you. <b>We watch that continuously and tell you what changed.</b></p>
+      <p class="stand">You see your own fills. You do not see what your counterparties do everywhere else. <b>We name the desks and venues they move to, and tell you what changed.</b></p>
 
       <div class="outcomes">
         <div class="out">
           <h2>Grow the accounts you have</h2>
-          <p>A counterparty trades a certain volume with you and may be moving several times that on-chain. We show the gap account by account, and how it moves, so you know where the room is.</p>
+          <p>A counterparty may be moving several times on-chain what they trade with you. We show that gap, account by account.</p>
         </div>
         <div class="out">
           <h2>Win the ones you do not</h2>
-          <p>Named entities moving real size through venues you compete with, with volumes attached, that are not yet trading with you.</p>
+          <p>Named entities moving real size through venues you compete with, volumes attached, not yet trading with you.</p>
         </div>
         <div class="out">
           <h2>Keep the ones you are losing</h2>
-          <p>When a counterparty starts routing business to another desk, it shows on-chain before it shows in your volumes. We flag it while there is still time to act.</p>
+          <p>When a counterparty starts routing to another desk it shows on-chain first. We flag it while you can still act.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <section id="start">
-    <div class="wrap lower">
+  <section>
+    <div class="wrap">
+      <h2 class="marker">How it works</h2>
+      <ol class="steps">
+        <li>
+          <!-- the list you send -->
+          <svg class="si" viewBox="0 0 24 24" aria-hidden="true">
+            <rect x="3.5" y="3.5" width="17" height="17" rx="1"/>
+            <path d="M7.5 9h9M7.5 12.5h9M7.5 16h5"/>
+          </svg>
+          <b>You send the list</b>
+          <p>The accounts and prospects to monitor. No systems access, no integration.</p>
+        </li>
+        <li>
+          <!-- continuous tracking -->
+          <svg class="si" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M2 12h4l2.6-6.5L13 18.5l2.5-6.5H22"/>
+          </svg>
+          <b>We track them</b>
+          <p>Continuously, against 18,000 named entities across 31 blockchains.</p>
+        </li>
+        <li>
+          <!-- the report -->
+          <svg class="si" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M6.5 3.5h7.6L18.5 8v12.5h-12z"/>
+            <path d="M14 3.5V8h4.5"/>
+            <path d="M9.5 13h5.5M9.5 16.2h3.5"/>
+          </svg>
+          <b>You get a report</b>
+          <p>Weekly or monthly, covering what changed and what it means.</p>
+        </li>
+        <li>
+          <!-- escalate -->
+          <svg class="si" viewBox="0 0 24 24" aria-hidden="true">
+            <circle cx="10.5" cy="10.5" r="6.2"/>
+            <path d="M15.1 15.1 20 20"/>
+          </svg>
+          <b>We go deeper</b>
+          <p>Anything that warrants a closer look can be escalated to an investigation.</p>
+        </li>
+      </ol>
+
+      <div class="spec">
+        <p class="spec-k">Every transaction in the report names both sides, not just the address.</p>
+        <div class="rec-wrap">
+          <div class="rec">
+            <span class="h">size</span>
+            <span class="h">counterparty</span>
+            <span class="h"></span>
+            <span class="h">moved to</span>
+
+            <span class="amt">340 BTC</span>
+            <span class="who">Counterparty</span>
+            <span class="arw">-&gt;</span>
+            <span class="ent">Regional exchange</span>
+
+            <span class="amt">2.1M USDT</span>
+            <span class="who">Counterparty</span>
+            <span class="arw">-&gt;</span>
+            <span class="ent">Competing desk</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta" id="start">
+    <div class="wrap cta-grid">
       <div>
-        <p class="marker">How it works</p>
-        <ol class="steps">
-          <li><span>You tell us which accounts and prospects to monitor. No systems access, no integration.</span></li>
-          <li><span>We track them continuously against our attribution layer of 18,000 named entities across 31 blockchains.</span></li>
-          <li><span>You receive a report weekly or monthly, whichever suits, covering what changed and what it means.</span></li>
-          <li><span>Anything that warrants a closer look can be escalated to a deeper investigation.</span></li>
-        </ol>
-        <p class="cadence">Weekly or monthly reporting, on a coverage list you set. Fixed monthly fee, not priced per account or per query.</p>
-        <p class="notnote">This is a monitored service, not a data feed. There is nothing to integrate and no licence to negotiate. If you want the underlying attribution as a feed to run yourself, that is a separate product.</p>
+        <p class="marker">Start</p>
+        <h2>Start with a first report.</h2>
+        <p class="sub">Tell us which accounts to cover and we will come back with what the first report would look like.</p>
       </div>
 
       <div>
@@ -245,9 +337,6 @@ footer{ border-top:1px solid var(--border); padding:30px 0 44px; }
           <input type="hidden" name="redirect" value="https://www.blockquery.io/monitoring/#svc-ok" />
           <input type="checkbox" name="botcheck" style="display:none" tabindex="-1" aria-hidden="true" />
 
-          <p class="form-h">Start with a first report</p>
-          <p class="form-s">Tell us which accounts to cover and we will come back with what the first report would look like.</p>
-
           <div class="field">
             <label for="m-name">Name</label>
             <input id="m-name" name="name" type="text" autocomplete="name" required />
@@ -261,7 +350,7 @@ footer{ border-top:1px solid var(--border); padding:30px 0 44px; }
             <input id="m-firm" name="firm" type="text" autocomplete="organization" required />
           </div>
           <div class="field">
-            <label for="m-cover">Which accounts, or which question the monitoring should cover</label>
+            <label for="m-cover">Which accounts the monitoring should cover</label>
             <textarea id="m-cover" name="coverage"></textarea>
           </div>
 
