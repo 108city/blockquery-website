@@ -1,0 +1,325 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+<title>BlockQuery - counterparty monitoring for OTC desks</title>
+<meta name="description" content="Ongoing monitoring of your counterparty book, delivered as recurring written reports. See where the room is on the accounts you have, who you are not trading with yet, and who is starting to route elsewhere." />
+<link rel="canonical" href="https://www.blockquery.io/monitoring" />
+<meta name="theme-color" content="#0B0E14" />
+
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="BlockQuery" />
+<meta property="og:url" content="https://www.blockquery.io/monitoring" />
+<meta property="og:title" content="See your book from the outside, every week" />
+<meta property="og:description" content="Ongoing counterparty monitoring for OTC desks, delivered as recurring written reports. Nothing to integrate, no licence to negotiate." />
+<meta property="og:image" content="https://www.blockquery.io/og.png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:image:alt" content="BlockQuery counterparty monitoring." />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="See your book from the outside, every week" />
+<meta name="twitter:description" content="Ongoing counterparty monitoring for OTC desks, delivered as recurring written reports." />
+<meta name="twitter:image" content="https://www.blockquery.io/og.png" />
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-821HBV4DF8"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-821HBV4DF8');
+</script>
+
+<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+<link rel="alternate icon" type="image/x-icon" href="/favicon.ico" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Newsreader:opsz,wght@6..72,400;6..72,500&display=swap" />
+
+<style>
+/* ============================================================
+   BlockQuery - counterparty monitoring
+   Same system as the home page. Teal appears ONLY on the
+   primary action. Nowhere else.
+   ============================================================ */
+
+:root{
+  --canvas:#0B0E14; --raised:#0F141D; --border:#2A3445;
+  --white:#FFFFFF; --body:#E4E8EF; --muted:#8A94A6; --faint:#5C6678;
+  --accent:#19C3D6;
+  --mono:"IBM Plex Mono", "Cascadia Mono", Consolas, Menlo, "DejaVu Sans Mono", monospace;
+  --display:"Newsreader", Georgia, "Times New Roman", serif;
+  --gut:clamp(20px, 5vw, 64px);
+  --maxw:1140px;
+}
+
+*,*::before,*::after{ box-sizing:border-box; }
+html{ -webkit-text-size-adjust:100%; }
+body{
+  margin:0; background:var(--canvas); color:var(--body);
+  font-family:var(--mono); font-weight:400;
+  font-size:15px; line-height:1.65;
+  font-variant-numeric:tabular-nums;
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
+h1,h2{ font-family:var(--display); font-weight:500; color:var(--white);
+       letter-spacing:-0.015em; line-height:1.06; margin:0; }
+p{ margin:0; }
+a{ color:inherit; }
+
+.wrap{ width:100%; max-width:var(--maxw); margin:0 auto; padding:0 var(--gut); }
+:focus-visible{ outline:2px solid var(--accent); outline-offset:3px; }
+.skip{ position:absolute; left:-9999px; top:0; z-index:99;
+  background:var(--accent); color:var(--canvas); padding:10px 16px; font-weight:500; }
+.skip:focus{ left:0; }
+
+/* ---------- status rail ---------- */
+.rail{ border-bottom:1px solid var(--border); }
+.rail-in{ display:flex; align-items:center; justify-content:space-between; gap:16px;
+  height:46px; font-size:11px; letter-spacing:.16em; text-transform:uppercase; }
+.rail-id{ color:var(--white); font-weight:500;
+  text-transform:none; letter-spacing:0; font-size:13.5px; text-decoration:none; }
+.rail-id span{ color:var(--muted); font-weight:400;
+  font-size:11px; letter-spacing:.16em; text-transform:uppercase; }
+.rail a{ color:var(--muted); text-decoration:none; }
+.rail a:hover{ color:var(--white); }
+
+section{ padding:clamp(40px,5.5vw,64px) 0; }
+.marker{ font-family:var(--mono); font-weight:400; line-height:1.4;
+  font-size:10.5px; letter-spacing:.22em; text-transform:uppercase;
+  color:var(--muted); margin:0 0 clamp(18px,2.4vw,26px); }
+
+.btn{ display:inline-flex; align-items:center; justify-content:center;
+  font-family:var(--mono); font-size:12.5px; font-weight:500;
+  letter-spacing:.14em; text-transform:uppercase; text-decoration:none;
+  padding:15px 26px; border:1px solid transparent;
+  background:var(--accent); color:var(--canvas);
+  transition:opacity .15s ease; cursor:pointer; }
+.btn:hover{ opacity:.86; }
+.btn:disabled{ opacity:.55; cursor:default; }
+
+/* ---------- head of page ---------- */
+.top h1{ font-size:clamp(30px,5vw,54px); max-width:20ch; }
+.top .stand{ margin-top:clamp(16px,2vw,22px); max-width:78ch; color:var(--muted);
+  font-size:clamp(14px,1.5vw,16px); line-height:1.7; }
+.top .stand b{ color:var(--body); font-weight:400; }
+
+/* ---------- the three outcomes: the most prominent element ---------- */
+.outcomes{ display:grid; grid-template-columns:repeat(3,1fr);
+  border-top:1px solid var(--border); border-bottom:1px solid var(--border);
+  margin-top:clamp(30px,4vw,44px); }
+.out{ padding:clamp(24px,3vw,34px) clamp(20px,2.4vw,32px); }
+.out+.out{ border-left:1px solid var(--border); }
+.out:first-child{ padding-left:0; }
+.out:last-child{ padding-right:0; }
+.out h2{ margin:0 0 12px; font-family:var(--mono); font-weight:500;
+  font-size:clamp(15px,1.7vw,18px); color:var(--white); line-height:1.4;
+  letter-spacing:0; }
+.out p{ color:var(--muted); font-size:13.5px; line-height:1.7; }
+
+/* ---------- how it works + the honest note ---------- */
+.lower{ display:grid; grid-template-columns:1.1fr 0.9fr;
+  gap:clamp(30px,4vw,60px); align-items:start; }
+.steps{ list-style:none; margin:0; padding:0; counter-reset:s;
+  display:grid; grid-template-columns:repeat(2,1fr); gap:20px clamp(16px,2.2vw,30px); }
+.steps li{ counter-increment:s; padding-top:18px; position:relative;
+  border-top:1px solid var(--border);
+  color:var(--muted); font-size:12.5px; line-height:1.65; }
+.steps li::before{ content:counter(s,decimal-leading-zero); position:absolute;
+  top:6px; left:0; color:var(--muted); font-size:10.5px; letter-spacing:.16em; }
+.steps li span{ display:block; margin-top:14px; }
+.cadence{ margin-top:clamp(22px,3vw,30px); color:var(--body);
+  font-size:13px; line-height:1.65; }
+.notnote{ margin-top:12px; color:var(--muted); font-size:12.5px; line-height:1.7; }
+
+/* ---------- form ---------- */
+form{ border-top:1px solid var(--border); padding-top:clamp(20px,2.6vw,26px); }
+.form-h{ font-family:var(--mono); font-weight:500; font-size:15px;
+  color:var(--white); margin:0 0 4px; }
+.form-s{ color:var(--muted); font-size:12.5px; line-height:1.6; margin:0 0 22px; }
+.field{ margin-bottom:24px; }
+.field label{ display:block; font-size:10.5px; letter-spacing:.2em;
+  text-transform:uppercase; color:var(--muted); margin-bottom:9px; }
+.field input,.field textarea{ width:100%; background:transparent;
+  border:0; border-bottom:1px solid var(--border);
+  color:var(--white); font-family:var(--mono); font-size:15px; line-height:1.6;
+  padding:9px 0; transition:border-color .15s ease; }
+.field textarea{ resize:vertical; min-height:72px; }
+.field input:focus,.field textarea:focus{ border-bottom-color:var(--accent); }
+.field input:focus:not(:focus-visible),
+.field textarea:focus:not(:focus-visible){ outline:none; }
+form .btn{ width:100%; margin-top:8px; }
+.talk{ margin-top:18px; color:var(--muted); font-size:12.5px; }
+.talk a{ color:var(--body); text-decoration:none; border-bottom:1px solid var(--muted); }
+.ok{ display:none; border-top:1px solid var(--border); padding-top:26px; }
+.ok.show,.ok:target{ display:block; }
+.ok h2{ font-family:var(--mono); font-weight:500; font-size:16px;
+  color:var(--white); margin:0 0 10px; letter-spacing:0; }
+.ok p{ color:var(--muted); font-size:14px; }
+.ok a{ color:var(--body); text-decoration:none; border-bottom:1px solid var(--muted); }
+.err{ display:none; margin-top:16px; color:#F5A623; font-size:12.5px; }
+.err a{ color:var(--body); text-decoration:underline; }
+
+footer{ border-top:1px solid var(--border); padding:30px 0 44px; }
+.foot-in{ display:flex; flex-wrap:wrap; justify-content:space-between; gap:12px 24px;
+  font-size:11px; letter-spacing:.14em; text-transform:uppercase; color:var(--muted); }
+.foot-in a{ color:var(--muted); text-decoration:none; }
+.foot-in a:hover{ color:var(--white); }
+.fb{ text-transform:none; letter-spacing:0; font-size:12.5px;
+  font-weight:500; color:var(--body); }
+
+@media (max-width:860px){
+  .outcomes{ grid-template-columns:1fr; }
+  .out{ padding-left:0; padding-right:0; }
+  .out+.out{ border-left:0; border-top:1px solid var(--border); }
+  .lower{ grid-template-columns:1fr; }
+  .steps{ grid-template-columns:1fr; }
+}
+</style>
+</head>
+
+<body>
+<a class="skip" href="#start">Skip to the form</a>
+
+<header class="rail">
+  <div class="wrap rail-in">
+    <a class="rail-id" href="/">BlockQuery <span>powered by Chainlabs.ai</span></a>
+    <a href="/">Back to the data</a>
+  </div>
+</header>
+
+<main>
+
+  <section class="top">
+    <div class="wrap">
+      <p class="marker">Monitoring</p>
+      <h1>See your book from the outside, every week</h1>
+      <p class="stand">You see your own fills. You do not see what your counterparties do when they are not trading with you. <b>We watch that continuously and tell you what changed.</b></p>
+
+      <div class="outcomes">
+        <div class="out">
+          <h2>Grow the accounts you have</h2>
+          <p>A counterparty trades a certain volume with you and may be moving several times that on-chain. We show the gap account by account, and how it moves, so you know where the room is.</p>
+        </div>
+        <div class="out">
+          <h2>Win the ones you do not</h2>
+          <p>Named entities moving real size through venues you compete with, with volumes attached, that are not yet trading with you.</p>
+        </div>
+        <div class="out">
+          <h2>Keep the ones you are losing</h2>
+          <p>When a counterparty starts routing business to another desk, it shows on-chain before it shows in your volumes. We flag it while there is still time to act.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="start">
+    <div class="wrap lower">
+      <div>
+        <p class="marker">How it works</p>
+        <ol class="steps">
+          <li><span>You tell us which accounts and prospects to monitor. No systems access, no integration.</span></li>
+          <li><span>We track them continuously against our attribution layer of 18,000 named entities across 31 blockchains.</span></li>
+          <li><span>You receive a report weekly or monthly, whichever suits, covering what changed and what it means.</span></li>
+          <li><span>Anything that warrants a closer look can be escalated to a deeper investigation.</span></li>
+        </ol>
+        <p class="cadence">Weekly or monthly reporting, on a coverage list you set. Fixed monthly fee, not priced per account or per query.</p>
+        <p class="notnote">This is a monitored service, not a data feed. There is nothing to integrate and no licence to negotiate. If you want the underlying attribution as a feed to run yourself, that is a separate product.</p>
+      </div>
+
+      <div>
+        <!--
+          Lead delivery: Web3Forms -> greg@chainlabs.ai. access_key is a
+          Web3Forms PUBLIC key, safe in HTML. AJAX submit below keeps the
+          on-page confirmation; the form action is the no-JS fallback.
+        -->
+        <form id="svc-form" data-w3f data-ok="svc-ok" data-err="svc-err"
+              action="https://api.web3forms.com/submit" method="post">
+          <input type="hidden" name="access_key" value="b09b8765-736f-49f8-9ff6-284dab89ebea" />
+          <input type="hidden" name="subject" value="New BlockQuery counterparty monitoring request" />
+          <input type="hidden" name="from_name" value="blockquery.io monitoring" />
+          <input type="hidden" name="redirect" value="https://www.blockquery.io/monitoring/#svc-ok" />
+          <input type="checkbox" name="botcheck" style="display:none" tabindex="-1" aria-hidden="true" />
+
+          <p class="form-h">Start with a first report</p>
+          <p class="form-s">Tell us which accounts to cover and we will come back with what the first report would look like.</p>
+
+          <div class="field">
+            <label for="m-name">Name</label>
+            <input id="m-name" name="name" type="text" autocomplete="name" required />
+          </div>
+          <div class="field">
+            <label for="m-email">Work email</label>
+            <input id="m-email" name="email" type="email" autocomplete="email" required />
+          </div>
+          <div class="field">
+            <label for="m-firm">Firm</label>
+            <input id="m-firm" name="firm" type="text" autocomplete="organization" required />
+          </div>
+          <div class="field">
+            <label for="m-cover">Which accounts, or which question the monitoring should cover</label>
+            <textarea id="m-cover" name="coverage"></textarea>
+          </div>
+
+          <button class="btn" type="submit">Start with a first report</button>
+          <p class="talk">Prefer to talk first? <a href="https://koalendar.com/e/meet-with-greg-schneider-chainlabs" target="_blank" rel="noopener noreferrer">Book a call</a>.</p>
+        </form>
+
+        <div class="ok" id="svc-ok" role="status" aria-live="polite" tabindex="-1">
+          <h2>Request received.</h2>
+          <p>We will be in touch to scope your first report. <a href="https://koalendar.com/e/meet-with-greg-schneider-chainlabs" target="_blank" rel="noopener noreferrer">Book a call</a> if you would rather talk sooner.</p>
+        </div>
+        <p class="err" id="svc-err" role="alert">That did not send. Please try again, or <a href="mailto:greg@chainlabs.ai?subject=BlockQuery%20counterparty%20monitoring">email us directly</a>.</p>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap foot-in">
+    <span><b class="fb">BlockQuery</b> &middot; powered by Chainlabs</span>
+    <a href="/">On-chain entity data</a>
+  </div>
+</footer>
+
+<script>
+/* Wires every Web3Forms form on the page. Each form names its own
+   confirmation and error elements via data attributes. */
+(function(){
+  function wire(form){
+    var ok=document.getElementById(form.getAttribute('data-ok')),
+        err=document.getElementById(form.getAttribute('data-err'));
+    if(!ok||!err) return;
+    form.addEventListener('submit',function(e){
+      e.preventDefault();
+      if(!form.checkValidity()){ form.reportValidity(); return; }
+      var btn=form.querySelector('button[type=submit]'), label=btn.textContent;
+      btn.disabled=true; btn.textContent='Sending';
+      err.style.display='none';
+      var payload={}; new FormData(form).forEach(function(v,k){ payload[k]=v; });
+      var ctl=new AbortController(), t=setTimeout(function(){ ctl.abort(); },15000);
+      fetch('https://api.web3forms.com/submit',{
+        method:'POST', signal:ctl.signal,
+        headers:{'Content-Type':'application/json','Accept':'application/json'},
+        body:JSON.stringify(payload)
+      }).then(function(r){ clearTimeout(t); return r.json(); })
+        .then(function(out){
+          if(out&&out.success){ form.style.display='none'; ok.classList.add('show'); ok.focus(); }
+          else{ throw new Error('failed'); }
+        })
+        .catch(function(){
+          clearTimeout(t);
+          btn.disabled=false; btn.textContent=label; err.style.display='block';
+        });
+    });
+  }
+  Array.prototype.forEach.call(document.querySelectorAll('form[data-w3f]'), wire);
+})();
+</script>
+</body>
+</html>

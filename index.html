@@ -49,7 +49,7 @@
 @property --wipe { syntax: '<percentage>'; inherits: true; initial-value: 100%; }
 
 :root{
-  --canvas:#0B0E14; --border:#2A3445;
+  --canvas:#0B0E14; --raised:#0F141D; --border:#2A3445;
   --white:#FFFFFF; --body:#E4E8EF; --muted:#8A94A6; --faint:#5C6678;
   --accent:#19C3D6;
   --mono:"IBM Plex Mono", "Cascadia Mono", Consolas, Menlo, "DejaVu Sans Mono", monospace;
@@ -215,6 +215,26 @@ h2{ font-size:clamp(28px,4.4vw,44px); }
 .trust p{ color:var(--muted); font-size:13.5px; line-height:1.7; padding-left:16px;
   border-left:1px solid var(--border); }
 
+/* ---------- monitoring mention: links to the full offer at /monitoring ---------- */
+.mention-in{ display:grid; grid-template-columns:minmax(0,1fr) max-content;
+  gap:0 clamp(24px,4vw,56px); align-items:center;
+  background:var(--raised); border:1px solid var(--border);
+  padding:clamp(24px,3.2vw,40px); text-decoration:none;
+  transition:border-color .15s ease; }
+.mention-in:hover{ border-color:var(--muted); }
+.mention-in:hover .mention-go{ border-bottom-color:var(--body); }
+.mention-k{ grid-column:1; grid-row:1; font-size:10.5px; letter-spacing:.22em;
+  text-transform:uppercase; color:var(--muted); }
+.mention-t{ grid-column:1; grid-row:2; margin-top:10px;
+  font-family:var(--display); font-weight:500; color:var(--white);
+  font-size:clamp(21px,2.7vw,30px); line-height:1.14; letter-spacing:-.015em; }
+.mention-d{ grid-column:1; grid-row:3; margin-top:10px; max-width:66ch;
+  color:var(--muted); font-size:13.5px; line-height:1.65; }
+.mention-go{ grid-column:2; grid-row:1/4; align-self:center; white-space:nowrap;
+  font-size:12px; letter-spacing:.14em; text-transform:uppercase;
+  color:var(--body); padding-bottom:3px;
+  border-bottom:1px solid var(--border); transition:border-color .15s ease; }
+
 /* ---------- form ---------- */
 .cta-grid{ display:grid; grid-template-columns:1fr 1fr; gap:clamp(36px,6vw,80px); align-items:start; }
 .cta h2{ font-size:clamp(28px,4.4vw,44px); }
@@ -256,6 +276,8 @@ footer{ border-top:1px solid var(--border); padding:30px 0 44px; }
 @media (max-width:860px){
   .cta-grid{ grid-template-columns:1fr; }
   .cover{ grid-template-columns:1fr; }
+  .mention-in{ grid-template-columns:1fr; }
+  .mention-go{ grid-column:1; grid-row:4; margin-top:20px; justify-self:start; }
   .cov{ padding-left:0; padding-right:0; }
   .cov+.cov{ border-left:0; border-top:1px solid var(--border); }
   .figs{ grid-template-columns:1fr; gap:22px; }
@@ -394,7 +416,19 @@ footer{ border-top:1px solid var(--border); padding:30px 0 44px; }
     </div>
   </section>
 
-  <!-- 04 ................................... request sample data -->
+  <!-- 04 ..................................... monitoring (mention) -->
+  <section class="mention">
+    <div class="wrap">
+      <a class="mention-in" href="/monitoring">
+        <span class="mention-k">Monitoring</span>
+        <span class="mention-t">See your book from the outside, every week</span>
+        <span class="mention-d">Ongoing counterparty monitoring for OTC desks, delivered as recurring written reports. Nothing to integrate, no licence to negotiate.</span>
+        <span class="mention-go">Read more</span>
+      </a>
+    </div>
+  </section>
+
+  <!-- 05 ................................... request sample data -->
   <section class="cta" id="request">
     <div class="wrap cta-grid">
       <div>
@@ -409,7 +443,8 @@ footer{ border-top:1px solid var(--border); padding:30px 0 44px; }
           Web3Forms PUBLIC key, safe in HTML. AJAX submit below keeps the
           on-page confirmation; the form action is the no-JS fallback.
         -->
-        <form id="sample-form" action="https://api.web3forms.com/submit" method="post">
+        <form id="sample-form" data-w3f data-ok="form-ok" data-err="form-err"
+              action="https://api.web3forms.com/submit" method="post">
           <input type="hidden" name="access_key" value="b09b8765-736f-49f8-9ff6-284dab89ebea" />
           <input type="hidden" name="subject" value="New BlockQuery sample-data request" />
           <input type="hidden" name="from_name" value="blockquery.io" />
@@ -456,35 +491,40 @@ footer{ border-top:1px solid var(--border); padding:30px 0 44px; }
 </footer>
 
 <script>
+/* Wires every Web3Forms form on the page (sample data, monitoring). Each
+   form names its own confirmation and error elements via data attributes,
+   so the two never cross-talk. */
 (function(){
-  var form=document.getElementById('sample-form'),
-      ok=document.getElementById('form-ok'),
-      err=document.getElementById('form-err');
-  if(!form) return;
-  form.addEventListener('submit',function(e){
-    e.preventDefault();
-    if(!form.checkValidity()){ form.reportValidity(); return; }
-    var btn=form.querySelector('button[type=submit]'), label=btn.textContent;
-    btn.disabled=true; btn.textContent='Sending';
-    err.style.display='none';
-    var payload={}; new FormData(form).forEach(function(v,k){ payload[k]=v; });
-    // abort after 15s so a proxy that swallows the connection still surfaces
-    // the error path rather than leaving the button stuck on "Sending"
-    var ctl=new AbortController(), t=setTimeout(function(){ ctl.abort(); },15000);
-    fetch('https://api.web3forms.com/submit',{
-      method:'POST', signal:ctl.signal,
-      headers:{'Content-Type':'application/json','Accept':'application/json'},
-      body:JSON.stringify(payload)
-    }).then(function(r){ clearTimeout(t); return r.json(); })
-      .then(function(out){
-        if(out&&out.success){ form.style.display='none'; ok.classList.add('show'); ok.focus(); }
-        else{ throw new Error('failed'); }
-      })
-      .catch(function(){
-        clearTimeout(t);
-        btn.disabled=false; btn.textContent=label; err.style.display='block';
-      });
-  });
+  function wire(form){
+    var ok=document.getElementById(form.getAttribute('data-ok')),
+        err=document.getElementById(form.getAttribute('data-err'));
+    if(!ok||!err) return;
+    form.addEventListener('submit',function(e){
+      e.preventDefault();
+      if(!form.checkValidity()){ form.reportValidity(); return; }
+      var btn=form.querySelector('button[type=submit]'), label=btn.textContent;
+      btn.disabled=true; btn.textContent='Sending';
+      err.style.display='none';
+      var payload={}; new FormData(form).forEach(function(v,k){ payload[k]=v; });
+      // abort after 15s so a proxy that swallows the connection still surfaces
+      // the error path rather than leaving the button stuck on "Sending"
+      var ctl=new AbortController(), t=setTimeout(function(){ ctl.abort(); },15000);
+      fetch('https://api.web3forms.com/submit',{
+        method:'POST', signal:ctl.signal,
+        headers:{'Content-Type':'application/json','Accept':'application/json'},
+        body:JSON.stringify(payload)
+      }).then(function(r){ clearTimeout(t); return r.json(); })
+        .then(function(out){
+          if(out&&out.success){ form.style.display='none'; ok.classList.add('show'); ok.focus(); }
+          else{ throw new Error('failed'); }
+        })
+        .catch(function(){
+          clearTimeout(t);
+          btn.disabled=false; btn.textContent=label; err.style.display='block';
+        });
+    });
+  }
+  Array.prototype.forEach.call(document.querySelectorAll('form[data-w3f]'), wire);
 })();
 
 /* Address rain. Columns of address characters fall behind the hero;
