@@ -134,6 +134,13 @@ section{ padding:clamp(40px,5.5vw,64px) 0; }
 .steps b::before{ content:counter(s,decimal-leading-zero) "  ";
   color:var(--muted); font-weight:400; font-size:11px; letter-spacing:.16em; }
 .steps p{ color:var(--muted); font-size:12.5px; line-height:1.65; }
+.cadence{ margin-top:clamp(22px,3vw,30px); color:var(--muted);
+  font-size:12.5px; line-height:1.7; }
+.cta .note{ margin-top:20px; color:var(--muted); font-size:12.5px;
+  line-height:1.7; max-width:46ch; }
+.cta .note a{ color:var(--body); text-decoration:none;
+  border-bottom:1px solid var(--muted); }
+
 /* specimen: shows that both sides of a transaction are named, rather
    than saying so in another paragraph. Teal marks the named entity,
    exactly as it does on the home page. */
@@ -228,9 +235,9 @@ footer{ border-top:1px solid var(--border); padding:30px 0 44px; }
 
   <section class="top">
     <div class="wrap">
-      <p class="marker">Monitoring</p>
+      <p class="marker">OTC VIP Monitoring</p>
       <h1>See your book from the outside, every week</h1>
-      <p class="stand">You see your own fills. You do not see what your counterparties do everywhere else. <b>We name the desks and venues they move to, and tell you what changed.</b></p>
+      <p class="stand">OTC desks see their own fills. They do not see what their counterparties do everywhere else. <b>We name the desks and venues they move to, and tell you what changed.</b></p>
 
       <div class="outcomes">
         <div class="out">
@@ -268,7 +275,7 @@ footer{ border-top:1px solid var(--border); padding:30px 0 44px; }
             <path d="M2 12h4l2.6-6.5L13 18.5l2.5-6.5H22"/>
           </svg>
           <b>We track them</b>
-          <p>Continuously, against 18,000 named entities across 31 blockchains.</p>
+          <p>Continuously, against 18,000 named entities across 30+ blockchains.</p>
         </li>
         <li>
           <!-- the report -->
@@ -290,6 +297,8 @@ footer{ border-top:1px solid var(--border); padding:30px 0 44px; }
           <p>Anything that warrants a closer look can be escalated to an investigation.</p>
         </li>
       </ol>
+
+      <p class="cadence">Weekly or monthly reporting, on a coverage list you set and can change. Fixed monthly fee, not priced per account or per query.</p>
 
       <div class="spec">
         <p class="spec-k">Every transaction in the report names both sides, not just the address.</p>
@@ -321,6 +330,7 @@ footer{ border-top:1px solid var(--border); padding:30px 0 44px; }
         <p class="marker">Start</p>
         <h2>Start with a first report.</h2>
         <p class="sub">Tell us which accounts to cover and we will come back with what the first report would look like.</p>
+        <p class="note">This is a monitored service, not a data feed. There is nothing to integrate and no licence to negotiate. If you want the underlying attribution as a feed to run yourself, that is a <a href="/">separate product</a>.</p>
       </div>
 
       <div>
