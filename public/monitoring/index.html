@@ -107,6 +107,16 @@ section{ padding:clamp(40px,5.5vw,64px) 0; }
 .btn:disabled{ opacity:.55; cursor:default; }
 
 /* ---------- head of page ---------- */
+.top{ position:relative; }
+/* the rain is confined to the headline band. On mobile the hero is tall
+   and full width, so covering the whole section ran characters straight
+   through the outcome copy. */
+.band{ position:relative; overflow:hidden; padding-bottom:10px; }
+.band-in{ position:relative; z-index:1; }
+/* address rain: canvas behind the hero copy, right-weighted, faint.
+   Purely decorative (aria-hidden); a static scatter under reduced motion. */
+.rain{ position:absolute; inset:0; z-index:0; width:100%; height:100%;
+  display:block; pointer-events:none; }
 .top h1{ font-size:clamp(30px,5vw,54px); max-width:19ch; }
 .top .stand{ margin-top:clamp(16px,2vw,22px); max-width:60ch; color:var(--muted);
   font-size:clamp(14px,1.5vw,16px); line-height:1.7; }
@@ -256,9 +266,15 @@ footer{ border-top:1px solid var(--border); padding:30px 0 44px; }
 
   <section class="top">
     <div class="wrap">
-      <p class="marker">OTC VIP Monitoring</p>
-      <h1>See where your counterparties trade without you.</h1>
-      <p class="stand">OTC desks see their own fills. They do not see what their counterparties do everywhere else. <b>We name the desks and venues they move to, and tell you what changed.</b></p>
+      <div class="band">
+        <canvas class="rain" id="rain" aria-hidden="true"></canvas>
+        <div class="band-in">
+
+        <p class="marker">OTC VIP Monitoring</p>
+        <h1>See where your counterparties trade without you.</h1>
+        <p class="stand">OTC desks see their own fills. They do not see what their counterparties do everywhere else. <b>We name the desks and venues they move to, and tell you what changed.</b></p>
+        </div>
+      </div>
 
       <div class="spec" id="spec">
         <p class="spec-k">Every transaction in the report names both sides, not just the address.</p>
@@ -446,6 +462,111 @@ footer{ border-top:1px solid var(--border); padding:30px 0 44px; }
     });
   }
   Array.prototype.forEach.call(document.querySelectorAll('form[data-w3f]'), wire);
+})();
+
+/* Address rain. Columns of address characters fall behind the hero;
+   occasionally one resolves into an entity name in brighter teal - the
+   product story as ambient texture. Right-weighted and faded around the
+   copy so the headline and the resolve record stay clean. Decorative
+   only: aria-hidden canvas, static scatter under prefers-reduced-motion,
+   nothing at all without JS. */
+(function(){
+  var cv=document.getElementById('rain');
+  if(!cv||!cv.getContext) return;
+  var hero=cv.parentElement, ctx=cv.getContext('2d');
+  var reduce=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var CHARS='0123456789abcdefqpzry9x8gf2tvdw0s3jn54khce6mua7l';
+  var NAMES=['BINANCE','OTC DESK','COINBASE','OKX','MINER','TREASURY','ETF ISSUER'];
+  var TEAL='25,195,214', SLATE='92,102,120';
+  var FS=13, CW=22, cols=[], W=0, H=0;
+
+  function setFont(){ ctx.font='500 '+FS+'px "IBM Plex Mono",Menlo,monospace'; ctx.textBaseline='top'; }
+  /* fade in from the left so the rain never sits behind the headline */
+  function xa(x){ var lo=W>860?0.42:0.30, t=(x/W-lo)/0.32; return t<0?0:t>1?1:t; }
+  /* fade at the top edge and out before the resolve record */
+  function ya(y){ if(y<0) return 0; if(y<36) return y/36;
+    var lim=H*0.72; return y>lim?Math.max(0,1-(y-lim)/(H*0.2)):1; }
+  /* seed inside the canvas so the rain is already mid-fall on first paint;
+     recycled columns re-enter from just above the top edge */
+  function mkcol(i,seed){ return {x:i*CW+4, y:seed?Math.random()*H*0.9:-20,
+    v:0.55+Math.random()*0.95, name:null, ni:0}; }
+
+  function size(){
+    var d=Math.min(window.devicePixelRatio||1,2);
+    W=hero.clientWidth; H=hero.clientHeight;
+    cv.width=Math.round(W*d); cv.height=Math.round(H*d);
+    ctx.setTransform(d,0,0,d,0,0); setFont();
+    cols=[]; for(var i=0,n=Math.ceil(W/CW);i<n;i++) cols.push(mkcol(i,true));
+    ctx.clearRect(0,0,W,H);
+    if(reduce) still();
+  }
+
+  function glyph(c){
+    var chr,clr,a;
+    if(c.name){
+      chr=c.name[c.ni]; clr=TEAL; a=0.8;
+      c.ni++; if(c.ni>=c.name.length) c.name=null;
+    }else{
+      chr=CHARS[(Math.random()*CHARS.length)|0];
+      clr=Math.random()<0.7?TEAL:SLATE;
+      a=Math.random()<0.12?0.35:0.16;
+      if(xa(c.x)>0.25&&Math.random()<0.0015){ c.name=NAMES[(Math.random()*NAMES.length)|0]; c.ni=0; }
+    }
+    var f=a*xa(c.x)*ya(c.y);
+    if(f>0.01&&chr!==' '){ ctx.fillStyle='rgba('+clr+','+f.toFixed(3)+')'; ctx.fillText(chr,c.x,c.y); }
+  }
+
+  function step(){
+    ctx.globalCompositeOperation='destination-out';
+    ctx.fillStyle='rgba(0,0,0,0.12)';
+    ctx.fillRect(0,0,W,H);
+    ctx.globalCompositeOperation='source-over';
+    for(var i=0;i<cols.length;i++){
+      var c=cols[i];
+      c.y+=c.name?FS:c.v*FS;           /* names advance one cell per tick, evenly spaced */
+      if(c.y>H+30){ cols[i]=mkcol(i,false); continue; }
+      glyph(c);
+    }
+  }
+
+  /* reduced motion: one quiet frame, no loop */
+  function still(){
+    ctx.clearRect(0,0,W,H);
+    for(var i=0;i<150;i++){
+      var x=Math.random()*W, y=Math.random()*H;
+      var a=(Math.random()<0.15?0.28:0.12)*xa(x)*ya(y);
+      if(a<0.02) continue;
+      ctx.fillStyle='rgba('+(Math.random()<0.7?TEAL:SLATE)+','+a.toFixed(3)+')';
+      ctx.fillText(CHARS[(Math.random()*CHARS.length)|0],x,y);
+    }
+    for(var n=0;n<2;n++){
+      var nm=NAMES[n], nx=W*(0.6+0.2*n), ny=H*0.16+n*H*0.3;
+      for(var k=0;k<nm.length;k++){
+        var a2=0.5*xa(nx)*ya(ny+k*FS);
+        if(a2<0.02||nm[k]===' ') continue;
+        ctx.fillStyle='rgba('+TEAL+','+a2.toFixed(3)+')';
+        ctx.fillText(nm[k],nx,ny+k*FS);
+      }
+    }
+  }
+
+  var run=false,last=0;
+  function loop(ts){ if(!run) return; requestAnimationFrame(loop);
+    if(ts-last<85) return; last=ts; step(); }
+  function play(){ if(run||reduce) return; run=true; requestAnimationFrame(loop); }
+  function stop(){ run=false; }
+
+  size();
+  if(!reduce){
+    if('IntersectionObserver' in window){
+      new IntersectionObserver(function(e){ e[0].isIntersecting?play():stop(); }).observe(hero);
+    }else{ play(); }
+  }
+  if('ResizeObserver' in window){ new ResizeObserver(size).observe(hero); }
+  else{ addEventListener('resize',size); }
+  if(document.fonts&&document.fonts.ready){
+    document.fonts.ready.then(function(){ setFont(); if(reduce) still(); });
+  }
 })();
 </script>
 </body>
