@@ -12,14 +12,14 @@
 <meta property="og:type" content="website" />
 <meta property="og:site_name" content="BlockQuery" />
 <meta property="og:url" content="https://www.blockquery.io/monitoring" />
-<meta property="og:title" content="See your book from the outside, every week" />
+<meta property="og:title" content="See where your counterparties trade without you" />
 <meta property="og:description" content="Ongoing counterparty monitoring for OTC desks, delivered as recurring written reports. Nothing to integrate, no licence to negotiate." />
 <meta property="og:image" content="https://www.blockquery.io/og.png" />
 <meta property="og:image:width" content="1200" />
 <meta property="og:image:height" content="630" />
 <meta property="og:image:alt" content="BlockQuery counterparty monitoring." />
 <meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:title" content="See your book from the outside, every week" />
+<meta name="twitter:title" content="See where your counterparties trade without you" />
 <meta name="twitter:description" content="Ongoing counterparty monitoring for OTC desks, delivered as recurring written reports." />
 <meta name="twitter:image" content="https://www.blockquery.io/og.png" />
 
@@ -45,6 +45,8 @@
    Same system as the home page. Teal appears ONLY on the
    primary action. Nowhere else.
    ============================================================ */
+
+@property --wipe { syntax: '<percentage>'; inherits: true; initial-value: 100%; }
 
 :root{
   --canvas:#0B0E14; --raised:#0F141D; --border:#2A3445;
@@ -157,6 +159,25 @@ section{ padding:clamp(40px,5.5vw,64px) 0; }
   text-transform:uppercase; color:var(--muted); padding-bottom:7px; }
 .rec .amt{ color:var(--white); white-space:nowrap; }
 .rec .ent{ color:var(--accent); font-weight:500; white-space:nowrap; }
+/* the destination resolves from an address to the named venue on load,
+   the same mechanic and meaning as the home page record. Every var()
+   carries the resolved end state as its fallback, so no-JS, reduced
+   motion and engines without @property all land on the finished row. */
+.rec .cell{ position:relative; display:grid; }
+.rec .cell > *{ grid-area:1/1; white-space:nowrap; }
+.rec .pre{ color:var(--muted); clip-path:inset(0 0 0 var(--wipe,100%)); }
+.rec .post{ color:var(--accent); font-weight:500;
+  clip-path:inset(0 calc(100% - var(--wipe,100%)) 0 0); }
+.rec .cell::after{ content:''; position:absolute; inset:-.14em auto -.14em 0;
+  left:var(--wipe,100%); width:1px; background:var(--accent); opacity:0; }
+@keyframes wipe{ from{ --wipe:0% } to{ --wipe:100% } }
+@keyframes edge{ 0%{opacity:0} 10%{opacity:.85} 84%{opacity:.85} 100%{opacity:0} }
+@media (prefers-reduced-motion:no-preference){
+  .spec.go .cell{ animation:wipe 760ms cubic-bezier(.2,.7,.25,1)
+    calc(520ms + var(--i,0)*150ms) both; }
+  .spec.go .cell::after{ animation:edge 760ms linear
+    calc(520ms + var(--i,0)*150ms) both; }
+}
 .rec .who{ color:var(--body); white-space:nowrap; }
 .rec .arw{ color:var(--muted); }
 
@@ -236,8 +257,37 @@ footer{ border-top:1px solid var(--border); padding:30px 0 44px; }
   <section class="top">
     <div class="wrap">
       <p class="marker">OTC VIP Monitoring</p>
-      <h1>See your book from the outside, every week</h1>
+      <h1>See where your counterparties trade without you.</h1>
       <p class="stand">OTC desks see their own fills. They do not see what their counterparties do everywhere else. <b>We name the desks and venues they move to, and tell you what changed.</b></p>
+
+      <div class="spec" id="spec">
+        <p class="spec-k">Every transaction in the report names both sides, not just the address.</p>
+        <div class="rec-wrap">
+          <div class="rec">
+            <span class="h">size</span>
+            <span class="h">counterparty</span>
+            <span class="h"></span>
+            <span class="h">moved to</span>
+
+            <span class="amt">340 BTC</span>
+            <span class="who">Counterparty</span>
+            <span class="arw">-&gt;</span>
+            <span class="cell" style="--i:0">
+              <span class="pre" aria-hidden="true">bc1q&hellip;7e4f</span>
+              <span class="post">Binance</span>
+            </span>
+
+            <span class="amt">2.1M USDT</span>
+            <span class="who">Counterparty</span>
+            <span class="arw">-&gt;</span>
+            <span class="cell" style="--i:1">
+              <span class="pre" aria-hidden="true">TR7N&hellip;1a4c</span>
+              <span class="post">Bitso</span>
+            </span>
+          </div>
+        </div>
+      </div>
+      <script>document.getElementById('spec').classList.add('go');</script>
 
       <div class="outcomes">
         <div class="out">
@@ -299,28 +349,6 @@ footer{ border-top:1px solid var(--border); padding:30px 0 44px; }
       </ol>
 
       <p class="cadence">Weekly or monthly reporting, on a coverage list you set and can change. Fixed monthly fee, not priced per account or per query.</p>
-
-      <div class="spec">
-        <p class="spec-k">Every transaction in the report names both sides, not just the address.</p>
-        <div class="rec-wrap">
-          <div class="rec">
-            <span class="h">size</span>
-            <span class="h">counterparty</span>
-            <span class="h"></span>
-            <span class="h">moved to</span>
-
-            <span class="amt">340 BTC</span>
-            <span class="who">Counterparty</span>
-            <span class="arw">-&gt;</span>
-            <span class="ent">Binance</span>
-
-            <span class="amt">2.1M USDT</span>
-            <span class="who">Counterparty</span>
-            <span class="arw">-&gt;</span>
-            <span class="ent">Bitso</span>
-          </div>
-        </div>
-      </div>
     </div>
   </section>
 
