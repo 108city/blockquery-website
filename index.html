@@ -130,6 +130,7 @@ section{ padding:clamp(40px,5.5vw,64px) 0; }
 .out+.out{ border-left:1px solid var(--border); }
 .out:first-child{ padding-left:0; }
 .out:last-child{ padding-right:0; }
+.out .si{ margin-bottom:14px; }
 .out h2{ margin:0 0 10px; font-family:var(--mono); font-weight:500;
   font-size:clamp(15px,1.7vw,18px); color:var(--white); line-height:1.4;
   letter-spacing:0; }
@@ -183,13 +184,26 @@ section{ padding:clamp(40px,5.5vw,64px) 0; }
 @keyframes wipe{ from{ --wipe:0% } to{ --wipe:100% } }
 @keyframes edge{ 0%{opacity:0} 10%{opacity:.85} 84%{opacity:.85} 100%{opacity:0} }
 @media (prefers-reduced-motion:no-preference){
-  .spec.go .cell{ animation:wipe 760ms cubic-bezier(.2,.7,.25,1)
+  .spec.go .cell, .spec.go .r1{ animation:wipe 760ms cubic-bezier(.2,.7,.25,1)
     calc(520ms + var(--i,0)*150ms) both; }
-  .spec.go .cell::after{ animation:edge 760ms linear
+  .spec.go .cell::after, .spec.go .r1::after{ animation:edge 760ms linear
     calc(520ms + var(--i,0)*150ms) both; }
 }
 .rec .who{ color:var(--body); white-space:nowrap; }
 .rec .arw{ color:var(--muted); }
+/* row 1 of each pair is what the chain gives you: muted, with the address
+   struck as the same --wipe that reveals the name below. The size and the
+   counterparty are not in dispute, so only the address carries the strike. */
+.rec .r1{ position:relative; white-space:nowrap; color:var(--muted); justify-self:start;
+  background-image:linear-gradient(var(--faint),var(--faint)); background-repeat:no-repeat;
+  background-position:0 55%; background-size:var(--wipe,100%) 1px; }
+.rec .nostrike,.rec .arw{ background:none; }
+.rec .r1::after{ content:''; position:absolute; inset:-.14em auto -.14em 0;
+  left:var(--wipe,100%); width:1px; background:var(--accent); opacity:0; }
+.rec .nostrike::after,.rec .arw::after{ content:none; }
+.rec .sp{ grid-column:1/-1; height:6px; }
+.sr-only{ position:absolute; width:1px; height:1px; padding:0; margin:-1px;
+  overflow:hidden; clip:rect(0 0 0 0); white-space:nowrap; border:0; }
 
 /* ---------- form, at the foot of the page ---------- */
 .cta{ border-top:1px solid var(--border); background:var(--raised); }
@@ -359,27 +373,34 @@ footer{ border-top:1px solid var(--border); padding:30px 0 44px; }
       <div class="spec" id="spec">
         <p class="spec-k">Every transaction in the report names both sides, not just the address.</p>
         <div class="rec-wrap">
-          <div class="rec">
+          <p class="sr-only">Two specimen transactions. On chain: 340 BTC from a counterparty to address bc1q 7e4f, which BlockQuery resolves to Binance. 2.1M USDT from a counterparty to address TR7N 1a4c, resolved to Bitso.</p>
+          <div class="rec" aria-hidden="true">
             <span class="h">size</span>
             <span class="h">counterparty</span>
             <span class="h"></span>
             <span class="h">moved to</span>
 
+            <span class="r1 nostrike" style="--i:0">340 BTC</span>
+            <span class="r1 nostrike" style="--i:0">Counterparty</span>
+            <span class="r1 arw" style="--i:0">-&gt;</span>
+            <span class="r1" style="--i:0">bc1q&hellip;7e4f</span>
+
             <span class="amt">340 BTC</span>
             <span class="who">Counterparty</span>
             <span class="arw">-&gt;</span>
-            <span class="cell" style="--i:0">
-              <span class="pre" aria-hidden="true">bc1q&hellip;7e4f</span>
-              <span class="post">Binance</span>
-            </span>
+            <span class="cell" style="--i:0"><span class="pre">bc1q&hellip;7e4f</span><span class="post">Binance</span></span>
+
+            <span class="sp"></span>
+
+            <span class="r1 nostrike" style="--i:1">2.1M USDT</span>
+            <span class="r1 nostrike" style="--i:1">Counterparty</span>
+            <span class="r1 arw" style="--i:1">-&gt;</span>
+            <span class="r1" style="--i:1">TR7N&hellip;1a4c</span>
 
             <span class="amt">2.1M USDT</span>
             <span class="who">Counterparty</span>
             <span class="arw">-&gt;</span>
-            <span class="cell" style="--i:1">
-              <span class="pre" aria-hidden="true">TR7N&hellip;1a4c</span>
-              <span class="post">Bitso</span>
-            </span>
+            <span class="cell" style="--i:1"><span class="pre">TR7N&hellip;1a4c</span><span class="post">Bitso</span></span>
           </div>
         </div>
       </div>
@@ -387,14 +408,17 @@ footer{ border-top:1px solid var(--border); padding:30px 0 44px; }
 
       <div class="outcomes">
         <div class="out">
+          <svg class="si" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 17.5l5.2-5.2 3.8 3.8L20 8"/><path d="M15.2 8H20v4.8"/></svg>
           <h2>Grow the accounts you have</h2>
           <p>A counterparty may be moving several times on-chain what they trade with you. We show that gap, account by account.</p>
         </div>
         <div class="out">
+          <svg class="si" viewBox="0 0 24 24" aria-hidden="true"><circle cx="14.5" cy="14.5" r="5.6"/><path d="M3.5 3.5l6.4 6.4"/><path d="M9.9 9.9H5.4M9.9 9.9V5.4"/></svg>
           <h2>Win the ones you do not</h2>
           <p>Named entities moving real size through venues you compete with, volumes attached, not yet trading with you.</p>
         </div>
         <div class="out">
+          <svg class="si" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.2l7 2.8v5.5c0 4.4-3 7.7-7 9.3-4-1.6-7-4.9-7-9.3V6z"/><path d="M9 12.2l2.1 2.1 3.9-4"/></svg>
           <h2>Keep the ones you are losing</h2>
           <p>When a counterparty starts routing to another desk it shows on-chain first. We flag it while you can still act.</p>
         </div>
