@@ -9,7 +9,7 @@
     { "source": "/insights/:path*", "destination": "/", "permanent": false },
     { "source": "/about", "destination": "/", "permanent": false },
     { "source": "/contact", "destination": "/", "permanent": false },
-    { "source": "/data", "destination": "/", "permanent": false },
+    { "source": "/monitoring", "destination": "/", "permanent": false },
 
     { "source": "/intelligence", "destination": "/", "permanent": false },
     { "source": "/platform", "destination": "/", "permanent": false },

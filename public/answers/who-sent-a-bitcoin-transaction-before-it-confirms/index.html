@@ -1,0 +1,157 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Can you see who sent a Bitcoin transaction before it confirms? | BlockQuery</title>
+<meta name="description" content="Yes, for attributed entities. A Bitcoin transaction is visible in the mempool before it is mined, and if the sending address is attributed the sender can be named at that point." />
+<link rel="canonical" href="https://www.blockquery.io/answers/who-sent-a-bitcoin-transaction-before-it-confirms/" />
+<meta name="theme-color" content="#0B0E14" />
+<meta property="og:type" content="article" />
+<meta property="og:site_name" content="BlockQuery" />
+<meta property="og:url" content="https://www.blockquery.io/answers/who-sent-a-bitcoin-transaction-before-it-confirms/" />
+<meta property="og:title" content="Can you see who sent a Bitcoin transaction before it confirms?" />
+<meta property="og:description" content="Yes, for attributed entities. A Bitcoin transaction is visible in the mempool before it is mined, and if the sending address is attributed the sender can be named at that point." />
+<meta property="og:image" content="https://www.blockquery.io/og.png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Can you see who sent a Bitcoin transaction before it confirms?" />
+<meta name="twitter:description" content="Yes, for attributed entities. A Bitcoin transaction is visible in the mempool before it is mined, and if the sending address is attributed the sender can be named at that point." />
+<meta name="twitter:image" content="https://www.blockquery.io/og.png" />
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-821HBV4DF8"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-821HBV4DF8');
+</script>
+<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+<link rel="alternate icon" type="image/x-icon" href="/favicon.ico" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Newsreader:opsz,wght@6..72,400;6..72,500&display=swap" />
+<style>
+:root{ --canvas:#0B0E14; --raised:#0F141D; --border:#2A3445; --white:#FFFFFF; --body:#E4E8EF;
+  --muted:#8A94A6; --faint:#5C6678; --accent:#19C3D6;
+  --mono:"IBM Plex Mono","Cascadia Mono",Consolas,Menlo,"DejaVu Sans Mono",monospace;
+  --display:"Newsreader",Georgia,"Times New Roman",serif; --gut:clamp(20px,5vw,64px); --maxw:1140px; }
+*,*::before,*::after{ box-sizing:border-box; }
+html{ -webkit-text-size-adjust:100%; }
+body{ margin:0; background:var(--canvas); color:var(--body); font-family:var(--mono); font-size:15px;
+  line-height:1.7; font-variant-numeric:tabular-nums; -webkit-font-smoothing:antialiased; overflow-x:hidden; }
+h1,h2{ font-family:var(--display); font-weight:500; color:var(--white); letter-spacing:-0.015em; line-height:1.08; margin:0; }
+p{ margin:0; } a{ color:inherit; }
+.wrap{ width:100%; max-width:var(--maxw); margin:0 auto; padding:0 var(--gut); }
+.narrow{ max-width:72ch; }
+:focus-visible{ outline:2px solid var(--accent); outline-offset:3px; }
+.skip{ position:absolute; left:-9999px; top:0; z-index:99; background:var(--accent); color:var(--canvas); padding:10px 16px; font-weight:500; }
+.skip:focus{ left:0; }
+.rail{ border-bottom:1px solid var(--border); }
+.rail-in{ display:flex; align-items:center; justify-content:space-between; gap:16px; height:46px;
+  font-size:11px; letter-spacing:.16em; text-transform:uppercase; }
+.rail-id{ color:var(--white); font-weight:500; text-transform:none; letter-spacing:0; font-size:13.5px; text-decoration:none; }
+.rail-id span{ color:var(--muted); font-weight:400; font-size:11px; letter-spacing:.16em; text-transform:uppercase; }
+.rail a{ color:var(--muted); text-decoration:none; } .rail a:hover{ color:var(--white); }
+.rail-nav{ display:flex; align-items:center; gap:clamp(16px,2.6vw,30px); } .rail-nav .on{ color:var(--white); }
+.crumb{ font-size:10.5px; letter-spacing:.22em; text-transform:uppercase; color:var(--muted); margin:clamp(40px,5.5vw,64px) 0 clamp(18px,2.4vw,26px); }
+.crumb a{ text-decoration:none; } .crumb a:hover{ color:var(--white); }
+h1{ font-size:clamp(30px,4.8vw,50px); max-width:22ch; }
+.lead{ margin-top:clamp(18px,2.4vw,26px); font-size:clamp(15.5px,1.6vw,17.5px); line-height:1.7; color:var(--body); }
+.lead b{ color:var(--white); font-weight:500; }
+.meta{ margin-top:18px; font-size:11px; letter-spacing:.14em; text-transform:uppercase; color:var(--muted); }
+.nums{ display:grid; grid-template-columns:repeat(4,1fr); gap:clamp(16px,3vw,40px); margin:clamp(30px,4vw,44px) 0;
+  padding:clamp(20px,2.6vw,28px) 0; border-top:1px solid var(--border); border-bottom:1px solid var(--border); }
+.num .v{ color:var(--white); font-size:clamp(20px,3vw,30px); line-height:1; }
+.num .k{ color:var(--muted); font-size:11px; letter-spacing:.14em; text-transform:uppercase; margin-top:10px; line-height:1.5; }
+article h2{ font-size:clamp(22px,3vw,30px); margin:clamp(30px,4vw,44px) 0 12px; }
+article p{ color:var(--body); } article p b{ color:var(--white); font-weight:500; }
+article p a, .faq a{ color:var(--body); text-decoration:none; border-bottom:1px solid var(--muted); }
+article code{ font-family:var(--mono); color:var(--accent); font-size:.95em; }
+.faq{ margin-top:clamp(36px,5vw,56px); }
+.faq .qa{ border-top:1px solid var(--border); margin-top:14px; }
+.faq .q{ padding:clamp(16px,2.2vw,22px) 0; border-bottom:1px solid var(--border); }
+.faq h3{ margin:0 0 8px; font-family:var(--mono); font-weight:500; font-size:14.5px; color:var(--white); line-height:1.5; }
+.faq p{ color:var(--muted); font-size:13.5px; }
+.related{ margin-top:clamp(36px,5vw,56px); }
+.related ul{ list-style:none; margin:14px 0 0; padding:0; border-top:1px solid var(--border); }
+.related li{ border-bottom:1px solid var(--border); }
+.related a{ display:flex; justify-content:space-between; gap:20px; padding:14px 0; text-decoration:none; color:var(--body); font-size:14px; }
+.related a:hover{ color:var(--white); } .related span{ color:var(--muted); }
+.band{ margin:clamp(40px,5.5vw,64px) 0; background:var(--raised); border:1px solid var(--border); padding:clamp(24px,3.2vw,40px);
+  display:grid; grid-template-columns:minmax(0,1fr) max-content; gap:20px 40px; align-items:center; }
+.band h2{ font-size:clamp(20px,2.6vw,28px); margin:0; }
+.band p{ color:var(--muted); font-size:13.5px; margin-top:8px; max-width:56ch; }
+.btn{ display:inline-flex; align-items:center; justify-content:center; font-family:var(--mono); font-size:12.5px; font-weight:500;
+  letter-spacing:.14em; text-transform:uppercase; text-decoration:none; padding:15px 26px; background:var(--accent); color:var(--canvas); white-space:nowrap; }
+.btn:hover{ opacity:.86; }
+.hub li a{ display:block; padding:clamp(18px,2.4vw,24px) 0; text-decoration:none; border-bottom:1px solid var(--border); }
+.hub ul{ list-style:none; margin:clamp(26px,3.4vw,38px) 0 0; padding:0; border-top:1px solid var(--border); }
+.hub .t{ display:block; font-family:var(--display); font-size:clamp(20px,2.6vw,26px); color:var(--white); line-height:1.15; letter-spacing:-.01em; }
+.hub .d{ display:block; color:var(--muted); font-size:13.5px; margin-top:8px; max-width:70ch; }
+.hub li a:hover .t{ color:var(--accent); }
+footer{ border-top:1px solid var(--border); padding:30px 0 44px; margin-top:clamp(40px,5.5vw,64px); }
+.foot-in{ display:flex; flex-wrap:wrap; justify-content:space-between; gap:12px 24px; font-size:11px; letter-spacing:.14em; text-transform:uppercase; color:var(--muted); }
+.foot-in a{ color:var(--muted); text-decoration:none; } .foot-in a:hover{ color:var(--white); }
+.foot-nav{ display:flex; gap:22px; }
+.fb{ text-transform:none; letter-spacing:0; font-size:12.5px; font-weight:500; color:var(--body); }
+@media (max-width:860px){ .nums{ grid-template-columns:repeat(2,1fr); } .band{ grid-template-columns:1fr; } .band > *{ min-width:0; } .band .btn{ white-space:normal; text-align:center; width:100%; } }
+@media (max-width:560px){ .rail-in .rail-cta{ display:none; } .rail-id span{ display:none; } .nums{ grid-template-columns:1fr; gap:16px; } }
+</style>
+<script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "Organization", "@id": "https://www.blockquery.io/#org", "name": "BlockQuery", "url": "https://www.blockquery.io/", "logo": {"@type": "ImageObject", "url": "https://www.blockquery.io/sig-logo.png"}, "parentOrganization": {"@type": "Organization", "name": "Chainlabs", "url": "https://chainlabs.ai/"}}, {"@type": "Article", "@id": "https://www.blockquery.io/answers/who-sent-a-bitcoin-transaction-before-it-confirms/#article", "headline": "Can you see who sent a Bitcoin transaction before it confirms?", "description": "Yes, for attributed entities. A Bitcoin transaction is visible in the mempool before it is mined, and if the sending address is attributed the sender can be named at that point.", "datePublished": "2026-09-04", "dateModified": "2026-09-04", "inLanguage": "en-GB", "author": {"@id": "https://www.blockquery.io/#org"}, "publisher": {"@id": "https://www.blockquery.io/#org"}, "mainEntityOfPage": "https://www.blockquery.io/answers/who-sent-a-bitcoin-transaction-before-it-confirms/", "image": "https://www.blockquery.io/og.png"}, {"@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "BlockQuery", "item": "https://www.blockquery.io/"}, {"@type": "ListItem", "position": 2, "name": "Answers", "item": "https://www.blockquery.io/answers/"}, {"@type": "ListItem", "position": 3, "name": "Can you see who sent a Bitcoin transaction before it confirms?", "item": "https://www.blockquery.io/answers/who-sent-a-bitcoin-transaction-before-it-confirms/"}]}, {"@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Can a transaction change before it confirms?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. Bitcoin allows a transaction to be replaced with a higher fee, and an unconfirmed transaction can be dropped. A mempool record is a record of intent at broadcast; the confirmed feed is the record of what happened."}}, {"@type": "Question", "name": "Does this work for Ethereum or Tron?", "acceptedAnswer": {"@type": "Answer", "text": "The mempool feed is Bitcoin first. Additional chains are available on request rather than promised as live."}}, {"@type": "Question", "name": "How far ahead of confirmation is it?", "acceptedAnswer": {"@type": "Answer", "text": "Until a miner includes the transaction in a block, which varies with fees and network load. BlockQuery does not claim a fixed latency."}}, {"@type": "Question", "name": "Do you name the receiving side as well?", "acceptedAnswer": {"@type": "Answer", "text": "Where the destination address is attributed, yes. Both sides are named where we have them."}}]}]}</script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="rail">
+  <div class="wrap rail-in">
+    <a class="rail-id" href="/">BlockQuery <span>powered by Chainlabs.ai</span></a>
+    <nav class="rail-nav">
+      <a href="/">OTC VIP Monitoring</a>
+      <a href="/data">Entity data</a>
+      <a class="on" href="/answers/" aria-current="false">Answers</a>
+    </nav>
+  </div>
+</header>
+<main id="main">
+
+<article class="wrap">
+<div class="narrow">
+<p class="crumb"><a href="/answers/">Answers</a> &nbsp;/&nbsp; 4 September 2026</p>
+<h1>Can you see who sent a Bitcoin transaction before it confirms?</h1>
+<p class="lead">Yes, for the entities BlockQuery has attributed. A Bitcoin transaction is visible in the mempool before it is included in a block, and if the sending address belongs to an attributed entity the sender can be named at that point: <b>a specific desk or treasury moving size before it lands on-chain</b>. BlockQuery's Bitcoin coverage runs to 312M+ attributed addresses.</p>
+<p class="meta">Published 4 September 2026 &middot; BlockQuery, powered by Chainlabs</p>
+</div>
+<div class="nums"><div class="num"><div class="v">312M+</div><div class="k">Bitcoin addresses attributed</div></div><div class="num"><div class="v">800+</div><div class="k">OTC desks</div></div><div class="num"><div class="v">90,000</div><div class="k">directly researched addresses</div></div><div class="num"><div class="v">30+</div><div class="k">blockchains</div></div></div>
+<div class="narrow">
+<h2>What the mempool shows</h2>
+<p>A broadcast transaction waits in the mempool until a miner includes it in a block. During that window it is public: inputs, outputs and amount. What it does not show is who is behind the inputs.</p>
+<h2>Where attribution comes in</h2>
+<p>If an input address belongs to an attributed entity, the transaction can be read as that entity sending that amount while it is still unconfirmed. This is the same <a href="/answers/what-is-on-chain-entity-attribution/">entity attribution</a> applied earlier in the transaction's life, not a different dataset.</p>
+<h2>What it is not</h2>
+<p>It is not a promise of sub-second delivery, and it is not a prediction of what the transaction means for price. It is an attributed transaction, earlier. What you do with the time is yours.</p>
+<h2>How it is delivered</h2>
+<p>As an optional mempool feed in the same schema as the confirmed-history feed, so a model built on history runs unchanged on unconfirmed transactions. Available with the <a href="/data">entity data feeds</a>.</p>
+<section class="faq"><h2>Frequently asked questions</h2><div class="qa">
+<div class="q"><h3>Can a transaction change before it confirms?</h3><p>Yes. Bitcoin allows a transaction to be replaced with a higher fee, and an unconfirmed transaction can be dropped. A mempool record is a record of intent at broadcast; the confirmed feed is the record of what happened.</p></div>
+<div class="q"><h3>Does this work for Ethereum or Tron?</h3><p>The mempool feed is Bitcoin first. Additional chains are available on request rather than promised as live.</p></div>
+<div class="q"><h3>How far ahead of confirmation is it?</h3><p>Until a miner includes the transaction in a block, which varies with fees and network load. BlockQuery does not claim a fixed latency.</p></div>
+<div class="q"><h3>Do you name the receiving side as well?</h3><p>Where the destination address is attributed, yes. Both sides are named where we have them.</p></div>
+</div></section>
+<aside class="related"><h2>Related answers</h2><ul>
+<li><a href="/answers/what-is-on-chain-entity-attribution/">What is on-chain entity attribution?<span>&rarr;</span></a></li>
+<li><a href="/answers/what-is-point-in-time-attribution/">What is point-in-time attribution, and why do backtests need it?<span>&rarr;</span></a></li>
+<li><a href="/answers/where-does-a-stablecoin-mint-go/">Where does a stablecoin mint actually go?<span>&rarr;</span></a></li>
+</ul></aside>
+<div class="band"><div><h2>Request one month of sample data</h2><p>Entity data feeds: the attribution layer as data you own, in the schema you would receive.</p></div><a class="btn" href="/data#request">Request one month of sample data</a></div>
+</div>
+</article>
+</main>
+<footer>
+  <div class="wrap foot-in">
+    <span><b class="fb">BlockQuery</b> &middot; powered by Chainlabs</span>
+    <nav class="foot-nav"><a href="/">OTC VIP monitoring</a><a href="/data">Entity data</a><a href="/answers/">Answers</a></nav>
+  </div>
+</footer>
+</body>
+</html>

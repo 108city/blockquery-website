@@ -1,0 +1,38 @@
+# BlockQuery
+
+> On-chain entity attribution for crypto trading desks, powered by Chainlabs. BlockQuery names the entity behind an on-chain transaction: the exchange, OTC desk, fund, miner, treasury or issuer behind an address, on both sides of a transfer.
+
+BlockQuery sells two things:
+
+- OTC VIP monitoring. Ongoing monitoring of an OTC desk's counterparty book, delivered as weekly or monthly written reports for a fixed monthly fee. It shows where a desk's counterparties trade when they are not trading with the desk: the room to grow existing accounts, named prospects moving size through competing venues, and accounts that have started routing elsewhere. Nothing to integrate. https://www.blockquery.io/
+- Entity data feeds. The attribution layer delivered as data you own: multi-year history as CSV or parquet, a live API in the identical schema, an optional mempool feed, and point-in-time attribution so a backtest only sees what was knowable at the time. Bitcoin first, additional chains on request. https://www.blockquery.io/data
+
+## Key facts
+
+- 18,000 commercial entities attributed
+- 800+ OTC desks and 480+ regional exchanges attributed
+- 30+ blockchains covered
+- 90,000 addresses attributed through direct research; hundreds of millions more through entity clustering (312M+ on Bitcoin, 47M+ on Ethereum, 94.4M+ on Tron)
+- Around 300 new attributions added monthly
+- Every attribution is human-verified by a team of intelligence analysts and carries verifiable source evidence
+- Chainlabs has been building entity attribution continuously for six years
+- Clients include Coinbase and OKX
+- BlockQuery does not predict price and does not sell trading signals. It sells data and monitoring.
+
+## Pages
+
+- OTC VIP monitoring (home): https://www.blockquery.io/
+- Entity data feeds: https://www.blockquery.io/data
+- Answers hub: https://www.blockquery.io/answers/
+- What is on-chain entity attribution? https://www.blockquery.io/answers/what-is-on-chain-entity-attribution/
+- How many OTC desks are there in crypto? https://www.blockquery.io/answers/how-many-otc-desks-are-there-in-crypto/
+- What is point-in-time attribution, and why do backtests need it? https://www.blockquery.io/answers/what-is-point-in-time-attribution/
+- Can you see who sent a Bitcoin transaction before it confirms? https://www.blockquery.io/answers/who-sent-a-bitcoin-transaction-before-it-confirms/
+- Where does a stablecoin mint actually go? https://www.blockquery.io/answers/where-does-a-stablecoin-mint-go/
+- How can an OTC desk see what its counterparties do on other venues? https://www.blockquery.io/answers/how-can-an-otc-desk-monitor-its-counterparties/
+
+## Contact
+
+- Request a first monitoring report: https://www.blockquery.io/#start
+- Request one month of sample data: https://www.blockquery.io/data#request
+- Book a call: https://koalendar.com/e/meet-with-greg-schneider-chainlabs

@@ -1,7 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://www.blockquery.io/</loc><priority>1.0</priority></url>
-  <url><loc>https://www.blockquery.io/monitoring</loc><priority>0.9</priority></url>
-  <url><loc>https://www.blockquery.io/privacy</loc><priority>0.3</priority></url>
-  <url><loc>https://www.blockquery.io/terms</loc><priority>0.3</priority></url>
+  <url><loc>https://www.blockquery.io/</loc><lastmod>2026-09-04</lastmod><priority>1.0</priority></url>
+  <url><loc>https://www.blockquery.io/data</loc><lastmod>2026-09-04</lastmod><priority>0.9</priority></url>
+  <url><loc>https://www.blockquery.io/answers/</loc><lastmod>2026-09-04</lastmod><priority>0.8</priority></url>
+  <url><loc>https://www.blockquery.io/answers/what-is-on-chain-entity-attribution/</loc><lastmod>2026-09-04</lastmod><priority>0.7</priority></url>
+  <url><loc>https://www.blockquery.io/answers/how-can-an-otc-desk-monitor-its-counterparties/</loc><lastmod>2026-09-04</lastmod><priority>0.7</priority></url>
+  <url><loc>https://www.blockquery.io/answers/how-many-otc-desks-are-there-in-crypto/</loc><lastmod>2026-09-04</lastmod><priority>0.7</priority></url>
+  <url><loc>https://www.blockquery.io/answers/where-does-a-stablecoin-mint-go/</loc><lastmod>2026-09-04</lastmod><priority>0.7</priority></url>
+  <url><loc>https://www.blockquery.io/answers/who-sent-a-bitcoin-transaction-before-it-confirms/</loc><lastmod>2026-09-04</lastmod><priority>0.7</priority></url>
+  <url><loc>https://www.blockquery.io/answers/what-is-point-in-time-attribution/</loc><lastmod>2026-09-04</lastmod><priority>0.7</priority></url>
+  <url><loc>https://www.blockquery.io/privacy</loc><lastmod>2026-09-04</lastmod><priority>0.3</priority></url>
+  <url><loc>https://www.blockquery.io/terms</loc><lastmod>2026-09-04</lastmod><priority>0.3</priority></url>
 </urlset>
